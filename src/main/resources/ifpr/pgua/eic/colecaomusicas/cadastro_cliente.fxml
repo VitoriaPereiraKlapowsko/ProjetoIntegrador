@@ -20,10 +20,9 @@
       <TextField fx:id="nomeCliente" layoutX="80.0" layoutY="108.0" prefHeight="26.0" prefWidth="186.0" />
       <TextField fx:id="cpfCnpjCliente" layoutX="78.0" layoutY="160.0" prefHeight="26.0" prefWidth="186.0" />
       <TextField fx:id="emailCliente" layoutX="77.0" layoutY="207.0" prefHeight="26.0" prefWidth="444.0" />
-      <TextField fx:id="enderecoCliente" layoutX="77.0" layoutY="257.0" prefHeight="26.0" prefWidth="246.0" />
-      <TextField fx:id="telefoneCliente" layoutX="76.0" layoutY="306.0" />
+      <TextField fx:id="enderecoCliente" layoutX="77.0" layoutY="257.0" prefHeight="26.0" prefWidth="444.0" />
+      <TextField fx:id="telefoneCliente" layoutX="76.0" layoutY="306.0" prefHeight="25.0" prefWidth="161.0" />
       <TextField fx:id="sobrenomeCliente" layoutX="304.0" layoutY="108.0" prefHeight="26.0" prefWidth="217.0" />
-      <TextField fx:id="numeroCliente" layoutX="352.0" layoutY="257.0" prefHeight="26.0" prefWidth="170.0" />
       <Button layoutX="200.0" layoutY="359.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
       <Button layoutX="311.0" layoutY="358.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <TextField fx:id="inscricaoEstadualCliente" layoutX="304.0" layoutY="160.0" prefHeight="26.0" prefWidth="217.0" />
@@ -33,7 +32,6 @@
       <Label layoutX="306.0" layoutY="142.0" text="Inscrição Estadual:" />
       <Label layoutX="80.0" layoutY="192.0" text="Email:" />
       <Label layoutX="78.0" layoutY="241.0" text="Endereço:" />
-      <Label layoutX="356.0" layoutY="243.0" text="N°:" />
       <Label layoutX="77.0" layoutY="289.0" text="Telefone:" />
    </children>
 </AnchorPane>

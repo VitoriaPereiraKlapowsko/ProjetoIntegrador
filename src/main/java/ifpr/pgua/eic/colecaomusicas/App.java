@@ -117,11 +117,9 @@ public class App extends BaseAppNavigator {
          registraTela("CADASTROCLIENTE",
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_cliente.fxml", 
-                      o->new CadastroCliente()
+                      o->new CadastroCliente(null)
                   )
         );
-        
-       
     }
 
     public static ListarPlaylist getController(String string) {
