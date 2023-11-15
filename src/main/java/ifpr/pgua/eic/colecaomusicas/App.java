@@ -11,15 +11,18 @@ import ifpr.pgua.eic.colecaomusicas.controllers.ListarMusicas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarPlaylist;
 import ifpr.pgua.eic.colecaomusicas.controllers.Principal;
 import ifpr.pgua.eic.colecaomusicas.daos.ArtistaDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.ClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.FabricaConexoes;
 import ifpr.pgua.eic.colecaomusicas.daos.GeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCArtistaDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCGeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCMusicaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPlaylistDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.MusicaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PlaylistDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioArtistas;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioGeneros;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioMusicas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPlaylist;
@@ -30,6 +33,9 @@ import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
  * JavaFX App
  */
 public class App extends BaseAppNavigator {
+
+    private ClienteDAO clienteDAO = new JDBCClienteDAO(FabricaConexoes.getInstance());
+    private RepositorioCliente repositorioCliente = new RepositorioCliente(clienteDAO);
 
     private ArtistaDAO artistaDAO = new JDBCArtistaDAO(FabricaConexoes.getInstance());
     private RepositorioArtistas repositorioArtistas = new RepositorioArtistas(artistaDAO);
@@ -117,7 +123,7 @@ public class App extends BaseAppNavigator {
          registraTela("CADASTROCLIENTE",
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_cliente.fxml", 
-                      o->new CadastroCliente(null)
+                      o->new CadastroCliente(repositorioCliente)
                   )
         );
     }

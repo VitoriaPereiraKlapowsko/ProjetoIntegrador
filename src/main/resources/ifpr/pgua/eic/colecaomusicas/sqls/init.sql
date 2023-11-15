@@ -12,8 +12,8 @@ data_de_nascimento date not null,
 email varchar(250) not null
 );
 
-CREATE TABLE IF NOT EXISTS tb_cliente (
-codigo varchar(100) primary key,
+CREATE TABLE IF NOT EXISTS tb_clientes (
+codigo int NOT NULL AUTO_INCREMENT primary key,
 nome varchar(250) not null,
 sobrenome varchar(250) not null,
 cpf_cnpj varchar(80) not null,
