@@ -5,6 +5,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastroArtista;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroCliente;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroGenero;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroMusica;
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarArtistas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarGeneros;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarMusicas;
@@ -63,7 +64,7 @@ public class App extends BaseAppNavigator {
     @Override
     public String getAppTitle() {
         // TODO Auto-generated method stub
-        return "Coleção de Músicas";
+        return "Agendamento PetShop";
     }
 
     @Override
@@ -124,6 +125,13 @@ public class App extends BaseAppNavigator {
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_cliente.fxml", 
                       o->new CadastroCliente(repositorioCliente)
+                  )
+        );
+
+         registraTela("CADASTROPET",
+                  new ScreenRegistryFXML(App.class, 
+                      "cadastro_pet.fxml", 
+                      o->new CadastroPet()
                   )
         );
     }

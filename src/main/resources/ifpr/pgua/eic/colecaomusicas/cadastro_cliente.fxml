@@ -16,7 +16,7 @@
          </font>
       </Label>
       <Button layoutY="40.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="78.0" style="-fx-background-color: D9E6ED;" text="Cliente" />
-      <Button layoutX="86.0" layoutY="39.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="78.0" style="-fx-background-color: B1C4CF;" text="Pet" textOverrun="CLIP" />
+      <Button layoutX="86.0" layoutY="39.0" mnemonicParsing="false" onAction="#cadastrarPet" prefHeight="18.0" prefWidth="78.0" style="-fx-background-color: B1C4CF;" text="Pet" textOverrun="CLIP" />
       <TextField fx:id="nomeCliente" layoutX="80.0" layoutY="108.0" prefHeight="26.0" prefWidth="186.0" />
       <TextField fx:id="cpfCnpjCliente" layoutX="78.0" layoutY="160.0" prefHeight="26.0" prefWidth="186.0" />
       <TextField fx:id="emailCliente" layoutX="77.0" layoutY="207.0" prefHeight="26.0" prefWidth="444.0" />
