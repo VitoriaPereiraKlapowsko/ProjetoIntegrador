@@ -24,7 +24,7 @@ public class JDBCClienteDAO implements ClienteDAO{
         try(Connection con = fabrica.getConnection()){
             
             PreparedStatement pstm = con.
-            prepareStatement("INSERT INTO tb_clientes(nome, sobrenome, cpf_cnpj, inscricao_estadual, endereco, telefone, email) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            prepareStatement("INSERT INTO tb_cliente(nome, sobrenome, cpf_cnpj, inscricao_estadual, endereco, telefone, email) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
            
             pstm.setString(1,cliente.getNome());
             pstm.setString(2, cliente.getSobrenome());
@@ -73,7 +73,7 @@ public class JDBCClienteDAO implements ClienteDAO{
                 lista.add(cliente);
             }
             
-            return Resultado.sucesso("Lista de clientes", lista);
+            return Resultado.sucesso("Lista de cliente", lista);
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS tb_funcionario (
 login varchar(150) primary key,
 senha varchar(45) not null,
@@ -12,7 +13,7 @@ data_de_nascimento date not null,
 email varchar(250) not null
 );
 
-CREATE TABLE IF NOT EXISTS tb_clientes (
+CREATE TABLE IF NOT EXISTS tb_cliente (
 codigo int NOT NULL AUTO_INCREMENT primary key,
 nome varchar(250) not null,
 sobrenome varchar(250) not null,
@@ -25,7 +26,7 @@ email varchar(75) not null
 
 CREATE TABLE IF NOT EXISTS tb_telefone_cliente (
 numero int primary key,
-cliente_codigo varchar(100),
+cliente_codigo INT,
 ddd int not null,
 FOREIGN KEY (cliente_codigo) REFERENCES tb_cliente(codigo)
 );
@@ -37,19 +38,19 @@ descricao varchar(450)
 );
 
 CREATE TABLE IF NOT EXISTS tb_animal (
-codigo varchar(45) primary key,
-cliente_codigo varchar(100) not null,
-raca_codigo varchar(45) not null,
-nome varchar(250) not null,
-nome_raca varchar(250) not null,
-sexo varchar(250) not null,
-porte varchar(250) not null,
-especie varchar(250) not null,
-data_de_nascimento date not null,
-tratamento_especiais varchar(400),
-condicoes_fisicas varchar(400),
-FOREIGN KEY(cliente_codigo) REFERENCES tb_cliente(codigo),
-FOREIGN KEY(raca_codigo) REFERENCES tb_raca(codigo)
+codigo VARCHAR(45) PRIMARY KEY,
+cliente_codigo INT NOT NULL,
+raca_codigo VARCHAR(45) NOT NULL,
+nome VARCHAR(250) NOT NULL,
+nome_raca VARCHAR(250) NOT NULL,
+sexo VARCHAR(250) NOT NULL,
+porte VARCHAR(250) NOT NULL,
+especie VARCHAR(250) NOT NULL,
+data_de_nascimento DATE NOT NULL,
+tratamento_especiais VARCHAR(400),
+condicoes_fisicas VARCHAR(400),
+FOREIGN KEY (cliente_codigo) REFERENCES tb_cliente(codigo),
+FOREIGN KEY (raca_codigo) REFERENCES tb_raca(codigo)
 );
 
 CREATE TABLE IF NOT EXISTS tb_servico (
@@ -60,7 +61,7 @@ descricao varchar (400) not null
 
 CREATE TABLE IF NOT EXISTS tb_agendamento (
 codigo varchar(45) primary key,
-cliente_codigo varchar(100) not null,
+cliente_codigo INT NOT NULL,
 animal_codigo varchar(100) not null,
 tipo_servico varchar(100) not null,
 funcionario_login varchar(150) not null,
@@ -72,6 +73,6 @@ tosador_ou_banhista varchar(80) not null,
 observacao varchar(250),
 FOREIGN KEY(cliente_codigo) REFERENCES tb_cliente(codigo),
 FOREIGN KEY(animal_codigo) REFERENCES tb_animal(codigo),
-FOREIGN KEY(funcionario_login) REFeRENCES tb_funcionario(login),
-FOREIGN KEY(tipo_servico) REFeRENCES tb_servico(codigo_do_servico)
+FOREIGN KEY(funcionario_login) REFERENCES tb_funcionario(login),
+FOREIGN KEY(tipo_servico) REFERENCES tb_servico(codigo_do_servico)
 );
