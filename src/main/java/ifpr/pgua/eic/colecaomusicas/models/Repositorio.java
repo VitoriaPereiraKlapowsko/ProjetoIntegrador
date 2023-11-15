@@ -22,9 +22,9 @@ public class Repositorio {
         //Conecta no banco
 
         try{
-            String url = "jdbc:mysql://wagnerweinert.com.br:3306/tads22_heloisa";
-            String username = "tads22_heloisa";
-            String password = "tads22_heloisa";
+            String url = "jdbc:mysql://wagnerweinert.com.br:3306/tads22_vitoria";
+            String username = "tads22_vitoria";
+            String password = "tads22_vitoria";
             Connection con = DriverManager.getConnection(url,username,password);
 
             //Preparar o comando sql
@@ -49,9 +49,9 @@ public class Repositorio {
     public String cadastrarArtista(String nome, String contato){
 
         try{
-        String url = "jdbc:mysql://wagnerweinert.com.br:3306/tads22_heloisa";
-            String username = "tads22_heloisa";
-            String password = "tads22_heloisa";
+        String url = "jdbc:mysql://wagnerweinert.com.br:3306/tads22_vitoria";
+            String username = "tads22_vitoria";
+            String password = "tads22_vitoria";
             Connection con = DriverManager.getConnection(url,username,password);
 
             //Preparar o comando sql
