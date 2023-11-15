@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="602.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet">
    <children>
       <Region prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: EFEFEF;" />
       <Label layoutX="225.0" layoutY="27.0" text="CADASTRO DE CLIENTES">
@@ -28,13 +29,16 @@
       <Label layoutX="318.0" layoutY="199.0" text="Porte: *" />
       <Label layoutX="314.0" layoutY="255.0" text="Condições Físicas:" />
       <Label layoutX="83.0" layoutY="255.0" text="Tratamentos Especiais / Obs:" />
-      <ChoiceBox fx:id="raca" layoutX="81.0" layoutY="214.0" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: FFFFFF;" />
-      <ChoiceBox fx:id="porte" layoutX="318.0" layoutY="214.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: FFFFFF;" />
-      <ChoiceBox fx:id="sexo" layoutX="252.0" layoutY="160.0" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: FFFFFF;" />
+      <ChoiceBox fx:id="racaPet" layoutX="81.0" layoutY="214.0" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: FFFFFF;" />
       <Label layoutX="392.0" layoutY="144.0" text="Espécie: *" />
-      <ChoiceBox fx:id="especie" layoutX="392.0" layoutY="160.0" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: FFFFFF;" />
       <TextArea fx:id="tratamentosEObs" layoutX="80.0" layoutY="271.0" prefHeight="100.0" prefWidth="210.0" />
-      <TextArea fx:id="condicoesFisicas" layoutX="309.0" layoutY="271.0" prefHeight="100.0" prefWidth="200.0" />
-      <DatePicker layoutX="81.0" layoutY="160.0" prefHeight="26.0" prefWidth="142.0" />
+      <TextArea fx:id="condicoesFisicasPet" layoutX="309.0" layoutY="271.0" prefHeight="100.0" prefWidth="210.0" />
+      <DatePicker fx:id="dataNascimento" layoutX="81.0" layoutY="160.0" prefHeight="26.0" prefWidth="142.0" />
+      <TextField fx:id="sexoPet" layoutX="249.0" layoutY="158.0" prefHeight="26.0" prefWidth="119.0" />
+      <TextField fx:id="especiePet" layoutX="384.0" layoutY="159.0" prefHeight="26.0" prefWidth="133.0" />
+      <TextField fx:id="portePet" layoutX="318.0" layoutY="215.0" prefHeight="26.0" prefWidth="200.0" />
+      <Button layoutX="324.0" layoutY="400.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <Button layoutX="211.0" layoutY="400.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
+      <CheckBox mnemonicParsing="false" text="CheckBox" />
    </children>
 </AnchorPane>

@@ -87,9 +87,9 @@ public class CadastroCliente {
         }
         alert.showAndWait();
     }
- 
+
     @FXML
-    private void cadastrarPet() {
+    void cadastrarPet() {
         App.pushScreen("CADASTROPET");
     }
 }

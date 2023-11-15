@@ -8,7 +8,7 @@ import ifpr.pgua.eic.colecaomusicas.daos.ClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 
 public class RepositorioCliente {
-     private ArrayList<Cliente> clientes;
+    private ArrayList<Cliente> clientes;
 
     private ClienteDAO dao;
 

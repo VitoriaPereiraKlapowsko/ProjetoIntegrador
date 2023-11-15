@@ -19,13 +19,16 @@ import ifpr.pgua.eic.colecaomusicas.daos.JDBCArtistaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCGeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCMusicaDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCPetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPlaylistDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.MusicaDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PlaylistDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioArtistas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioGeneros;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioMusicas;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPlaylist;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
@@ -37,6 +40,9 @@ public class App extends BaseAppNavigator {
 
     private ClienteDAO clienteDAO = new JDBCClienteDAO(FabricaConexoes.getInstance());
     private RepositorioCliente repositorioCliente = new RepositorioCliente(clienteDAO);
+
+    private PetDAO petDAO = new JDBCPetDAO(FabricaConexoes.getInstance());
+    private RepositorioPet repositorioPet = new RepositorioPet(petDAO);
 
     private ArtistaDAO artistaDAO = new JDBCArtistaDAO(FabricaConexoes.getInstance());
     private RepositorioArtistas repositorioArtistas = new RepositorioArtistas(artistaDAO);
@@ -131,7 +137,7 @@ public class App extends BaseAppNavigator {
          registraTela("CADASTROPET",
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_pet.fxml", 
-                      o->new CadastroPet()
+                      o->new CadastroPet(repositorioPet)
                   )
         );
     }
