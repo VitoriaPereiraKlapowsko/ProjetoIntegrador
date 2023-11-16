@@ -5,6 +5,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarPlaylist;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarServico;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroArtista;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroCliente;
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroGenero;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroMusica;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
@@ -130,7 +131,15 @@ public class App extends BaseAppNavigator {
                       o->new CadastrarAgendamento()
                   )
         );
-    }
+    
+
+        registraTela("CADASTROFUNCIONARIO",
+                  new ScreenRegistryFXML(App.class, 
+                      "cadastro_funcionario.fxml", 
+                      o->new CadastroFuncionario()
+                  )
+        );
+}
 
     public static ListarPlaylist getController(String string) {
         return null;

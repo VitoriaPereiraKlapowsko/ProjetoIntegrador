@@ -36,4 +36,9 @@ public class Principal {
         App.pushScreen("FAZERAGENDAMENTO");  
     }
     
+    @FXML
+    void cadastroFuncionario(ActionEvent event) {
+        App.pushScreen("CADASTROFUNCIONARIO");  
+    }
+    
 }
