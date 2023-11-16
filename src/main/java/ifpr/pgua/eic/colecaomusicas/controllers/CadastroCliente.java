@@ -35,7 +35,7 @@ public class CadastroCliente {
 
     @FXML
     void cancelar(ActionEvent event) {
-        App.popScreen();
+        App.pushScreen("PRINCIPAL");
     }
 
     private RepositorioCliente repositorio;

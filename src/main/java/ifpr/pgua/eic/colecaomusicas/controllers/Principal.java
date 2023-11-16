@@ -62,4 +62,8 @@ public class Principal {
         App.pushScreen("LISTARSERVICO");  
     }
     
+    @FXML
+    void cadastrarRaca(ActionEvent event) {
+        App.pushScreen("CADASTRORACA");  
+    }
 }

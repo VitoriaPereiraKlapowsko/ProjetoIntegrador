@@ -130,6 +130,6 @@ public class Pet {
 
     @Override
     public String toString() {
-        return "Pet: [" + nome + "]";
+        return "Pet: " + nome + "";
     }
 }

@@ -49,4 +49,8 @@ public class RepositorioPet {
         Pet pet = new Pet(nome, raca, sexo, porte, especie, dataDeNascimento, tratamentosEspeciais, condicoesFisicas);
         return dao.criar(pet);
     }
+
+    public Resultado listarRaca(){
+        return dao.listar();
+    }
 }

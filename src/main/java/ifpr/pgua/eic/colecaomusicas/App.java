@@ -7,6 +7,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastroCliente;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroGenero;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroMusica;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarArtistas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarGeneros;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarMusicas;
@@ -23,10 +24,12 @@ import ifpr.pgua.eic.colecaomusicas.daos.JDBCGeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCMusicaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPlaylistDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCRacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCServicoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.MusicaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PlaylistDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.RacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioArtistas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
@@ -34,6 +37,7 @@ import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioGeneros;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioMusicas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPlaylist;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
@@ -51,6 +55,9 @@ public class App extends BaseAppNavigator {
 
     private ServicoDAO servicoDAO = new JDBCServicoDAO(FabricaConexoes.getInstance());
     private RepositorioServico repositorioServico = new RepositorioServico(servicoDAO);
+
+    private RacaDAO racaDAO = new JDBCRacaDAO(FabricaConexoes.getInstance());
+    private RepositorioRaca repositorioRaca = new RepositorioRaca(racaDAO);
 
     private ArtistaDAO artistaDAO = new JDBCArtistaDAO(FabricaConexoes.getInstance());
     private RepositorioArtistas repositorioArtistas = new RepositorioArtistas(artistaDAO);
@@ -160,6 +167,13 @@ public class App extends BaseAppNavigator {
                   new ScreenRegistryFXML(App.class, 
                       "lista_servicos_cadastrados.fxml", 
                       o->new ListarServicos(repositorioServico)
+                  )
+        );
+
+        registraTela("CADASTRORACA",
+                  new ScreenRegistryFXML(App.class, 
+                      "cadastro_raca.fxml", 
+                      o->new CadastroRaca(repositorioRaca)
                   )
         );
     }

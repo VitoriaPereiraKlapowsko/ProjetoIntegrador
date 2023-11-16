@@ -32,26 +32,27 @@ FOREIGN KEY (cliente_codigo) REFERENCES tb_cliente(codigo)
 );
 
 CREATE TABLE IF NOT EXISTS tb_raca (
-codigo varchar(45) primary key,
+codigo int NOT NULL AUTO_INCREMENT primary key,
 nome varchar(45) not null,
 descricao varchar(450)
 );
 
 CREATE TABLE IF NOT EXISTS tb_animal (
-codigo VARCHAR(45) PRIMARY KEY,
-cliente_codigo INT NOT NULL,
-raca_codigo VARCHAR(45) NOT NULL,
-nome VARCHAR(250) NOT NULL,
-nome_raca VARCHAR(250) NOT NULL,
-sexo VARCHAR(250) NOT NULL,
-porte VARCHAR(250) NOT NULL,
-especie VARCHAR(250) NOT NULL,
-data_de_nascimento DATE NOT NULL,
-tratamento_especiais VARCHAR(400),
-condicoes_fisicas VARCHAR(400),
-FOREIGN KEY (cliente_codigo) REFERENCES tb_cliente(codigo),
-FOREIGN KEY (raca_codigo) REFERENCES tb_raca(codigo)
+    codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cliente_codigo INT NOT NULL,
+    raca_codigo INT NOT NULL,
+    nome VARCHAR(250) NOT NULL,
+    nome_raca VARCHAR(250) NOT NULL,
+    sexo VARCHAR(250) NOT NULL,
+    porte VARCHAR(250) NOT NULL,
+    especie VARCHAR(250) NOT NULL,
+    data_de_nascimento DATE NOT NULL,
+    tratamento_especiais VARCHAR(400),
+    condicoes_fisicas VARCHAR(400),
+    FOREIGN KEY (cliente_codigo) REFERENCES tb_cliente(codigo),
+    FOREIGN KEY (raca_codigo) REFERENCES tb_raca(codigo)
 );
+
 
 CREATE TABLE IF NOT EXISTS tb_servico (
 codigo_do_servico int NOT NULL AUTO_INCREMENT primary key,
