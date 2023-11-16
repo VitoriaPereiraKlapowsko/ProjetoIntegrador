@@ -59,18 +59,6 @@ public class App extends BaseAppNavigator {
     private RacaDAO racaDAO = new JDBCRacaDAO(FabricaConexoes.getInstance());
     private RepositorioRaca repositorioRaca = new RepositorioRaca(racaDAO);
 
-    private ArtistaDAO artistaDAO = new JDBCArtistaDAO(FabricaConexoes.getInstance());
-    private RepositorioArtistas repositorioArtistas = new RepositorioArtistas(artistaDAO);
-    
-    private GeneroDAO generoDAO = new JDBCGeneroDAO(FabricaConexoes.getInstance());
-    private RepositorioGeneros repositorioGeneros = new RepositorioGeneros(generoDAO);
-
-    private MusicaDAO musicaDAO = new JDBCMusicaDAO(FabricaConexoes.getInstance());
-    private RepositorioMusicas repositorioMusicas = new RepositorioMusicas(musicaDAO, artistaDAO, generoDAO);
-
-    private PlaylistDAO playlistDAO = new JDBCPlaylistDAO(FabricaConexoes.getInstance()); 
-    private RepositorioPlaylist repositorioPlaylists = new RepositorioPlaylist(playlistDAO, musicaDAO); 
-
     public static void main(String[] args) {
         launch();
     }
@@ -91,56 +79,6 @@ public class App extends BaseAppNavigator {
     @Override
     public void registrarTelas() {
         registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o->new Principal()));
-        registraTela("CADASTROGENERO",
-                  new ScreenRegistryFXML(App.class, 
-                      "cadastrar_genero.fxml", 
-                      o->new CadastroGenero(repositorioGeneros)
-                  )
-        );
-        registraTela("LISTARGENEROS",
-                  new ScreenRegistryFXML(App.class, 
-                      "listar_generos.fxml", 
-                      o->new ListarGeneros(repositorioGeneros)
-                  )
-        );
-        registraTela("CADASTROARTISTA",
-                  new ScreenRegistryFXML(App.class, 
-                      "cadastrar_artista.fxml", 
-                      o->new CadastroArtista(repositorioArtistas)
-                  )
-        );
-        registraTela("LISTARARTISTAS",
-                  new ScreenRegistryFXML(App.class, 
-                      "listar_artistas.fxml", 
-                      o->new ListarArtistas(repositorioArtistas)
-                  )
-        );
-        registraTela("CADASTRARMUSICA",
-                  new ScreenRegistryFXML(App.class, 
-                      "cadastrar_musica.fxml", 
-                      o->new CadastroMusica(repositorioMusicas,repositorioGeneros,repositorioArtistas)
-                  )
-        );
-        registraTela("LISTARMUSICAS",
-                  new ScreenRegistryFXML(App.class, 
-                      "listar_musicas.fxml", 
-                      o->new ListarMusicas(repositorioMusicas)
-                  )
-        );
-
-          registraTela("CADASTRARPLAYLIST",
-                  new ScreenRegistryFXML(App.class, 
-                      "cadastrar_playlist.fxml", 
-                      o->new CadastrarPlaylist(repositorioMusicas, repositorioPlaylists)
-                  )
-        );
-
-         registraTela("LISTARPLAYLIST",
-                  new ScreenRegistryFXML(App.class, 
-                      "listar_playlist.fxml", 
-                      o->new ListarPlaylist(repositorioPlaylists)
-                  )
-        );
 
          registraTela("CADASTROCLIENTE",
                   new ScreenRegistryFXML(App.class, 

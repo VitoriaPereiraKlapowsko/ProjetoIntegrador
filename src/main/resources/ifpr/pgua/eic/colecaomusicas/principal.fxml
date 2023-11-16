@@ -3,32 +3,81 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="480" prefWidth="640" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
+<BorderPane prefHeight="635.0" prefWidth="1080.0" style="-fx-background-color: #D9D9D9;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
 
     <padding>
         <Insets topRightBottomLeft="20" />
     </padding>
-
-    <left>
-        <VBox alignment="CENTER" prefHeight="440.0" prefWidth="594.0" spacing="5.0">
-            <padding>
-                <Insets topRightBottomLeft="20" />
-            </padding>
-            <Button onAction="#cadastrarGenero" prefWidth="200" text="Cadastrar Gênero" />
-            <Button onAction="#listarGeneros" prefWidth="200" text="Listar Gêneros" />
-            <Button onAction="#cadastrarArtista" prefWidth="200" text="Cadastrar Artista" />
-            <Button onAction="#listarArtistas" prefWidth="200" text="Listar Artistas" />
-            <Button onAction="#cadastrarMusica" prefWidth="200" text="Cadastrar Música" />
-            <Button onAction="#listarMusicas" prefWidth="200" text="Listar Músicas" />
-         <Button mnemonicParsing="false" onAction="#cadastrarPlaylist" prefHeight="26.0" prefWidth="200.0" text="Cadastrar Playlist" />
-         <Button mnemonicParsing="false" onAction="#listarPlaylist" prefHeight="26.0" prefWidth="200.0" text="Listar Playlist" />
-         <Button mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="26.0" prefWidth="198.0" text="Cadastro de Clientes" />
-         <Button mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="26.0" prefWidth="198.0" text="Servicos" />
-         <Button mnemonicParsing="false" onAction="#cadastrarRaca" prefHeight="26.0" prefWidth="198.0" text="Cadastro Raça" />
-   
-
-        </VBox>
-    </left>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.0" minWidth="10.0" prefWidth="336.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="438.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="458.0" minWidth="10.0" prefWidth="255.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="142.0" prefWidth="282.0" style="-fx-background-color: #2E8EC5;" text="CADASTRO DE CLIENTE" textFill="WHITE">
+               <GridPane.margin>
+                  <Insets left="32.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="144.0" prefWidth="393.0" style="-fx-background-color: #085480;" text="AGENDAMENTOS" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="141.0" prefWidth="164.0" style="-fx-background-color: #6EB8E1;" text="SERVIÇOS" textFill="WHITE" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="137.0" prefWidth="414.0" style="-fx-background-color: #0F6FA5;" text="CALENDÁRIO DE AGENDAMENTOS" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="154.0" prefWidth="161.0" style="-fx-background-color: #79A5BE;" text="CONFIGURAÇÕES" textFill="WHITE" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="32.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="142.0" prefWidth="162.0" style="-fx-background-color: #2E8EC5;" text="REPORTAR" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
 </BorderPane>
