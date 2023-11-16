@@ -1,5 +1,6 @@
 package ifpr.pgua.eic.colecaomusicas;
 
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarAgendamento;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarPlaylist;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarServico;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroArtista;
@@ -120,6 +121,13 @@ public class App extends BaseAppNavigator {
                   new ScreenRegistryFXML(App.class, 
                       "calendario_agendamentos.fxml", 
                       o->new CalendarioAgendamentos()
+                  )
+        );
+
+          registraTela("FAZERAGENDAMENTO",
+                  new ScreenRegistryFXML(App.class, 
+                      "cadastro_agendamento.fxml", 
+                      o->new CadastrarAgendamento()
                   )
         );
     }

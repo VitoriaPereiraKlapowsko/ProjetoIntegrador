@@ -30,5 +30,10 @@ public class Principal {
     void calendarioAgendamentos(ActionEvent event) {
         App.pushScreen("CALENDARIOAGENDAMENTOS");  
     }
+
+    @FXML
+    void fazerAgendamento(ActionEvent event) {
+        App.pushScreen("FAZERAGENDAMENTO");  
+    }
     
 }
