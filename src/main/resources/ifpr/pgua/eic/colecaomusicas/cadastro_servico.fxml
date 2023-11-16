@@ -21,5 +21,6 @@
       <TextField fx:id="valorServico" layoutX="91.0" layoutY="224.0" prefHeight="26.0" prefWidth="146.0" />
       <Button layoutX="129.0" layoutY="380.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
       <Button layoutX="234.0" layoutY="379.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <Button layoutY="52.0" mnemonicParsing="false" onAction="#abaListarServicos" prefHeight="19.0" prefWidth="52.0" style="-fx-background-color: B1C4CF;" text="Lista" />
    </children>
 </AnchorPane>

@@ -53,4 +53,9 @@ public class CadastrarServico {
         }
         alert.showAndWait();
     }
+
+    @FXML
+    void abaListarServicos(ActionEvent event) {
+        App.pushScreen("LISTARSERVICO");
+    }
 }

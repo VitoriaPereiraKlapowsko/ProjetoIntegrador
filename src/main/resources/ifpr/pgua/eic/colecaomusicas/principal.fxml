@@ -26,7 +26,6 @@
          <Button mnemonicParsing="false" onAction="#listarPlaylist" prefHeight="26.0" prefWidth="200.0" text="Listar Playlist" />
          <Button mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="26.0" prefWidth="198.0" text="Cadastro de Clientes" />
          <Button mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="26.0" prefWidth="198.0" text="Servicos" />
-         <Button mnemonicParsing="false" onAction="#listarServicos" prefHeight="26.0" prefWidth="199.0" text="Listar Serviços" />
    
 
         </VBox>
