@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -39,6 +38,5 @@
       <TextField fx:id="portePet" layoutX="318.0" layoutY="215.0" prefHeight="26.0" prefWidth="200.0" />
       <Button layoutX="324.0" layoutY="400.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <Button layoutX="211.0" layoutY="400.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
-      <CheckBox mnemonicParsing="false" text="CheckBox" />
    </children>
 </AnchorPane>

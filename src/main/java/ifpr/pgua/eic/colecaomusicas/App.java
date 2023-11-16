@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.colecaomusicas;
 
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarPlaylist;
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastrarServico;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroArtista;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroCliente;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroGenero;
@@ -21,15 +22,18 @@ import ifpr.pgua.eic.colecaomusicas.daos.JDBCGeneroDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCMusicaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPlaylistDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCServicoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.MusicaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PlaylistDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioArtistas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioGeneros;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioMusicas;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPlaylist;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
 
@@ -43,6 +47,9 @@ public class App extends BaseAppNavigator {
 
     private PetDAO petDAO = new JDBCPetDAO(FabricaConexoes.getInstance());
     private RepositorioPet repositorioPet = new RepositorioPet(petDAO);
+
+    private ServicoDAO servicoDAO = new JDBCServicoDAO(FabricaConexoes.getInstance());
+    private RepositorioServico repositorioServico = new RepositorioServico(servicoDAO);
 
     private ArtistaDAO artistaDAO = new JDBCArtistaDAO(FabricaConexoes.getInstance());
     private RepositorioArtistas repositorioArtistas = new RepositorioArtistas(artistaDAO);
@@ -138,6 +145,13 @@ public class App extends BaseAppNavigator {
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_pet.fxml", 
                       o->new CadastroPet(repositorioPet)
+                  )
+        );
+
+        registraTela("CADASTROSERVICO",
+                  new ScreenRegistryFXML(App.class, 
+                      "cadastro_servico.fxml", 
+                      o->new CadastrarServico(repositorioServico)
                   )
         );
     }

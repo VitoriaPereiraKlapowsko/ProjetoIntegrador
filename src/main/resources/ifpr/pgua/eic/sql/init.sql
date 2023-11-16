@@ -54,7 +54,7 @@ FOREIGN KEY (raca_codigo) REFERENCES tb_raca(codigo)
 );
 
 CREATE TABLE IF NOT EXISTS tb_servico (
-codigo_do_servico VARCHAR(50) primary key,
+codigo_do_servico int NOT NULL AUTO_INCREMENT primary key,
 valor float not null,
 descricao varchar (400) not null
 );

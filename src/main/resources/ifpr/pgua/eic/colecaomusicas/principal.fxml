@@ -24,7 +24,8 @@
             <Button onAction="#listarMusicas" prefWidth="200" text="Listar Músicas" />
          <Button mnemonicParsing="false" onAction="#cadastrarPlaylist" prefHeight="26.0" prefWidth="200.0" text="Cadastrar Playlist" />
          <Button mnemonicParsing="false" onAction="#listarPlaylist" prefHeight="26.0" prefWidth="200.0" text="Listar Playlist" />
-         <Button mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="26.0" prefWidth="198.0" text="Cadastrar Cliente" />
+         <Button mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="26.0" prefWidth="198.0" text="Cadastro de Clientes" />
+         <Button mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="26.0" prefWidth="198.0" text="Servicos" />
    
 
         </VBox>

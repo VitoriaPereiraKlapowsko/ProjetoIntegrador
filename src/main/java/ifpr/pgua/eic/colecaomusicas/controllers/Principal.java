@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class Principal {
@@ -49,6 +50,11 @@ public class Principal {
     @FXML
     private void cadastrarCliente() {
         App.pushScreen("CADASTROCLIENTE");
+    }
+
+    @FXML
+    void cadastrarServico(ActionEvent event) {
+        App.pushScreen("CADASTROSERVICO");  
     }
     
 }
