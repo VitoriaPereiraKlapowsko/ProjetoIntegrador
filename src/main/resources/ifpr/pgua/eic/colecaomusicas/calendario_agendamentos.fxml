@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1102.0" style="-fx-background-color: EFEFEF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CalendarioAgendamentos">
+   <children>
+      <Label layoutX="431.0" layoutY="40.0" text="CALENDÁRIO DE AGENDAMENTOS">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="502.0" layoutY="450.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <ListView fx:id="domingo" layoutX="24.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <ListView fx:id="segunda" layoutX="174.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <ListView fx:id="terca" layoutX="324.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <ListView fx:id="quarta" layoutX="474.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <Region layoutX="24.0" layoutY="96.0" prefHeight="26.0" prefWidth="1050.0" style="-fx-background-color: #808080;" />
+      <Label layoutX="71.0" layoutY="100.0" text="Domingo" textFill="WHITE" />
+      <Label layoutX="209.0" layoutY="100.0" text="Segunda-Feira" textFill="WHITE" />
+      <Label layoutX="366.0" layoutY="100.0" text="Terça-feira" textFill="WHITE" />
+      <Label layoutX="514.0" layoutY="100.0" text="Quarta-Feira" textFill="WHITE" />
+      <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="313.0" layoutY="137.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+      <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="463.0" layoutY="136.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+      <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="613.0" layoutY="137.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+      <ListView fx:id="quinta" layoutX="624.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <ListView fx:id="sexta" layoutX="774.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <ListView fx:id="sabado" layoutX="924.0" layoutY="122.0" prefHeight="298.0" prefWidth="150.0" />
+      <Label layoutX="662.0" layoutY="101.0" text="Quinta-Feira" textFill="WHITE" />
+      <Label layoutX="816.0" layoutY="100.0" text="Sexta-Feira" textFill="WHITE" />
+      <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="913.0" layoutY="138.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+      <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="763.0" layoutY="136.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+      <Label layoutX="975.0" layoutY="101.0" text="Sábado" textFill="WHITE" />
+      <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="163.0" layoutY="136.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+   </children>
+</AnchorPane>

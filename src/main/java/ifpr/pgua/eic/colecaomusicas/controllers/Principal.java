@@ -25,4 +25,10 @@ public class Principal {
     void cadastrarRaca(ActionEvent event) {
         App.pushScreen("CADASTRORACA");  
     }
+
+    @FXML
+    void calendarioAgendamentos(ActionEvent event) {
+        App.pushScreen("CALENDARIOAGENDAMENTOS");  
+    }
+    
 }

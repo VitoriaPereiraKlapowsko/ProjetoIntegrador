@@ -50,7 +50,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="137.0" prefWidth="414.0" style="-fx-background-color: #0F6FA5;" text="CALENDÁRIO DE AGENDAMENTOS" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#calendarioAgendamentos" prefHeight="137.0" prefWidth="414.0" style="-fx-background-color: #0F6FA5;" text="CALENDÁRIO DE AGENDAMENTOS" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

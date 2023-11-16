@@ -8,6 +8,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastroGenero;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroMusica;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca;
+import ifpr.pgua.eic.colecaomusicas.controllers.CalendarioAgendamentos;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarArtistas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarGeneros;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarMusicas;
@@ -112,6 +113,13 @@ public class App extends BaseAppNavigator {
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_raca.fxml", 
                       o->new CadastroRaca(repositorioRaca)
+                  )
+        );
+
+        registraTela("CALENDARIOAGENDAMENTOS",
+                  new ScreenRegistryFXML(App.class, 
+                      "calendario_agendamentos.fxml", 
+                      o->new CalendarioAgendamentos()
                   )
         );
     }
