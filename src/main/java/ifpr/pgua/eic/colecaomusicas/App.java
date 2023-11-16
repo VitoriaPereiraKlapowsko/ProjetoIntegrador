@@ -11,6 +11,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.ListarArtistas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarGeneros;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarMusicas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarPlaylist;
+import ifpr.pgua.eic.colecaomusicas.controllers.ListarServicos;
 import ifpr.pgua.eic.colecaomusicas.controllers.Principal;
 import ifpr.pgua.eic.colecaomusicas.daos.ArtistaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.ClienteDAO;
@@ -152,6 +153,13 @@ public class App extends BaseAppNavigator {
                   new ScreenRegistryFXML(App.class, 
                       "cadastro_servico.fxml", 
                       o->new CadastrarServico(repositorioServico)
+                  )
+        );
+
+         registraTela("LISTARSERVICO",
+                  new ScreenRegistryFXML(App.class, 
+                      "lista_servicos_cadastrados.fxml", 
+                      o->new ListarServicos()
                   )
         );
     }
