@@ -39,5 +39,6 @@
       <Label layoutX="509.0" layoutY="324.0" text="Status:" />
       <Button layoutX="257.0" layoutY="397.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
       <Button layoutX="365.0" layoutY="396.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <Button layoutY="51.0" mnemonicParsing="false" onAction="#listaDeAgedamentos" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: B1C4CF;" text="Consulta de Agendamentos" />
    </children>
 </AnchorPane>

@@ -40,5 +40,9 @@ public class Principal {
     void cadastroFuncionario(ActionEvent event) {
         App.pushScreen("CADASTROFUNCIONARIO");  
     }
-    
+     
+    @FXML
+    void listaDeAgedamentos(ActionEvent event) {
+        App.pushScreen("LISTARAGENDAMENTOS");  
+    }
 }

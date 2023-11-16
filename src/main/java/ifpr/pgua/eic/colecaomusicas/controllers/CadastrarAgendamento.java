@@ -50,4 +50,8 @@ public class CadastrarAgendamento {
 
     }
 
+    @FXML
+    void listaDeAgedamentos() {
+        App.pushScreen("LISTARAGENDAMENTOS");
+    }
 }
