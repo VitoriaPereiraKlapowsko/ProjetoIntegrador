@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -44,5 +45,10 @@ public class Principal {
     @FXML
     void listaDeAgedamentos(ActionEvent event) {
         App.pushScreen("LISTARAGENDAMENTOS");  
+    }
+
+    @FXML
+    void sair(ActionEvent event) {
+        Platform.exit();
     }
 }

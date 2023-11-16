@@ -73,7 +73,7 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#cadastroFuncionario" text="Button" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#sair" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
          <BorderPane.margin>
             <Insets />
