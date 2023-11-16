@@ -159,7 +159,7 @@ public class App extends BaseAppNavigator {
          registraTela("LISTARSERVICO",
                   new ScreenRegistryFXML(App.class, 
                       "lista_servicos_cadastrados.fxml", 
-                      o->new ListarServicos()
+                      o->new ListarServicos(repositorioServico)
                   )
         );
     }

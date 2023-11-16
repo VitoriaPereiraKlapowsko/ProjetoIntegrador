@@ -29,4 +29,8 @@ public class RepositorioServico {
         Servico servico = new Servico(descricao, valor);
         return dao.criar(servico);
     }
+
+    public Resultado listarServicos(){
+        return dao.listar();
+    }
 }
