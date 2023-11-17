@@ -4,20 +4,10 @@ import ifpr.pgua.eic.colecaomusicas.App;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 
 public class Principal  {
 
-    @FXML
-    private ImageView myImageView;
-
-    Image myImage = new Image(getClass().getResourceAsStream("patinha.png"));
-
-    public void displayImage() {
-        myImageView.setImage(myImage);
-    }
 
     @FXML
     private void cadastrarCliente() {
