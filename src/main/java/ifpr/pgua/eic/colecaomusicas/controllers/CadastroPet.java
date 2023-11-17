@@ -3,7 +3,6 @@ package ifpr.pgua.eic.colecaomusicas.controllers;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
-import ifpr.pgua.eic.colecaomusicas.models.Genero;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import javafx.event.ActionEvent;

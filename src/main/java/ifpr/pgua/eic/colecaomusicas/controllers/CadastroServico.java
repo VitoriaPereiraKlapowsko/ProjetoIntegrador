@@ -10,7 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 
-public class CadastrarServico {
+public class CadastroServico {
 
     @FXML
     private TextField descricaoServico;
@@ -25,7 +25,7 @@ public class CadastrarServico {
 
     private RepositorioServico repositorio;
 
-    public CadastrarServico(RepositorioServico repositorio){
+    public CadastroServico(RepositorioServico repositorio){
         this.repositorio = repositorio;
     }
    

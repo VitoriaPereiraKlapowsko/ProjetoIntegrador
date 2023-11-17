@@ -1,0 +1,7 @@
+button {
+
+    -fx-background-image: url("https://cdn-icons-png.flaticon.com/512/672/672675.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 500 500;
+    -fx-background-position: center center;
+}
