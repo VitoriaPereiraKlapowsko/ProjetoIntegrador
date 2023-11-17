@@ -5,6 +5,7 @@ import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import javafx.event.ActionEvent;
@@ -54,12 +55,13 @@ public class CadastroPet implements Initializable {
     private TextArea tratamentosEObs;
 
     private RepositorioPet repositorioPet;
-
+    private RepositorioCliente repositorioCliente;
     private RepositorioRaca repositorioRaca;
 
-    public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca) {
+    public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca, RepositorioCliente repositorioCliente) {
         this.repositorioPet = repositorioPet;
         this.repositorioRaca = repositorioRaca;
+        this.repositorioCliente = repositorioCliente;
     }
 
     @FXML
@@ -106,6 +108,16 @@ public class CadastroPet implements Initializable {
             Alert alert = new Alert(AlertType.ERROR, resultadoRaca.getMsg());
             alert.showAndWait();
         }
+
+        Resultado resultadoClientes = repositorioCliente.listarClientes();
+        if (resultadoClientes.foiSucesso()) {
+            List<Cliente> clientes = (List<Cliente>) resultadoClientes.comoSucesso().getObj();
+            comboTutor.getItems().addAll(clientes);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoClientes.getMsg());
+            alert.showAndWait();
+        }
     }
+    
 
 }

@@ -49,4 +49,8 @@ public class RepositorioCliente {
         Cliente cliente = new Cliente(nome, sobrenome, cpfCnpj, inscricaoEstadual, email, endereco, telefone);
         return dao.criar(cliente);
     }
+
+    public Resultado listarClientes() {
+        return dao.listar();
+    }
 }

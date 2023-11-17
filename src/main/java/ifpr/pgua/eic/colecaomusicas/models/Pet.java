@@ -26,7 +26,7 @@ public class Pet {
         this.condicoesFisicas = condicoesFisicas;
     }
 
-    public Pet(int codigo, int clienteCodigo, String nome, Raca raca, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+    public Pet(int codigo, int clienteCodigo, int racaCodigo, String nome, Raca raca, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         this.codigo = codigo;
         this.clienteCodigo = clienteCodigo;
         this.racaCodigo = racaCodigo;

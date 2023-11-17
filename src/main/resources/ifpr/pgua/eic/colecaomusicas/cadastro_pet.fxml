@@ -30,7 +30,7 @@
       <Label layoutX="326.0" layoutY="273.0" text="Tratamentos Especiais / Obs:" />
       <Label layoutX="635.0" layoutY="156.0" text="Espécie: *" />
       <TextArea fx:id="tratamentosEObs" layoutX="323.0" layoutY="289.0" prefHeight="100.0" prefWidth="438.0" />
-      <TextArea fx:id="condicoesFisicasPet" layoutX="324.0" layoutY="428.0" prefHeight="100.0" prefWidth="422.0" />
+      <TextArea fx:id="condicoesFisicasPet" layoutX="324.0" layoutY="428.0" prefHeight="100.0" prefWidth="438.0" />
       <DatePicker fx:id="dataNascimento" layoutX="324.0" layoutY="172.0" prefHeight="26.0" prefWidth="142.0" />
       <TextField fx:id="sexoPet" layoutX="492.0" layoutY="170.0" prefHeight="26.0" prefWidth="119.0" />
       <TextField fx:id="especiePet" layoutX="627.0" layoutY="171.0" prefHeight="26.0" prefWidth="133.0" />

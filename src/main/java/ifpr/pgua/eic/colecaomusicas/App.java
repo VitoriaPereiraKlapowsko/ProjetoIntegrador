@@ -76,7 +76,7 @@ public class App extends BaseAppNavigator {
         registraTela("CADASTROPET",
                 new ScreenRegistryFXML(App.class,
                         "cadastro_pet.fxml",
-                        o -> new CadastroPet(repositorioPet, repositorioRaca)));
+                        o -> new CadastroPet(repositorioPet, repositorioRaca, repositorioCliente)));
 
         registraTela("CADASTROSERVICO",
                 new ScreenRegistryFXML(App.class,

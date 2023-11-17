@@ -99,6 +99,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente: [" + nome + sobrenome + "]";
+        return "Cliente: " + nome + " " + sobrenome + "";
     }
 }

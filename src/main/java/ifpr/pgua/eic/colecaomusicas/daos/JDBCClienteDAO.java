@@ -54,7 +54,7 @@ public class JDBCClienteDAO implements ClienteDAO{
     public Resultado listar() {
         
         try (Connection con = fabrica.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM tb_clientes");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM tb_cliente");
 
             ResultSet rs = pstm.executeQuery();
             ArrayList<Cliente> lista = new ArrayList<>();
