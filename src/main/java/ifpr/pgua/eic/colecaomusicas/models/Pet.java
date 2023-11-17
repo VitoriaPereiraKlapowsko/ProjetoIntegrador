@@ -4,8 +4,7 @@ import java.time.LocalDate;
 
 public class Pet {
     private int codigo;
-    private int clienteCodigo;
-    private int racaCodigo;
+    private Cliente cliente;
     private String nome;
     private Raca raca;
     private String sexo;
@@ -15,7 +14,8 @@ public class Pet {
     private String tratamentosEspeciais;
     private String condicoesFisicas;
 
-    public Pet(String nome, Raca raca, String sexo, String porte, String especie, LocalDate dataNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+    public Pet(Cliente cliente,Raca raca,String nome, String sexo, String porte, String especie, LocalDate dataNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+        this.cliente = cliente;
         this.nome = nome;
         this.raca = raca;
         this.sexo = sexo;
@@ -26,10 +26,9 @@ public class Pet {
         this.condicoesFisicas = condicoesFisicas;
     }
 
-    public Pet(int codigo, int clienteCodigo, int racaCodigo, String nome, Raca raca, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+    public Pet(int codigo, Cliente cliente, Raca raca,String nome, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         this.codigo = codigo;
-        this.clienteCodigo = clienteCodigo;
-        this.racaCodigo = racaCodigo;
+        this.cliente = cliente;
         this.nome = nome;
         this.raca = raca;
         this.sexo = sexo;
@@ -40,20 +39,12 @@ public class Pet {
         this.condicoesFisicas = condicoesFisicas;
     }
     
-     public int getClienteCodigo() {
-        return clienteCodigo;
+     public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClienteCodigo(int clienteCodigo) {
-        this.clienteCodigo = clienteCodigo;
-    }
-
-    public int getRacaCodigo() {
-        return racaCodigo;
-    }
-
-    public void setRacaCodigo(int racaCodigo) {
-        this.racaCodigo = racaCodigo;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public int getCodigo() {

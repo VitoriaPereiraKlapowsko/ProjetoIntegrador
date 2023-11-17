@@ -10,8 +10,7 @@ public class Cliente {
     private String endereco;
     private int telefone;
 
-    public Cliente(String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String email, String endereco,
-            int telefone) {
+    public Cliente(String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String endereco, int telefone,String email) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpfCnpj = cpfCnpj;
@@ -21,8 +20,8 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Cliente(int codigo, String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String email,
-            String endereco, int telefone) {
+    public Cliente(int codigo, String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual,
+            String endereco, int telefone, String email) {
         this.codigo = codigo;
         this.nome = nome;
         this.sobrenome = sobrenome;

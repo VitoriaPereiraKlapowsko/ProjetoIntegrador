@@ -3,6 +3,7 @@ package ifpr.pgua.eic.colecaomusicas.repositories;
 import java.time.LocalDate; 
 import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
+import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 
@@ -13,7 +14,7 @@ public class RepositorioPet {
         this.dao = dao;
     }
 
-    public Resultado cadastrarPet(String nome, Raca raca, String sexo, String porte, String especie,
+    public Resultado cadastrarPet(Cliente cliente,String nome, Raca raca, String sexo, String porte, String especie,
                                   LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         if (nome == null || nome.isBlank()) {
             return Resultado.erro("Nome inválido!");
@@ -21,6 +22,10 @@ public class RepositorioPet {
 
         if (raca == null) {
             return Resultado.erro("Raça inválida!");
+        }
+
+        if (cliente == null) {
+            return Resultado.erro("Cliente inválido!");
         }
 
         if (sexo == null || sexo.isBlank()) {
@@ -47,11 +52,15 @@ public class RepositorioPet {
             return Resultado.erro("Condições Físicas inválidas!");
         }
 
-        Pet pet = new Pet(nome, raca, sexo, porte, especie, dataDeNascimento, tratamentosEspeciais, condicoesFisicas);
+        Pet pet = new Pet(cliente,raca,nome,sexo, porte, especie, dataDeNascimento, tratamentosEspeciais, condicoesFisicas);
         return dao.criar(pet);
     }
 
     public Resultado listarRaca(){
+        return dao.listar();
+    }
+
+    public Resultado listarCliente(){
         return dao.listar();
     }
 }

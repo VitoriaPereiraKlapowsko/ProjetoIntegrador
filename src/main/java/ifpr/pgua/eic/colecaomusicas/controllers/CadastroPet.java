@@ -71,6 +71,7 @@ public class CadastroPet implements Initializable {
 
     @FXML
     void confirmar(ActionEvent event) {
+        Cliente cliente = comboTutor.getValue();
         String nome = nomePet.getText();
         Raca raca = comboRaca.getValue();
         String sexo = sexoPet.getText();
@@ -80,7 +81,7 @@ public class CadastroPet implements Initializable {
         String tratamentosEspeciais = tratamentosEObs.getText();
         String condicoesFisicas = condicoesFisicasPet.getText();
 
-        Resultado resultado = repositorioPet.cadastrarPet(nome, raca, sexo, porte, especie, dataDeNascimento,
+        Resultado resultado = repositorioPet.cadastrarPet(cliente,nome, raca, sexo, porte, especie, dataDeNascimento,
                 tratamentosEspeciais, condicoesFisicas);
         Alert alert;
 

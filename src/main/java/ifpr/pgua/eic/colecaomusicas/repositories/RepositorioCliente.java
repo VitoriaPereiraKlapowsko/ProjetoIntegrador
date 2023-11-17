@@ -46,7 +46,7 @@ public class RepositorioCliente {
             return Resultado.erro("Telefone inválido!");
         }
        
-        Cliente cliente = new Cliente(nome, sobrenome, cpfCnpj, inscricaoEstadual, email, endereco, telefone);
+        Cliente cliente = new Cliente(nome, sobrenome, cpfCnpj, inscricaoEstadual, endereco, telefone, email);
         return dao.criar(cliente);
     }
 
