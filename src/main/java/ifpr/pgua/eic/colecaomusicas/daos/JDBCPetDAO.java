@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 import com.github.hugoperlin.results.Resultado;
 
+import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
+import ifpr.pgua.eic.colecaomusicas.models.Raca;
 
 public class JDBCPetDAO implements PetDAO {
 
@@ -24,13 +26,14 @@ public class JDBCPetDAO implements PetDAO {
     public Resultado criar(Pet pet) {
         try (Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.prepareStatement(
-                    "INSERT INTO tb_animal(cliente_codigo, raca_codigo, nome, nome_raca, sexo, porte, especie, data_de_nascimento, tratamento_especiais, condicoes_fisicas) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                    "INSERT INTO tb_animal(cliente_codigo, raca_codigo, nome,sexo, porte, especie, data_de_nascimento, tratamento_especiais, condicoes_fisicas) VALUES (?,?,?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             pstm.setInt(1, pet.getClienteCodigo());
             pstm.setInt(2, pet.getRacaCodigo());
             pstm.setString(3, pet.getNome());
-            pstm.setString(4, pet.getRaca());
+            pstm.setInt(4, pet.getRaca().getCodigo());
+            ;
             pstm.setString(5, pet.getSexo());
             pstm.setString(6, pet.getPorte());
             pstm.setString(7, pet.getEspecie());
@@ -59,7 +62,10 @@ public class JDBCPetDAO implements PetDAO {
     public Resultado listar() {
 
         try (Connection con = fabrica.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM tb_animal");
+            PreparedStatement pstm = con.prepareStatement("SELECT tb_animal.*, tb_raca.nome AS nome_raca " +
+            "FROM tb_animal " +
+            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo");
+
 
             ResultSet rs = pstm.executeQuery();
             ArrayList<Pet> lista = new ArrayList<>();
@@ -67,9 +73,8 @@ public class JDBCPetDAO implements PetDAO {
             while (rs.next()) {
                 int codigo = rs.getInt("codigo");
                 int clienteCodigo = rs.getInt("cliente_codigo");
-                int racaCodigo = rs.getInt("raca_codigo");
+
                 String nome = rs.getString("nome");
-                String raca = rs.getString("nome_raca");
                 String sexo = rs.getString("sexo");
                 String porte = rs.getString("porte");
                 String especie = rs.getString("especie");
@@ -77,12 +82,17 @@ public class JDBCPetDAO implements PetDAO {
                 String tratamentosEspeciais = rs.getString("tratamento_especiais");
                 String condicoesFisicas = rs.getString("condicoes_fisicas");
 
-                Pet pet = new Pet(codigo, clienteCodigo, racaCodigo, nome, raca, sexo, porte, especie, dataDeNascimento,
+                int raca_codigo = rs.getInt("raca_codigo");
+                String nomeRaca = rs.getString("nome_raca");
+                Raca raca = new Raca(raca_codigo, nomeRaca, null);
+
+                Pet pet = new Pet(codigo, clienteCodigo, nome, raca, sexo, porte, especie,
+                        dataDeNascimento,
                         tratamentosEspeciais, condicoesFisicas);
                 lista.add(pet);
             }
 
-            return Resultado.sucesso("Lista de pets", lista);
+            return Resultado.sucesso("Lista de Pets", lista);
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

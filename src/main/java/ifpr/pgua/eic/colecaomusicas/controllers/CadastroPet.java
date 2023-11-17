@@ -3,8 +3,10 @@ package ifpr.pgua.eic.colecaomusicas.controllers;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +19,7 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -36,10 +39,13 @@ public class CadastroPet implements Initializable {
     private TextField nomePet;
 
     @FXML
+    private ComboBox<Cliente> comboTutor;
+
+    @FXML
     private TextField portePet;
 
     @FXML
-    private ChoiceBox<Raca> racaPet;
+    private ComboBox<Raca> comboRaca;
 
     @FXML
     private TextField sexoPet;
@@ -47,10 +53,13 @@ public class CadastroPet implements Initializable {
     @FXML
     private TextArea tratamentosEObs;
 
-    private RepositorioPet repositorio;
+    private RepositorioPet repositorioPet;
 
-    public CadastroPet(RepositorioPet repositorio) {
-        this.repositorio = repositorio;
+    private RepositorioRaca repositorioRaca;
+
+    public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca) {
+        this.repositorioPet = repositorioPet;
+        this.repositorioRaca = repositorioRaca;
     }
 
     @FXML
@@ -61,7 +70,7 @@ public class CadastroPet implements Initializable {
     @FXML
     void confirmar(ActionEvent event) {
         String nome = nomePet.getText();
-        String raca = racaPet.getValue().toString();
+        Raca raca = comboRaca.getValue();
         String sexo = sexoPet.getText();
         String porte = portePet.getText();
         String especie = especiePet.getText();
@@ -69,7 +78,7 @@ public class CadastroPet implements Initializable {
         String tratamentosEspeciais = tratamentosEObs.getText();
         String condicoesFisicas = condicoesFisicasPet.getText();
 
-        Resultado resultado = repositorio.cadastrarPet(nome, raca, sexo, porte, especie, dataDeNascimento,
+        Resultado resultado = repositorioPet.cadastrarPet(nome, raca, sexo, porte, especie, dataDeNascimento,
                 tratamentosEspeciais, condicoesFisicas);
         Alert alert;
 
@@ -88,13 +97,13 @@ public class CadastroPet implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Resultado resultado = repositorio.listarRaca();
+        Resultado resultadoRaca = repositorioRaca.listarRaca();
 
-        if (resultado.foiSucesso()) {
-            List<Raca> list = (List<Raca>) resultado.comoSucesso().getObj();
-            racaPet.getItems().addAll(list);
+        if (resultadoRaca.foiSucesso()) {
+            List<Raca> raca = (List<Raca>) resultadoRaca.comoSucesso().getObj();
+            comboRaca.getItems().addAll(raca);
         } else {
-            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            Alert alert = new Alert(AlertType.ERROR, resultadoRaca.getMsg());
             alert.showAndWait();
         }
     }

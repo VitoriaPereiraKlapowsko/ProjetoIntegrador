@@ -17,11 +17,12 @@
          </font>
       </Label>
       <TextField fx:id="nomeFuncionario" layoutX="296.0" layoutY="178.0" prefHeight="26.0" prefWidth="186.0" />
+      <TextField fx:id="sobrenomeFuncionario" layoutX="515.0" layoutY="181.0" prefHeight="26.0" prefWidth="251.0" />
       <TextField fx:id="cpfFuncionario" layoutX="296.0" layoutY="233.0" prefHeight="26.0" prefWidth="186.0" />
+      <DatePicker fx:id="dataDeNascimento" layoutX="518.0" layoutY="232.0" prefHeight="26.0" prefWidth="150.0" />
       <TextField fx:id="emailFuncionario" layoutX="293.0" layoutY="290.0" prefHeight="26.0" prefWidth="474.0" />
       <TextField fx:id="enderecoFuncionario" layoutX="294.0" layoutY="347.0" prefHeight="26.0" prefWidth="474.0" />
       <TextField fx:id="telefoneFuncionario" layoutX="442.0" layoutY="404.0" />
-      <TextField fx:id="sobrenomeFuncionario" layoutX="515.0" layoutY="181.0" prefHeight="26.0" prefWidth="251.0" />
       <Button layoutX="537.0" layoutY="559.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
       <Button layoutX="425.0" layoutY="558.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <Label layoutX="297.0" layoutY="162.0" text="Nome:" />
@@ -31,7 +32,6 @@
       <Label layoutX="293.0" layoutY="273.0" text="Email:" />
       <Label layoutX="296.0" layoutY="331.0" text="Endereço:" />
       <Label layoutX="443.0" layoutY="389.0" text="Telefone:" />
-      <DatePicker fx:id="dataDeNascimento" layoutX="518.0" layoutY="232.0" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="295.0" layoutY="388.0" text="Sexo:" />
       <TextField fx:id="funcaoFuncionario" layoutX="619.0" layoutY="403.0" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="620.0" layoutY="388.0" text="Função:" />

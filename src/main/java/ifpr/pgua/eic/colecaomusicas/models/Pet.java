@@ -7,7 +7,7 @@ public class Pet {
     private int clienteCodigo;
     private int racaCodigo;
     private String nome;
-    private String raca;
+    private Raca raca;
     private String sexo;
     private String porte;
     private String especie;
@@ -15,7 +15,7 @@ public class Pet {
     private String tratamentosEspeciais;
     private String condicoesFisicas;
 
-    public Pet(String nome, String raca, String sexo, String porte, String especie, LocalDate dataNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+    public Pet(String nome, Raca raca, String sexo, String porte, String especie, LocalDate dataNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         this.nome = nome;
         this.raca = raca;
         this.sexo = sexo;
@@ -26,7 +26,7 @@ public class Pet {
         this.condicoesFisicas = condicoesFisicas;
     }
 
-    public Pet(int codigo, int clienteCodigo, int racaCodigo, String nome, String raca, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+    public Pet(int codigo, int clienteCodigo, String nome, Raca raca, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         this.codigo = codigo;
         this.clienteCodigo = clienteCodigo;
         this.racaCodigo = racaCodigo;
@@ -72,11 +72,11 @@ public class Pet {
         this.nome = nome;
     }
 
-    public String getRaca() {
+    public Raca getRaca() {
         return raca;
     }
 
-    public void setRaca(String raca) {
+    public void setRaca(Raca raca) {
         this.raca = raca;
     }
 

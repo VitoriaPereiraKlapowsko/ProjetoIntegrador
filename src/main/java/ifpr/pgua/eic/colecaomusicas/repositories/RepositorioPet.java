@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
+import ifpr.pgua.eic.colecaomusicas.models.Raca;
 
 public class RepositorioPet {
     private PetDAO dao;
@@ -12,13 +13,13 @@ public class RepositorioPet {
         this.dao = dao;
     }
 
-    public Resultado cadastrarPet(String nome, String raca, String sexo, String porte, String especie,
+    public Resultado cadastrarPet(String nome, Raca raca, String sexo, String porte, String especie,
                                   LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         if (nome == null || nome.isBlank()) {
             return Resultado.erro("Nome inválido!");
         }
 
-        if (raca == null || raca.isBlank()) {
+        if (raca == null) {
             return Resultado.erro("Raça inválida!");
         }
 

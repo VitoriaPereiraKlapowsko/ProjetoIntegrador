@@ -1,16 +1,23 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class CadastroCliente {
+public class CadastroCliente  {
 
     @FXML
     private TextField cpfCnpjCliente;
@@ -26,6 +33,9 @@ public class CadastroCliente {
 
     @FXML
     private TextField nomeCliente;
+
+    @FXML
+    private ComboBox<Raca> comboRaca;
 
     @FXML
     private TextField sobrenomeCliente;
@@ -92,4 +102,7 @@ public class CadastroCliente {
     void cadastrarPet() {
         App.pushScreen("CADASTROPET");
     }
+
 }
+
+    

@@ -30,4 +30,8 @@ public class RepositorioRaca {
         Raca raca = new Raca(nome, descricao);
         return dao.criar(raca);
     }
+
+    public Resultado listarRaca(){
+        return dao.listar();
+    }
 }

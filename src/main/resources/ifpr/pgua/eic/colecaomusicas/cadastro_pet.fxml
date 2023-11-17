@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -10,33 +10,35 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="602.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1083.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet">
    <children>
-      <Region prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: EFEFEF;" />
-      <Label layoutX="225.0" layoutY="27.0" text="CADASTRO DE CLIENTES">
+      <Region prefHeight="65.0" prefWidth="1083.0" style="-fx-background-color: EFEFEF;" />
+      <Label layoutX="444.0" layoutY="31.0" text="CADASTRO DE CLIENTES">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
       <Button layoutY="40.0" mnemonicParsing="false" onAction="#abaCliente" prefHeight="0.0" prefWidth="78.0" style="-fx-background-color: B1C4CF;" text="Cliente" />
       <Button layoutX="86.0" layoutY="39.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="78.0" style="-fx-background-color: D9E6ED;" text="Pet" textOverrun="CLIP" />
-      <TextField fx:id="nomePet" layoutX="80.0" layoutY="108.0" prefHeight="26.0" prefWidth="438.0" />
-      <Label layoutX="81.0" layoutY="92.0" text="Nome: *" />
-      <Label layoutX="81.0" layoutY="145.0" text="Data de Nascimento: *" />
-      <Label layoutX="254.0" layoutY="144.0" text="Sexo: *" />
-      <Label layoutX="82.0" layoutY="198.0" text="Raça: *" />
-      <Label layoutX="318.0" layoutY="199.0" text="Porte: *" />
-      <Label layoutX="314.0" layoutY="255.0" text="Condições Físicas:" />
-      <Label layoutX="83.0" layoutY="255.0" text="Tratamentos Especiais / Obs:" />
-      <ChoiceBox fx:id="racaPet" layoutX="81.0" layoutY="214.0" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: FFFFFF;" />
-      <Label layoutX="392.0" layoutY="144.0" text="Espécie: *" />
-      <TextArea fx:id="tratamentosEObs" layoutX="80.0" layoutY="271.0" prefHeight="100.0" prefWidth="210.0" />
-      <TextArea fx:id="condicoesFisicasPet" layoutX="309.0" layoutY="271.0" prefHeight="100.0" prefWidth="210.0" />
-      <DatePicker fx:id="dataNascimento" layoutX="81.0" layoutY="160.0" prefHeight="26.0" prefWidth="142.0" />
-      <TextField fx:id="sexoPet" layoutX="249.0" layoutY="158.0" prefHeight="26.0" prefWidth="119.0" />
-      <TextField fx:id="especiePet" layoutX="384.0" layoutY="159.0" prefHeight="26.0" prefWidth="133.0" />
-      <TextField fx:id="portePet" layoutX="318.0" layoutY="215.0" prefHeight="26.0" prefWidth="200.0" />
-      <Button layoutX="324.0" layoutY="400.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
-      <Button layoutX="211.0" layoutY="400.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
+      <TextField fx:id="nomePet" layoutX="323.0" layoutY="120.0" prefHeight="26.0" prefWidth="235.0" />
+      <Label layoutX="324.0" layoutY="104.0" text="Nome: *" />
+      <Label layoutX="324.0" layoutY="157.0" text="Data de Nascimento: *" />
+      <Label layoutX="497.0" layoutY="156.0" text="Sexo: *" />
+      <Label layoutX="325.0" layoutY="210.0" text="Raça: *" />
+      <Label layoutX="561.0" layoutY="211.0" text="Porte: *" />
+      <Label layoutX="326.0" layoutY="411.0" text="Condições Físicas:" />
+      <Label layoutX="326.0" layoutY="273.0" text="Tratamentos Especiais / Obs:" />
+      <Label layoutX="635.0" layoutY="156.0" text="Espécie: *" />
+      <TextArea fx:id="tratamentosEObs" layoutX="323.0" layoutY="289.0" prefHeight="100.0" prefWidth="438.0" />
+      <TextArea fx:id="condicoesFisicasPet" layoutX="324.0" layoutY="428.0" prefHeight="100.0" prefWidth="422.0" />
+      <DatePicker fx:id="dataNascimento" layoutX="324.0" layoutY="172.0" prefHeight="26.0" prefWidth="142.0" />
+      <TextField fx:id="sexoPet" layoutX="492.0" layoutY="170.0" prefHeight="26.0" prefWidth="119.0" />
+      <TextField fx:id="especiePet" layoutX="627.0" layoutY="171.0" prefHeight="26.0" prefWidth="133.0" />
+      <TextField fx:id="portePet" layoutX="561.0" layoutY="227.0" prefHeight="26.0" prefWidth="200.0" />
+      <Button layoutX="447.0" layoutY="554.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <Button layoutX="550.0" layoutY="555.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
+      <ComboBox fx:id="comboRaca" layoutX="323.0" layoutY="228.0" prefHeight="25.0" prefWidth="210.0" />
+      <ComboBox fx:id="comboTutor" layoutX="571.0" layoutY="121.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="571.0" layoutY="104.0" text="Tutor: *" />
    </children>
 </AnchorPane>
