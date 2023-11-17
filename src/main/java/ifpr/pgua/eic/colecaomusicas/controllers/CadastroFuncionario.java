@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -46,6 +47,9 @@ public class CadastroFuncionario {
 
     @FXML
     private TextField loginFuncionario;
+
+    @FXML
+    private Button aba;
 
     @FXML
     private TextField telefoneFuncionario;
@@ -93,6 +97,16 @@ public class CadastroFuncionario {
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
         }
         alert.showAndWait();
+    }
+
+    @FXML
+    private void abaListar() {
+        ListarFuncionario(null);
+    }
+
+    @FXML
+    void ListarFuncionario(ActionEvent event) {
+        App.pushScreen("LISTARFUNCIONARIOS");  
     }
 
 }

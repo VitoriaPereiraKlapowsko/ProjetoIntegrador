@@ -16,6 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
-public class ListarClientes implements Initializable{
+public class ListarClientes{
 
 }

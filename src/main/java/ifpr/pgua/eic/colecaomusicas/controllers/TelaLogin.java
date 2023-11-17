@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,12 +22,12 @@ public class TelaLogin {
     private TextField campoUsuario;
 
     @FXML
-    private TextField campoSenha;
+    private PasswordField campoSenha;
 
     @FXML
     void entrar(ActionEvent event) {
         String usuario = campoUsuario.getText();
-        String senha = campoSenha.getText();
+        String senha = campoSenha.getText() != null ? campoSenha.getText() : "";
 
 
         if (usuario.isEmpty() || senha.isEmpty()) {

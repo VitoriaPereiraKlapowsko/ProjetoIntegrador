@@ -83,4 +83,36 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO{
         }
     
     }
+
+    @Override
+    public Resultado editar(int codigo, Funcionario novo) {
+        try(Connection con = fabrica.getConnection();) {
+
+            // Preparar o comando sql
+            PreparedStatement pstm = con.prepareStatement("UPDATE tb_funcionario SET login=?,senha=?,nome=?, sobrenome=?, telefone=?,funcao=?,cpf=?,sexo=?,endereco=?,data_de_nascimento=?,email=? WHERE codigo=?");
+            // Ajustar os parâmetros
+            pstm.setString(1,novo.getLogin());
+            pstm.setString(2,novo.getSenha());
+            pstm.setString(3,novo.getNome());
+            pstm.setString(4, novo.getSobrenome());
+            pstm.setInt(5, novo.getTelefone());
+            pstm.setString(6,novo.getFuncao());
+            pstm.setString(7, novo.getCpf());
+            pstm.setString(8, novo.getSexo());
+            pstm.setString(9, novo.getEndereco());
+            pstm.setObject(10, novo.getDataNasc());
+            pstm.setString(11, novo.getEmail());
+            // Executar o comando
+            int ret = pstm.executeUpdate();
+
+            
+            if (ret == 1) {
+                return Resultado.sucesso("Funcionário atualizado", novo);
+            }
+            return Resultado.erro("Erro não identificado!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+
+    }
 }

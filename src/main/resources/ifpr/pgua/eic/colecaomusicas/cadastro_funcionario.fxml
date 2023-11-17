@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario">
    <children>
       <Region prefHeight="78.0" prefWidth="1062.0" style="-fx-background-color: EFEFEF;" />
       <Label layoutX="385.0" layoutY="24.0" text="CADASTRO DE FUNCIONÁRIOS">
@@ -40,5 +40,6 @@
       <TextField fx:id="loginFuncionario" layoutX="294.0" layoutY="457.0" prefHeight="25.0" prefWidth="131.0" />
       <Label layoutX="296.0" layoutY="441.0" text="Login:" />
       <TextField fx:id="sexoFuncionario" layoutX="294.0" layoutY="404.0" prefHeight="25.0" prefWidth="131.0" />
+      <Button fx:id="aba" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#abaListar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
    </children>
 </AnchorPane>

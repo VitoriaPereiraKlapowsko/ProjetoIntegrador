@@ -7,4 +7,5 @@ import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 public interface FuncionarioDAO {
     Resultado criar(Funcionario funcionario);
     Resultado listar();   
+    Resultado editar(int codigo, Funcionario novo);
 }
