@@ -45,8 +45,8 @@ public class Principal  {
     }
 
     @FXML
-    void fazerAgendamento(ActionEvent event) {
-        App.pushScreen("FAZERAGENDAMENTO");  
+    void cadastrarAgendamento(ActionEvent event) {
+        App.pushScreen("CADASTRARGENDAMENTO");  
     }
     
     @FXML

@@ -98,7 +98,7 @@ public class App extends BaseAppNavigator {
                         "calendario_agendamentos.fxml",
                         o -> new CalendarioAgendamentos()));
 
-        registraTela("FAZERAGENDAMENTO",
+        registraTela("CADASTRARGENDAMENTO",
                 new ScreenRegistryFXML(App.class,
                         "cadastro_agendamento.fxml",
                         o -> new CadastroAgendamento()));
@@ -113,5 +113,4 @@ public class App extends BaseAppNavigator {
                         "consulta_agendamento.fxml",
                         o -> new ListarAgendamentos()));         
     }
-
 }
