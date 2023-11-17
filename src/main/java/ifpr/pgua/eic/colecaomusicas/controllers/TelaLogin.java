@@ -5,8 +5,12 @@ import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class TelaLogin {
 
@@ -25,10 +29,13 @@ public class TelaLogin {
         String senha = campoSenha.getText();
 
 
-        if (autenticacaoBemSucedida(usuario, senha)) {
+        if (usuario.isEmpty() || senha.isEmpty()) {
+            // Exibir mensagem se usuário ou senha estiverem em branco
+            exibirAlerta("ERRO","Por favor, preencha usuário e senha!");
+        } else if (autenticacaoBemSucedida(usuario, senha)) {
             Principal(event);
         } else {
-            System.out.println("Autenticação falhou! Exiba uma mensagem de erro ou tome a ação apropriada.");
+            exibirAlerta("ERRO","Usuário ou Senha estão incorretos!");
         }
     }
 
@@ -42,4 +49,13 @@ public class TelaLogin {
     private void Principal(ActionEvent event) {
         App.pushScreen("PRINCIPAL");
     }
+
+    private void exibirAlerta(String titulo, String mensagem) {
+    Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle(titulo);
+    alert.setHeaderText(null);
+    alert.setContentText(mensagem);
+    alert.showAndWait();
+}
+    
 }
