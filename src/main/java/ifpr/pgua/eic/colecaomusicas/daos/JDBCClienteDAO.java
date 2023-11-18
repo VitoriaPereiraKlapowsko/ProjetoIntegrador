@@ -33,8 +33,8 @@ public class JDBCClienteDAO implements ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getSobrenome());
-            pstm.setString(3, cliente.getCpfCnpj());
-            pstm.setString(4, cliente.getInscricaoEstadual());
+            pstm.setInt(3, cliente.getCpfCnpj());
+            pstm.setInt(4, cliente.getInscricaoEstadual());
             pstm.setString(5, cliente.getEndereco());
             pstm.setInt(6, cliente.getTelefone());
             pstm.setString(7, cliente.getEmail());
@@ -68,8 +68,8 @@ public class JDBCClienteDAO implements ClienteDAO {
                 int codigo = rs.getInt("codigo");
                 String nome = rs.getString("nome");
                 String sobrenome = rs.getString("sobrenome");
-                String cpfCnpj = rs.getString("cpf_cnpj");
-                String inscricaoEstadual = rs.getString("inscricao_estadual");
+                int cpfCnpj = rs.getInt("cpf_cnpj");
+                int inscricaoEstadual = rs.getInt("inscricao_estadual");
                 String endereco = rs.getString("endereco");
                 int telefone = rs.getInt("telefone");
                 String email = rs.getString("email");
@@ -112,8 +112,8 @@ public class JDBCClienteDAO implements ClienteDAO {
             // Ajustar os parâmetros
             pstm.setString(1, novo.getNome());
             pstm.setString(2, novo.getSobrenome());
-            pstm.setString(3, novo.getCpfCnpj());
-            pstm.setString(4, novo.getInscricaoEstadual());
+            pstm.setInt(3, novo.getCpfCnpj());
+            pstm.setInt(4, novo.getInscricaoEstadual());
             pstm.setString(5, novo.getEndereco());
             pstm.setInt(6, novo.getTelefone());
             pstm.setString(7, novo.getEmail());

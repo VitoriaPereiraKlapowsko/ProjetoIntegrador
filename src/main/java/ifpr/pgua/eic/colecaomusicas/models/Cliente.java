@@ -4,13 +4,13 @@ public class Cliente {
     private int codigo;
     private String nome;
     private String sobrenome;
-    private String cpfCnpj;
-    private String inscricaoEstadual;
+    private int cpfCnpj;
+    private int inscricaoEstadual;
     private String email;
     private String endereco;
     private int telefone;
 
-    public Cliente(String nome, String sobrenome, String cpfCnpj, String inscricaoEstadual, String endereco, int telefone,String email) {
+    public Cliente(String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String endereco, int telefone,String email) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpfCnpj = cpfCnpj;
@@ -20,7 +20,7 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Cliente(int codigo, String nome, String sobrenome, String cpfCnpj, String inscricaoEstadual,
+    public Cliente(int codigo, String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual,
             String endereco, int telefone, String email) {
         this.codigo = codigo;
         this.nome = nome;
@@ -56,19 +56,19 @@ public class Cliente {
         this.sobrenome = sobrenome;
     }
 
-    public String getCpfCnpj() {
+    public int getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpfCnpj(String cpfCnpj) {
+    public void setCpfCnpj(int cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public String getInscricaoEstadual() {
+    public int getInscricaoEstadual() {
         return inscricaoEstadual;
     }
 
-    public void setInscricaoEstadual(String inscricaoEstadual) {
+    public void setInscricaoEstadual(int inscricaoEstadual) {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
