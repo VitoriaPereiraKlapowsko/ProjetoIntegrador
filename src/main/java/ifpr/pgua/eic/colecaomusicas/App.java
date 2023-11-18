@@ -119,7 +119,7 @@ public class App extends BaseAppNavigator {
 
                 registraTela("LISTARFUNCIONARIOS",
                                 new ScreenRegistryFXML(App.class,
-                                                "listar_funcionario.fxml",
+                                                "lista_funcionarios.fxml",
                                                 o -> new ListarFuncionarios(repositorioFuncionario)));
         }
 }

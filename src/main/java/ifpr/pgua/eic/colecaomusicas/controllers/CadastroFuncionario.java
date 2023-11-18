@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import javafx.event.ActionEvent;
@@ -40,6 +41,9 @@ public class CadastroFuncionario {
     private TextField senhaFuncionario;
 
     @FXML
+    private TextField tfCodigo;
+
+    @FXML
     private TextField sexoFuncionario;
 
     @FXML
@@ -56,6 +60,8 @@ public class CadastroFuncionario {
 
     private RepositorioFuncionario repositorio;
 
+    private Funcionario anterior;
+
     @FXML
     void cancelar(ActionEvent event) {
         App.popScreen();
@@ -63,6 +69,11 @@ public class CadastroFuncionario {
 
     public CadastroFuncionario(RepositorioFuncionario repositorio) {
         this.repositorio = repositorio;
+    }
+
+    public CadastroFuncionario(RepositorioFuncionario repositorio, Funcionario anterior) {
+        this.repositorio = repositorio;
+        this.anterior = anterior;
     }
 
     @FXML
@@ -73,40 +84,43 @@ public class CadastroFuncionario {
         String sobrenome = sobrenomeFuncionario.getText();
         int telefone = Integer.parseInt(telefoneFuncionario.getText());
         String funcao = funcaoFuncionario.getText();
-        String cpf = cpfFuncionario.getText(); 
+        String cpf = cpfFuncionario.getText();
         String sexo = sexoFuncionario.getText();
         String endereco = enderecoFuncionario.getText();
         LocalDate dataNascimento = dataDeNascimento.getValue();
         String email = emailFuncionario.getText();
+        String codigo = tfCodigo.getText();
 
         String msg = "";
 
-        int sCpf = 0;
-        try {
-            sCpf = Integer.valueOf(cpf);
-        } catch (NumberFormatException e) {
-            msg = "CPF inválido!";
-        }
+        
 
-        Resultado resultado = repositorio.cadastrarFuncionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
-        Alert alert;
+        if (anterior == null) {
+            Resultado resultado = repositorio.cadastrarFuncionario(login, senha, nome, sobrenome, telefone, funcao, cpf,
+                    sexo, endereco, dataNascimento, email);
 
-        if (resultado.foiErro()) {
-            alert = new Alert(AlertType.ERROR, resultado.getMsg());
         } else {
-            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            msg = repositorio.alterarFuncionario(Integer.valueOf(codigo), login, senha, nome, sobrenome, telefone,
+                    funcao, cpf, sexo, endereco, dataNascimento, email);
         }
+
+        Alert alert = new Alert(AlertType.INFORMATION, msg);
+        alert.showAndWait();
+
+        /*
+         * /if (resultado.foiErro()) {
+         * alert = new Alert(AlertType.ERROR, resultado.getMsg());
+         * } else {
+         * alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+         * }/
+         */
+
         alert.showAndWait();
     }
 
     @FXML
-    private void abaListar() {
-        ListarFuncionario(null);
-    }
-
-    @FXML
-    void ListarFuncionario(ActionEvent event) {
-        App.pushScreen("LISTARFUNCIONARIOS");  
+    private void abaListar(ActionEvent event) {
+        App.pushScreen("LISTARFUNCIONARIOS");
     }
 
 }

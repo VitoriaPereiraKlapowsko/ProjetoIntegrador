@@ -42,6 +42,9 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO{
             if(ret == 1){
                 ResultSet rs = pstm.getGeneratedKeys();
                 rs.next();
+                int codigo = rs.getInt(1);
+
+                funcionario.setCodigo(codigo);
 
                 return Resultado.sucesso("Funcionário cadastrado com sucesso!!!", funcionario);
             }
@@ -61,19 +64,20 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO{
             ArrayList<Funcionario> lista = new ArrayList<>();
 
             while(rs.next()){
+                int codigo = rs.getInt("codigo");
                 String login = rs.getString("login");
                 String senha = rs.getString("senha");
                 String nome = rs.getString("nome");
                 String sobrenome = rs.getString("sobrenome");
                 int telefone = rs.getInt("telefone");
-                String funcao = rs.getString("função");
+                String funcao = rs.getString("funcao");
                 String cpf = rs.getString("cpf");    
                 String sexo = rs.getString("sexo");            
                 String endereco = rs.getString("endereco");
-                LocalDate dataNascimento = rs.getObject("dataDeNascimento", LocalDate.class);
+                LocalDate dataNascimento = rs.getObject("data_de_nascimento", LocalDate.class);
                 String email = rs.getString("email");
 
-                Funcionario funcionario = new Funcionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
+                Funcionario funcionario = new Funcionario(codigo,login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
                 lista.add(funcionario);
             }
             
@@ -102,6 +106,9 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO{
             pstm.setString(9, novo.getEndereco());
             pstm.setObject(10, novo.getDataNasc());
             pstm.setString(11, novo.getEmail());
+
+            pstm.setInt(12, codigo);
+
             // Executar o comando
             int ret = pstm.executeUpdate();
 

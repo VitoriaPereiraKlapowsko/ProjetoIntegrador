@@ -69,4 +69,17 @@ public class RepositorioFuncionario {
         Funcionario funcionario = new Funcionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
         return dao.criar(funcionario);
     }
+
+    public Resultado listarFuncionarios() {
+        return dao.listar();
+    }
+
+    public String alterarFuncionario(int codigo,String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    String sexo, String endereco, LocalDate dataNascimento, String email){
+        Funcionario novo = new Funcionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
+
+        Resultado resultado = dao.editar(codigo, novo);
+
+        return resultado.getMsg();
+    }
 }

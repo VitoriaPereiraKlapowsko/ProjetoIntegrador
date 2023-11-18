@@ -1,18 +1,23 @@
 package  ifpr.pgua.eic.colecaomusicas.controllers;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
+
+import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-public class ListarFuncionarios {
+public class ListarFuncionarios implements Initializable {
 
     @FXML
     private Button btConfirmar;
@@ -54,8 +59,8 @@ public class ListarFuncionarios {
         
         String str = "";
 
-        for(Funcionario genero:selecionados){
-            str += genero.getNome()+";";
+        for(Funcionario funcionario:selecionados){
+            str += funcionario.getNome()+";";
         }
 
         Alert alert = new Alert(AlertType.INFORMATION, str);
@@ -70,15 +75,25 @@ public class ListarFuncionarios {
 
 
     @FXML
-    void editar(ActionEvent event) {
+    void alterar(ActionEvent event) {
         if(selecionado != null ){
-            CadastroFuncionario(event);
+            App.pushScreen("CADASTROFUNCIONARIO");
         }
     }
 
-    @FXML
-    private void CadastroFuncionario(ActionEvent event) {
-        App.pushScreen("CADASTROFUNCIONARIO");
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        listaFuncionarios.getItems().clear();
+        Resultado resultado = repositorio.listarFuncionarios();
+
+        if(resultado.foiErro()){
+            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            alert.showAndWait();
+        }else{
+            List lista = (List)resultado.comoSucesso().getObj();
+            listaFuncionarios.getItems().addAll(lista);
+        }
+    
     }
 
     

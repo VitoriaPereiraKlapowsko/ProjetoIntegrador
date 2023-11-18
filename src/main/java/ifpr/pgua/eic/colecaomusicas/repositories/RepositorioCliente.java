@@ -30,10 +30,6 @@ public class RepositorioCliente {
             return Resultado.erro("CPF ou CNPJ inválido!");
         }
 
-        if (inscricaoEstadual <= 0) {
-            return Resultado.erro("Inscrição Estadual inválida!");
-        }
-
         if(email.isEmpty() || email.isBlank()){
             return Resultado.erro("Email inválido!");
         }

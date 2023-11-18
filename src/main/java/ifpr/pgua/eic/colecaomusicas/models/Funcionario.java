@@ -14,10 +14,12 @@ public class Funcionario {
     private String sexo;
     private int telefone;
     private String funcao;
+    private int codigo;
 
-    public Funcionario(String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+
+    public Funcionario(String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
             String sexo, String endereco, LocalDate dataNascimento, String email) {
-
+        this.login = login;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -30,10 +32,11 @@ public class Funcionario {
         this.senha = senha;
     }
 
-    public Funcionario(String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    public Funcionario(int codigo,String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
             String sexo, String endereco, LocalDate dataNascimento, String email) {
-
+        this.codigo = codigo;
         this.login = login;
+                this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -43,7 +46,15 @@ public class Funcionario {
         this.sexo = sexo;
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
-        this.senha = senha;
+    }
+
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getLogin() {
@@ -136,6 +147,6 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionário: [" + nome + sobrenome + "]";
+        return "Funcionário: [" + nome + " "+ sobrenome + "]";
     }
 }

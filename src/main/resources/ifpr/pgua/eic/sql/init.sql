@@ -60,12 +60,17 @@ valor float not null,
 descricao varchar (400) not null
 );
 
+CREATE TABLE IF NOT EXISTS tb_status (
+    codigo_status INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(30) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS tb_agendamento (
-codigo varchar(45) primary key,
+codigo INT AUTO_INCREMENT PRIMARY KEY,
 cliente_codigo INT NOT NULL,
-animal_codigo varchar(100) not null,
-tipo_servico varchar(100) not null,
-funcionario_login varchar(150) not null,
+animal_codigo INT NOT NULL,
+tipo_servico INT NOT NULL,
+funcionario_login INT NOT NULL,
 data_reserva_de_servico date not null,
 status varchar(250) not null,
 horario_do_servico time not null,
