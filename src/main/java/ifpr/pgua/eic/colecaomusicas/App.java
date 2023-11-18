@@ -134,12 +134,12 @@ public class App extends BaseAppNavigator {
                  registraTela("LISTARCLIENTES",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_clientes.fxml",
-                                                o -> new ListarClientes()));
+                                                o -> new ListarClientes(repositorioCliente)));
 
                  registraTela("LISTARPET",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_pet.fxml",
-                                                o -> new ListarPet()));
+                                                o -> new ListarPet(repositorioPet)));
 
                 }
 }

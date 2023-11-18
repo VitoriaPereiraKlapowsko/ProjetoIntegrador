@@ -63,4 +63,8 @@ public class RepositorioPet {
     public Resultado listarCliente(){
         return dao.listar();
     }
+
+    public Resultado listarPet(){
+        return dao.listar();
+    }
 }

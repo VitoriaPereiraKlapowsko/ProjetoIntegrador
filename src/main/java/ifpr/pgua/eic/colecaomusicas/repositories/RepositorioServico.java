@@ -33,4 +33,8 @@ public class RepositorioServico {
     public Resultado listarServicos(){
         return dao.listar();
     }
+
+    public Resultado deletarServico(int codigoServico) {
+        return dao.deletar(codigoServico);
+    }
 }

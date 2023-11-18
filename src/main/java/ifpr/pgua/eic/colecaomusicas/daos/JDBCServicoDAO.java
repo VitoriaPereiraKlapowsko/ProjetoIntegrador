@@ -67,4 +67,21 @@ public class JDBCServicoDAO implements ServicoDAO{
             return Resultado.erro(e.getMessage());
         }
     }
+
+    @Override
+    public Resultado deletar(int codigoServico) {
+        try (Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM tb_servico WHERE codigo_do_servico = ?");
+            pstm.setInt(1, codigoServico);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Serviço deletado com sucesso!", con);
+            }
+            return Resultado.erro("Serviço não encontrado...");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
 }

@@ -10,23 +10,28 @@ import java.util.ArrayList;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
-public class JDBCClienteDAO implements ClienteDAO{
-    
+public class JDBCClienteDAO implements ClienteDAO {
+
     private FabricaConexoes fabrica;
 
-    public JDBCClienteDAO(FabricaConexoes fabrica){
+    public JDBCClienteDAO(FabricaConexoes fabrica) {
         this.fabrica = fabrica;
     }
 
     @Override
     public Resultado criar(Cliente cliente) {
-        try(Connection con = fabrica.getConnection()){
-            
-            PreparedStatement pstm = con.
-            prepareStatement("INSERT INTO tb_cliente(nome, sobrenome, cpf_cnpj, inscricao_estadual, endereco, telefone, email) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-           
-            pstm.setString(1,cliente.getNome());
+        try (Connection con = fabrica.getConnection()) {
+
+            PreparedStatement pstm = con.prepareStatement(
+                    "INSERT INTO tb_cliente(nome, sobrenome, cpf_cnpj, inscricao_estadual, endereco, telefone, email) VALUES (?,?,?,?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+
+            pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getSobrenome());
             pstm.setInt(3, cliente.getCpfCnpj());
             pstm.setInt(4, cliente.getInscricaoEstadual());
@@ -35,7 +40,7 @@ public class JDBCClienteDAO implements ClienteDAO{
             pstm.setString(7, cliente.getEmail());
             int ret = pstm.executeUpdate();
 
-            if(ret == 1){
+            if (ret == 1) {
                 ResultSet rs = pstm.getGeneratedKeys();
                 rs.next();
                 int codigo = rs.getInt(1);
@@ -45,21 +50,21 @@ public class JDBCClienteDAO implements ClienteDAO{
                 return Resultado.sucesso("Cliente cadastrado com sucesso!!!", cliente);
             }
             return Resultado.erro("Ops.. deu um erro!");
-        }catch(SQLException e){
+        } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
     }
 
     @Override
     public Resultado listar() {
-        
+
         try (Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM tb_cliente");
 
             ResultSet rs = pstm.executeQuery();
             ArrayList<Cliente> lista = new ArrayList<>();
 
-            while(rs.next()){
+            while (rs.next()) {
                 int codigo = rs.getInt("codigo");
                 String nome = rs.getString("nome");
                 String sobrenome = rs.getString("sobrenome");
@@ -69,14 +74,31 @@ public class JDBCClienteDAO implements ClienteDAO{
                 int telefone = rs.getInt("telefone");
                 String email = rs.getString("email");
 
-                Cliente cliente = new Cliente(codigo, nome, sobrenome, cpfCnpj, inscricaoEstadual,endereco, telefone, email);
+                Cliente cliente = new Cliente(codigo, nome, sobrenome, cpfCnpj, inscricaoEstadual, endereco, telefone,
+                        email);
                 lista.add(cliente);
             }
-            
+
             return Resultado.sucesso("Lista de cliente", lista);
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
-    
+    }
+
+    @Override
+    public Resultado deletar(int codigo) {
+        try (Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM tb_cliente WHERE codigo = ?");
+            pstm.setInt(1, codigo);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Cliente deletado com sucesso!", con);
+            }
+            return Resultado.erro("Nenhum Cliente foi encontrado...");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 }

@@ -19,7 +19,9 @@
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Button layoutX="499.0" layoutY="506.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
-      <ListView fx:id="listaServicos" layoutX="341.0" layoutY="154.0" prefHeight="321.0" prefWidth="403.0" />
+      <Button layoutX="609.0" layoutY="565.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <ListView fx:id="listaServicos" layoutX="74.0" layoutY="154.0" prefHeight="362.0" prefWidth="916.0" />
+      <Button layoutX="489.0" layoutY="565.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
+      <Button layoutX="371.0" layoutY="565.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Editar" />
    </children>
 </AnchorPane>

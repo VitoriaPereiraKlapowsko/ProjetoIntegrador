@@ -16,7 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
-public class ListarServicos implements Initializable{
+public class ListarServicos implements Initializable {
 
     @FXML
     private ListView<Servico> listaServicos;
@@ -28,7 +28,7 @@ public class ListarServicos implements Initializable{
 
     private RepositorioServico repositorio;
 
-    public ListarServicos(RepositorioServico repositorio){
+    public ListarServicos(RepositorioServico repositorio) {
         this.repositorio = repositorio;
     }
 
@@ -37,14 +37,40 @@ public class ListarServicos implements Initializable{
         listaServicos.getItems().clear();
         Resultado resultado = repositorio.listarServicos();
 
-        if(resultado.foiErro()){
+        if (resultado.foiErro()) {
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
             alert.showAndWait();
-        }else{
-            List lista = (List)resultado.comoSucesso().getObj();
+        } else {
+            List lista = (List) resultado.comoSucesso().getObj();
             listaServicos.getItems().addAll(lista);
         }
-    
+
+    }
+
+    @FXML
+    void deletar(ActionEvent event) {
+        Servico servicoSelecionado = listaServicos.getSelectionModel().getSelectedItem();
+
+        if (servicoSelecionado != null) {
+            Resultado resultado = repositorio.deletarServico(servicoSelecionado.getCodigoServico());
+
+            if (resultado.foiSucesso()) {
+                listaServicos.getItems().remove(servicoSelecionado);
+                Alert alert = new Alert(AlertType.INFORMATION, "Serviço deletado com sucesso!!!");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING, "Nenhum serviço selecionado...");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void editar(ActionEvent event) {
+
     }
 
 }

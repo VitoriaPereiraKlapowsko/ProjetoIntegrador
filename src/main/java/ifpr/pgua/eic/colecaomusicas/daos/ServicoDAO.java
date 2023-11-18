@@ -7,4 +7,5 @@ import ifpr.pgua.eic.colecaomusicas.models.Servico;
 public interface ServicoDAO {
     Resultado criar(Servico servico);
     Resultado listar();
+    Resultado deletar(int codigoServico);
 }

@@ -104,7 +104,7 @@ public class CadastroCliente  {
     }
 
     @FXML
-    void listarClientes() {
+    void listarClientes(ActionEvent event) {
         App.pushScreen("LISTARCLIENTES");
     }
 

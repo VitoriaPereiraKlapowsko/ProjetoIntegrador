@@ -49,4 +49,8 @@ public class RepositorioCliente {
     public Resultado listarClientes() {
         return dao.listar();
     }
+
+    public Resultado deletarCliente(int codigo) {
+        return dao.deletar(codigo);
+    }
 }
