@@ -147,6 +147,6 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionário: [" + nome + " "+ sobrenome + "]";
+        return "Funcionário: " + nome + " "+ sobrenome + "";
     }
 }

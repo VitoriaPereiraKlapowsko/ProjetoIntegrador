@@ -8,5 +8,5 @@ public interface FuncionarioDAO {
     Resultado criar(Funcionario funcionario);
     Resultado listar();   
     Resultado editar(int codigo, Funcionario novo);
-
+    Resultado deletar(int codigo);
 }

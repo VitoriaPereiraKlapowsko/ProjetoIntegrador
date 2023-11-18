@@ -85,9 +85,9 @@ public class RepositorioFuncionario {
         Funcionario novo = new Funcionario(codigo,login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
 
         return dao.editar(codigo, novo);
-
-        
     }
 
-    
+    public Resultado deletarFuncionario(int codigo) {
+        return dao.deletar(codigo);
+    }  
 }

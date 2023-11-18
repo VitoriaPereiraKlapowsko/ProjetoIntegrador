@@ -1,4 +1,4 @@
-package  ifpr.pgua.eic.colecaomusicas.controllers;
+package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import java.net.URL;
 import java.util.List;
@@ -29,8 +29,6 @@ public class ListarFuncionarios implements Initializable {
     @FXML
     private Button btEditar;
 
-    
-
     @FXML
     private ListView<Funcionario> listaFuncionarios;
 
@@ -38,7 +36,7 @@ public class ListarFuncionarios implements Initializable {
 
     private RepositorioFuncionario repositorio;
 
-      public ListarFuncionarios(RepositorioFuncionario repositorio){
+    public ListarFuncionarios(RepositorioFuncionario repositorio) {
         this.repositorio = repositorio;
     }
 
@@ -49,60 +47,73 @@ public class ListarFuncionarios implements Initializable {
 
     @FXML
     void deletar(ActionEvent event) {
+        Funcionario funcionarioSelecionado = listaFuncionarios.getSelectionModel().getSelectedItem();
 
+        if (funcionarioSelecionado != null) {
+            Resultado resultado = repositorio.deletarFuncionario(funcionarioSelecionado.getCodigo());
+
+            if (resultado.foiErro()) {
+                Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(AlertType.INFORMATION, "Funcionário deletado com sucesso!!!");
+                alert.showAndWait();
+
+                listaFuncionarios.getItems().remove(funcionarioSelecionado);
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING, "Selecione um funcionário para deletar, por favor...");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void mostrarSelecionados(){
+    void mostrarSelecionados() {
         List<Funcionario> selecionados = listaFuncionarios
-                                      .getSelectionModel()
-                                      .getSelectedItems();
-        
+                .getSelectionModel()
+                .getSelectedItems();
+
         String str = "";
 
-        for(Funcionario funcionario:selecionados){
-            str += funcionario.getNome()+";";
-            str += funcionario.getCodigo()+";";
+        for (Funcionario funcionario : selecionados) {
+            str += funcionario.getNome() + ";";
+            str += funcionario.getCodigo() + ";";
         }
 
         Alert alert = new Alert(AlertType.INFORMATION, str);
         alert.showAndWait();
-    
+
     }
 
     @FXML
-    private void selecionar(){
+    private void selecionar() {
         selecionado = listaFuncionarios.getSelectionModel().getSelectedItem();
     }
 
-
     @FXML
     void alterar(ActionEvent event) {
-        if(selecionado != null ){
-            App.pushScreen("CADASTROFUNCIONARIO", o->new CadastroFuncionario(repositorio, selecionado));
+        if (selecionado != null) {
+            App.pushScreen("CADASTROFUNCIONARIO", o -> new CadastroFuncionario(repositorio, selecionado));
         }
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaFuncionarios.getItems().clear();
-        
+
         listaFuncionarios.getSelectionModel()
-              .setSelectionMode(SelectionMode.MULTIPLE);
-        
+                .setSelectionMode(SelectionMode.MULTIPLE);
 
         Resultado resultado = repositorio.listarFuncionarios();
 
-        if(resultado.foiErro()){
+        if (resultado.foiErro()) {
             Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
             alert.showAndWait();
-        }else{
-            List lista = (List)resultado.comoSucesso().getObj();
+        } else {
+            List lista = (List) resultado.comoSucesso().getObj();
             listaFuncionarios.getItems().addAll(lista);
         }
-    
-    }
 
-    
+    }
 
 }
