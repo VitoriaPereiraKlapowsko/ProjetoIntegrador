@@ -103,6 +103,15 @@ public class CadastroCliente  {
         App.pushScreen("CADASTROPET");
     }
 
+    @FXML
+    void listarClientes() {
+        App.pushScreen("LISTARCLIENTES");
+    }
+
+    @FXML
+    void listarPet(ActionEvent event) {
+        App.pushScreen("LISTARPET");
+    }
 }
 
     

@@ -9,7 +9,9 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca;
 import ifpr.pgua.eic.colecaomusicas.controllers.CalendarioAgendamentos;
 import ifpr.pgua.eic.colecaomusicas.controllers.EditarFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarAgendamentos;
+import ifpr.pgua.eic.colecaomusicas.controllers.ListarClientes;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarFuncionarios;
+import ifpr.pgua.eic.colecaomusicas.controllers.ListarPet;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarServicos;
 import ifpr.pgua.eic.colecaomusicas.controllers.Principal;
 import ifpr.pgua.eic.colecaomusicas.controllers.TelaLogin;
@@ -127,5 +129,18 @@ public class App extends BaseAppNavigator {
                                 new ScreenRegistryFXML(App.class,
                                                 "editar_funcionario.fxml",
                                                 o -> new EditarFuncionario(repositorioFuncionario)));
-        }
+        
+        
+                 registraTela("LISTARCLIENTES",
+                                new ScreenRegistryFXML(App.class,
+                                                "lista_clientes.fxml",
+                                                o -> new ListarClientes()));
+
+                 registraTela("LISTARPET",
+                                new ScreenRegistryFXML(App.class,
+                                                "lista_pet.fxml",
+                                                o -> new ListarPet()));
+
+                }
 }
+
