@@ -26,7 +26,7 @@ public class JDBCServicoDAO implements ServicoDAO{
             prepareStatement("INSERT INTO tb_servico(descricao, valor) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
            
             pstm.setString(1,servico.getDescricao());
-            pstm.setInt(2, servico.getValor());
+            pstm.setFloat(2, servico.getValor());
             int ret = pstm.executeUpdate();
 
             if(ret == 1){
@@ -58,7 +58,7 @@ public class JDBCServicoDAO implements ServicoDAO{
                 String descricao = rs.getString("descricao");
                 int valor = rs.getInt("valor");
                 
-                Servico servico = new Servico(codigoServico, descricao, valor);
+                Servico servico = new Servico(codigoServico, valor,descricao);
                 lista.add(servico);
             }
             
@@ -83,5 +83,30 @@ public class JDBCServicoDAO implements ServicoDAO{
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
+    }
+
+    @Override
+    public Resultado editar(int codigo, Servico novo) {
+        try (Connection con = fabrica.getConnection();) {
+
+            // Preparar o comando sql
+            PreparedStatement pstm = con.prepareStatement(
+                    "UPDATE tb_servico SET valor=?, descricao=? WHERE codigo_do_servico=?");
+            // Ajustar os parâmetros
+            pstm.setFloat(1, novo.getValor());
+            pstm.setString(2, novo.getDescricao());
+            
+            pstm.setInt(3, codigo);
+
+            // Executar o comando
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Serviço Atualizado!", novo);
+            }
+            return Resultado.erro("Erro não identificado!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        } 
     }
 }

@@ -9,22 +9,21 @@ import com.github.hugoperlin.results.Resultado;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
 public class ListarServicos implements Initializable {
 
     @FXML
     private ListView<Servico> listaServicos;
 
-    @FXML
-    void confirmar(ActionEvent event) {
-        App.popScreen();
-    }
+    private Servico selecionado;
 
     private RepositorioServico repositorio;
 
@@ -32,9 +31,34 @@ public class ListarServicos implements Initializable {
         this.repositorio = repositorio;
     }
 
-    @Override
+    @FXML
+    void confirmar(ActionEvent event) {
+        App.popScreen();
+    }
+
+    @FXML
+    void voltar(ActionEvent event) {
+        App.pushScreen("PRINCIPAL");
+    }
+
+    @FXML
+    void editar(ActionEvent event) {
+        if (selecionado != null) {
+            App.pushScreen("CADASTROSERVICO", o -> new CadastroServico(repositorio, selecionado));
+        }
+    }
+
+    @FXML
+    private void selecionar() {
+        selecionado = listaServicos.getSelectionModel().getSelectedItem();
+    }
+
+     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaServicos.getItems().clear();
+
+        listaServicos.getSelectionModel() .setSelectionMode(SelectionMode.MULTIPLE);
+
         Resultado resultado = repositorio.listarServicos();
 
         if (resultado.foiErro()) {
@@ -49,13 +73,13 @@ public class ListarServicos implements Initializable {
 
     @FXML
     void deletar(ActionEvent event) {
-        Servico servicoSelecionado = listaServicos.getSelectionModel().getSelectedItem();
+        selecionado = listaServicos.getSelectionModel().getSelectedItem();
 
-        if (servicoSelecionado != null) {
-            Resultado resultado = repositorio.deletarServico(servicoSelecionado.getCodigoServico());
+        if (selecionado != null) {
+            Resultado resultado = repositorio.deletarServico(selecionado.getCodigoServico());
 
             if (resultado.foiSucesso()) {
-                listaServicos.getItems().remove(servicoSelecionado);
+                listaServicos.getItems().remove(selecionado);
                 Alert alert = new Alert(AlertType.INFORMATION, "Serviço deletado com sucesso!!!");
                 alert.showAndWait();
             } else {
@@ -66,11 +90,6 @@ public class ListarServicos implements Initializable {
             Alert alert = new Alert(AlertType.WARNING, "Nenhum serviço selecionado...");
             alert.showAndWait();
         }
-    }
-
-    @FXML
-    void editar(ActionEvent event) {
-
     }
 
 }

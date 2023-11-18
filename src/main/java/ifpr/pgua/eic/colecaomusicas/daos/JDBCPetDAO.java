@@ -62,7 +62,7 @@ public class JDBCPetDAO implements PetDAO {
             PreparedStatement pstm = con.prepareStatement(
                     "SELECT tb_animal.*, tb_raca.nome AS nome_raca " +
                             "FROM tb_animal " +
-                            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " + // Adicione um espaço aqui
+                            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " + 
                             "INNER JOIN tb_cliente ON tb_animal.cliente_codigo = tb_cliente.codigo");
 
             ResultSet rs = pstm.executeQuery();

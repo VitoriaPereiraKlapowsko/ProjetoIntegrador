@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.EditarFuncionario">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.ListarFuncionarios">
    <children>
       <Region prefHeight="78.0" prefWidth="1062.0" style="-fx-background-color: EFEFEF;" />
       <Label layoutX="357.0" layoutY="24.0" text="FUNCIONÁRIOS CADASTRADOS">
@@ -24,6 +24,6 @@
       <ListView fx:id="listaFuncionarios" layoutX="83.0" layoutY="147.0" onMouseClicked="#selecionar" prefHeight="357.0" prefWidth="894.0" />
       <Button fx:id="btDeletar" layoutX="83.0" layoutY="512.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
       <Button fx:id="btAlterar" layoutX="191.0" layoutY="512.0" mnemonicParsing="false" onAction="#alterar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Alterar" />
-      <Button layoutX="136.0" layoutY="553.0" mnemonicParsing="false" onAction="#mostrarSelecionados" text="Selecionados" />
+      <Button layoutX="136.0" layoutY="553.0" mnemonicParsing="false" onAction="#mostrarSelecionados" text="Selecionados" visible="false" />
    </children>
 </AnchorPane>

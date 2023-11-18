@@ -7,7 +7,6 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca;
 import ifpr.pgua.eic.colecaomusicas.controllers.CalendarioAgendamentos;
-import ifpr.pgua.eic.colecaomusicas.controllers.EditarFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarAgendamentos;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarClientes;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarFuncionarios;
@@ -71,7 +70,7 @@ public class App extends BaseAppNavigator {
 
         @Override
         public void registrarTelas() {
-                registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o -> new Principal()));
+                registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o -> new Principal(repositorioServico,repositorioFuncionario)));
                 registraTela("LOGIN", new ScreenRegistryFXML(App.class, "login.fxml", o -> new TelaLogin()));
 
                 registraTela("CADASTROCLIENTE",
@@ -125,12 +124,6 @@ public class App extends BaseAppNavigator {
                                                 "lista_funcionarios.fxml",
                                                 o -> new ListarFuncionarios(repositorioFuncionario)));
 
-                registraTela("EDITARFUNCIONARIO",
-                                new ScreenRegistryFXML(App.class,
-                                                "editar_funcionario.fxml",
-                                                o -> new EditarFuncionario(repositorioFuncionario)));
-        
-        
                  registraTela("LISTARCLIENTES",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_clientes.fxml",

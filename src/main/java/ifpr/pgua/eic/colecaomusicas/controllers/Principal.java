@@ -1,6 +1,8 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +10,13 @@ import javafx.fxml.FXML;
 
 public class Principal  {
 
+    private RepositorioServico repositorioServico;
+    private RepositorioFuncionario repositorioFuncionario;
+
+    public Principal(RepositorioServico repositorioServico, RepositorioFuncionario repositorioFuncionario){
+        this.repositorioServico = repositorioServico;
+        this.repositorioFuncionario = repositorioFuncionario;
+    }
 
     @FXML
     private void cadastrarCliente() {
@@ -16,7 +25,8 @@ public class Principal  {
 
     @FXML
     void cadastrarServico(ActionEvent event) {
-        App.pushScreen("CADASTROSERVICO");  
+       // App.pushScreen("CADASTROSERVICO"); 
+        App.pushScreen("CADASTROSERVICO", o -> new CadastroServico(repositorioServico));  
     }
 
     @FXML
@@ -41,7 +51,8 @@ public class Principal  {
     
     @FXML
     void cadastroFuncionario(ActionEvent event) {
-        App.pushScreen("CADASTROFUNCIONARIO");  
+        //App.pushScreen("CADASTROFUNCIONARIO"); 
+        App.pushScreen("CADASTROFUNCIONARIO", o -> new CadastroFuncionario(repositorioFuncionario)); 
     }
      
     @FXML

@@ -1,10 +1,12 @@
 package ifpr.pgua.eic.colecaomusicas.repositories;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
+import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 
 public class RepositorioServico {
@@ -26,7 +28,7 @@ public class RepositorioServico {
             return Resultado.erro("Valor inválido!");
         }
        
-        Servico servico = new Servico(descricao, valor);
+        Servico servico = new Servico(valor, descricao);
         return dao.criar(servico);
     }
 
@@ -36,5 +38,13 @@ public class RepositorioServico {
 
     public Resultado deletarServico(int codigoServico) {
         return dao.deletar(codigoServico);
+    }
+
+    public Resultado alterarServico(int codigo,String descricao, float valor){
+
+
+        Servico novo = new Servico(codigo,valor,descricao);
+
+        return dao.editar(codigo, novo);
     }
 }

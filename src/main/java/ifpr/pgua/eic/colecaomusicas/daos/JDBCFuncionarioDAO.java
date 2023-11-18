@@ -117,7 +117,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Funcionário atualizado", novo);
+                return Resultado.sucesso("Funcionário Atualizado!", novo);
             }
             return Resultado.erro("Erro não identificado!");
         } catch (SQLException e) {

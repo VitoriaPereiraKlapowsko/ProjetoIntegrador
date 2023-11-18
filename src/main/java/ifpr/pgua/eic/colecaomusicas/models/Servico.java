@@ -3,14 +3,14 @@ package ifpr.pgua.eic.colecaomusicas.models;
 public class Servico {
     private int codigoServico;
     private String descricao;
-    private int valor;
+    private float valor;
 
-    public Servico(String descricao, int valor) {
+    public Servico(float valor, String descricao) {
         this.descricao = descricao;
         this.valor = valor;
     }
 
-    public Servico(int codigoServico, String descricao, int valor) {
+    public Servico(int codigoServico, float valor, String descricao) {
         this.codigoServico = codigoServico;
         this.descricao = descricao;
         this.valor = valor;
@@ -32,7 +32,7 @@ public class Servico {
         this.descricao = descricao;
     }
 
-    public int getValor() {
+    public float getValor() {
         return valor;
     }
 
@@ -42,6 +42,6 @@ public class Servico {
 
     @Override
     public String toString() {
-        return "Servico: " + descricao + " Valor: "+ valor + "";
+        return "Servico: " + descricao + " Valor: "+ valor + "" ;
     }
 }
