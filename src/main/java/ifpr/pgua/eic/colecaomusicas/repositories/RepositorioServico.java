@@ -41,10 +41,9 @@ public class RepositorioServico {
     }
 
     public Resultado alterarServico(int codigo,String descricao, float valor){
-
-
         Servico novo = new Servico(codigo,valor,descricao);
 
         return dao.editar(codigo, novo);
     }
+    
 }

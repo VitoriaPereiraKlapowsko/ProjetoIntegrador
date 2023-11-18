@@ -2,6 +2,7 @@ package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,10 +13,12 @@ public class Principal  {
 
     private RepositorioServico repositorioServico;
     private RepositorioFuncionario repositorioFuncionario;
+    private RepositorioRaca repositorioRaca;
 
-    public Principal(RepositorioServico repositorioServico, RepositorioFuncionario repositorioFuncionario){
+    public Principal(RepositorioServico repositorioServico, RepositorioFuncionario repositorioFuncionario, RepositorioRaca repositorioRaca){
         this.repositorioServico = repositorioServico;
         this.repositorioFuncionario = repositorioFuncionario;
+        this.repositorioRaca = repositorioRaca;
     }
 
     @FXML
@@ -36,7 +39,7 @@ public class Principal  {
     
     @FXML
     void cadastrarRaca(ActionEvent event) {
-        App.pushScreen("CADASTRORACA");  
+        App.pushScreen("CADASTRORACA", o -> new CadastroRaca(repositorioRaca));   
     }
 
     @FXML

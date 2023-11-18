@@ -6,6 +6,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.daos.RacaDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
+import ifpr.pgua.eic.colecaomusicas.models.Servico;
 
 public class RepositorioRaca {
     private ArrayList<Raca> racas;
@@ -33,5 +34,17 @@ public class RepositorioRaca {
 
     public Resultado listarRaca(){
         return dao.listar();
+    }
+
+    public Resultado deletarRaca(int codigo) {
+        return dao.deletar(codigo);
+    }
+
+    public Resultado alterarRaca(int codigo,String nome,String descricao){
+
+
+        Raca novo = new Raca(codigo,nome,descricao);
+
+        return dao.editar(codigo, novo);
     }
 }

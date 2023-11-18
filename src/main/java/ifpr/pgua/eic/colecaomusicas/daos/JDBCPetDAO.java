@@ -82,7 +82,7 @@ public class JDBCPetDAO implements PetDAO {
                 String nomeRaca = rs.getString("nome_raca");
                 String nomeCliente = rs.getString("nome_cliente");
 
-                Cliente cliente = new Cliente(cliente_codigo, nomeCliente,null,null,null,null,null);
+                Cliente cliente = new Cliente(cliente_codigo, nomeCliente,null,null,null,null,null,null);
                 Raca raca = new Raca(raca_codigo, nomeRaca, null);
                 
 

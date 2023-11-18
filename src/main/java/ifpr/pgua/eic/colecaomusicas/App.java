@@ -11,6 +11,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.ListarAgendamentos;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarClientes;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarFuncionarios;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarPet;
+import ifpr.pgua.eic.colecaomusicas.controllers.ListarRacas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarServicos;
 import ifpr.pgua.eic.colecaomusicas.controllers.Principal;
 import ifpr.pgua.eic.colecaomusicas.controllers.TelaLogin;
@@ -70,7 +71,9 @@ public class App extends BaseAppNavigator {
 
         @Override
         public void registrarTelas() {
-                registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o -> new Principal(repositorioServico,repositorioFuncionario)));
+                registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml",
+                                o -> new Principal(repositorioServico, repositorioFuncionario, repositorioRaca)));
+
                 registraTela("LOGIN", new ScreenRegistryFXML(App.class, "login.fxml", o -> new TelaLogin()));
 
                 registraTela("CADASTROCLIENTE",
@@ -124,16 +127,20 @@ public class App extends BaseAppNavigator {
                                                 "lista_funcionarios.fxml",
                                                 o -> new ListarFuncionarios(repositorioFuncionario)));
 
-                 registraTela("LISTARCLIENTES",
+                registraTela("LISTARCLIENTES",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_clientes.fxml",
                                                 o -> new ListarClientes(repositorioCliente)));
 
-                 registraTela("LISTARPET",
+                registraTela("LISTARPET",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_pet.fxml",
                                                 o -> new ListarPet(repositorioPet)));
 
-                }
-}
+                registraTela("LISTARRACAS",
+                                new ScreenRegistryFXML(App.class,
+                                                "lista_raca.fxml",
+                                                o -> new ListarRacas(repositorioRaca)));
 
+        }
+}

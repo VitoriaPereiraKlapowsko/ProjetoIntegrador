@@ -17,7 +17,7 @@ public class RepositorioCliente {
         this.dao = dao;
     }
 
-    public Resultado cadastrarCliente(String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String email, String endereco, int telefone){
+    public Resultado cadastrarCliente(String nome, String sobrenome, String cpfCnpj, String inscricaoEstadual, String email, String endereco, int telefone){
         if(nome.isEmpty() || nome.isBlank()){
             return Resultado.erro("Nome inválido!");
         }
@@ -26,8 +26,12 @@ public class RepositorioCliente {
             return Resultado.erro("Sobrenome inválido!");
         }
 
-        if (cpfCnpj <= 0) {
+        if (cpfCnpj.isEmpty() || sobrenome.isBlank()) {
             return Resultado.erro("CPF ou CNPJ inválido!");
+        }
+
+        if (inscricaoEstadual.isEmpty() || inscricaoEstadual.isBlank()) {
+            return Resultado.erro("Inscrição Estadual inválida!");
         }
 
         if(email.isEmpty() || email.isBlank()){

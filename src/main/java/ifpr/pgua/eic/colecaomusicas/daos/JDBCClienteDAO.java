@@ -33,8 +33,8 @@ public class JDBCClienteDAO implements ClienteDAO {
 
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getSobrenome());
-            pstm.setInt(3, cliente.getCpfCnpj());
-            pstm.setInt(4, cliente.getInscricaoEstadual());
+            pstm.setString(3, cliente.getCpfCnpj());
+            pstm.setString(4, cliente.getInscricaoEstadual());
             pstm.setString(5, cliente.getEndereco());
             pstm.setInt(6, cliente.getTelefone());
             pstm.setString(7, cliente.getEmail());
@@ -68,8 +68,8 @@ public class JDBCClienteDAO implements ClienteDAO {
                 int codigo = rs.getInt("codigo");
                 String nome = rs.getString("nome");
                 String sobrenome = rs.getString("sobrenome");
-                int cpfCnpj = rs.getInt("cpf_cnpj");
-                int inscricaoEstadual = rs.getInt("inscricao_estadual");
+                String cpfCnpj = rs.getString("cpf_cnpj");
+                String inscricaoEstadual = rs.getString("inscricao_estadual");
                 String endereco = rs.getString("endereco");
                 int telefone = rs.getInt("telefone");
                 String email = rs.getString("email");
@@ -97,6 +97,36 @@ public class JDBCClienteDAO implements ClienteDAO {
                 return Resultado.sucesso("Cliente deletado com sucesso!", con);
             }
             return Resultado.erro("Nenhum Cliente foi encontrado...");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public Resultado editar(int codigo, Cliente novo) {
+        try (Connection con = fabrica.getConnection();) {
+
+            // Preparar o comando sql
+            PreparedStatement pstm = con.prepareStatement(
+                    "UPDATE tb_ciente SET nome=?, sobrebome=?, cpfCnpj=?, inscricaoEstadual=?, endereco=?,telefone=?,email=? WHERE codigo=?");
+            // Ajustar os parâmetros
+            pstm.setString(1, novo.getNome());
+            pstm.setString(2, novo.getSobrenome());
+            pstm.setString(3, novo.getCpfCnpj());
+            pstm.setString(4, novo.getInscricaoEstadual());
+            pstm.setString(5, novo.getEndereco());
+            pstm.setInt(6, novo.getTelefone());
+            pstm.setString(7, novo.getEmail());
+            
+            pstm.setInt(8, codigo);
+
+            // Executar o comando
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Serviço Atualizado!", novo);
+            }
+            return Resultado.erro("Erro não identificado!");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

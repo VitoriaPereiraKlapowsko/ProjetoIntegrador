@@ -18,7 +18,7 @@
       <Label layoutX="396.0" layoutY="186.0" text="Descrição do Serviço:" />
       <TextField fx:id="descricaoServico" layoutX="396.0" layoutY="204.0" prefHeight="26.0" prefWidth="271.0" />
       <Label layoutX="396.0" layoutY="264.0" text="Valor:" />
-      <TextField fx:id="valorServico" layoutX="396.0" layoutY="282.0" prefHeight="26.0" prefWidth="146.0" />
+      <TextField fx:id="valorServico" layoutX="396.0" layoutY="282.0" prefHeight="26.0" prefWidth="271.0" />
       <Button layoutX="419.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
       <Button fx:id="btAcao" layoutX="532.0" layoutY="375.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <Button layoutY="52.0" mnemonicParsing="false" onAction="#abaListarServicos" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: B1C4CF;" text="Lista" />

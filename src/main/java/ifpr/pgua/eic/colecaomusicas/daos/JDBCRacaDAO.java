@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
+import ifpr.pgua.eic.colecaomusicas.models.Servico;
 
 public class JDBCRacaDAO implements RacaDAO {
 
@@ -63,7 +64,51 @@ public class JDBCRacaDAO implements RacaDAO {
                 lista.add(raca);
             }
 
-            return Resultado.sucesso("Lista de raças", lista);
+            return Resultado.sucesso("Lista de Raças", lista);
+            
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+        public Resultado editar(int codigo, Raca novo) {
+        try (Connection con = fabrica.getConnection();) {
+
+            // Preparar o comando sql
+            PreparedStatement pstm = con.prepareStatement(
+                    "UPDATE tb_raca SET nome=?, descricao=? WHERE codigo=?");
+            // Ajustar os parâmetros
+            pstm.setString(1, novo.getNome());
+            pstm.setString(2, novo.getDescricao());
+            
+            pstm.setInt(3, codigo);
+
+            // Executar o comando
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Raça Atualizado!", novo);
+            }
+            return Resultado.erro("Erro não identificado!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        } 
+    }
+    
+
+    @Override
+    public Resultado deletar(int codigo) {
+        try (Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM tb_raca WHERE codigo = ?");
+            pstm.setInt(1, codigo);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Raça deletado com sucesso!", con);
+            }
+            return Resultado.erro("Raça não encontrado...");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
