@@ -1,5 +1,9 @@
 package ifpr.pgua.eic.colecaomusicas.repositories;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -37,7 +41,7 @@ public class RepositorioFuncionario {
             return Resultado.erro("Sobrenome inválido!");
         }
 
-        if (telefone <= 0) {
+        if (telefone < 0) {
             return Resultado.erro("Telefone inválido!");
         }
 
@@ -74,12 +78,16 @@ public class RepositorioFuncionario {
         return dao.listar();
     }
 
-    public String alterarFuncionario(int codigo,String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    public Resultado alterarFuncionario(int codigo,String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
     String sexo, String endereco, LocalDate dataNascimento, String email){
-        Funcionario novo = new Funcionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
 
-        Resultado resultado = dao.editar(codigo, novo);
 
-        return resultado.getMsg();
+        Funcionario novo = new Funcionario(codigo,login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
+
+        return dao.editar(codigo, novo);
+
+        
     }
+
+    
 }

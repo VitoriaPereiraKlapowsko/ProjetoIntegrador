@@ -36,7 +36,7 @@ public class Funcionario {
             String sexo, String endereco, LocalDate dataNascimento, String email) {
         this.codigo = codigo;
         this.login = login;
-                this.senha = senha;
+        this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;

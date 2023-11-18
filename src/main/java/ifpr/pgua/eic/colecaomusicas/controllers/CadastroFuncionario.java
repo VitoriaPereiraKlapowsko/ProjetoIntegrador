@@ -1,6 +1,8 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
 
@@ -10,6 +12,7 @@ import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -17,7 +20,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class CadastroFuncionario {
+public class CadastroFuncionario implements Initializable {
 
     @FXML
     private TextField cpfFuncionario;
@@ -51,6 +54,9 @@ public class CadastroFuncionario {
 
     @FXML
     private TextField loginFuncionario;
+
+    @FXML
+    private Button btAcao;
 
     @FXML
     private Button aba;
@@ -91,36 +97,51 @@ public class CadastroFuncionario {
         String email = emailFuncionario.getText();
         String codigo = tfCodigo.getText();
 
-        String msg = "";
-
-        
+        Resultado resultado;
 
         if (anterior == null) {
-            Resultado resultado = repositorio.cadastrarFuncionario(login, senha, nome, sobrenome, telefone, funcao, cpf,
+            resultado = repositorio.cadastrarFuncionario(login, senha, nome, sobrenome, telefone, funcao, cpf,
                     sexo, endereco, dataNascimento, email);
-
         } else {
-            msg = repositorio.alterarFuncionario(Integer.valueOf(codigo), login, senha, nome, sobrenome, telefone,
+            resultado = repositorio.alterarFuncionario(Integer.valueOf(codigo), login, senha, nome, sobrenome, telefone,
                     funcao, cpf, sexo, endereco, dataNascimento, email);
         }
 
-        Alert alert = new Alert(AlertType.INFORMATION, msg);
-        alert.showAndWait();
+        Alert alert;
 
-        /*
-         * /if (resultado.foiErro()) {
-         * alert = new Alert(AlertType.ERROR, resultado.getMsg());
-         * } else {
-         * alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
-         * }/
-         */
+        if (resultado.foiErro()) {
+            alert = new Alert(AlertType.ERROR, resultado.getMsg());
+        } else {
+            alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+        }
 
         alert.showAndWait();
+
     }
 
     @FXML
     private void abaListar(ActionEvent event) {
         App.pushScreen("LISTARFUNCIONARIOS");
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        if (anterior != null) {
+            tfCodigo.setText(anterior.getCodigo() + "");
+            loginFuncionario.setText(anterior.getLogin());
+            senhaFuncionario.setText(anterior.getSenha());
+            nomeFuncionario.setText(anterior.getNome());
+            sobrenomeFuncionario.setText(anterior.getSobrenome());
+            telefoneFuncionario.setText(Integer.toString(anterior.getTelefone()));
+            funcaoFuncionario.setText(anterior.getFuncao());
+            cpfFuncionario.setText(anterior.getCpf());
+            sexoFuncionario.setText(anterior.getSexo());
+            enderecoFuncionario.setText(anterior.getEndereco());
+            dataDeNascimento.setValue(anterior.getDataNasc());
+            emailFuncionario.setText(anterior.getEmail());
+
+            btAcao.setText("Atualizar");
+        }
     }
 
 }

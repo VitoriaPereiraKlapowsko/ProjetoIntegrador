@@ -16,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
 public class ListarFuncionarios implements Initializable {
 
@@ -61,6 +62,7 @@ public class ListarFuncionarios implements Initializable {
 
         for(Funcionario funcionario:selecionados){
             str += funcionario.getNome()+";";
+            str += funcionario.getCodigo()+";";
         }
 
         Alert alert = new Alert(AlertType.INFORMATION, str);
@@ -77,13 +79,18 @@ public class ListarFuncionarios implements Initializable {
     @FXML
     void alterar(ActionEvent event) {
         if(selecionado != null ){
-            App.pushScreen("CADASTROFUNCIONARIO");
+            App.pushScreen("CADASTROFUNCIONARIO", o->new CadastroFuncionario(repositorio, selecionado));
         }
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaFuncionarios.getItems().clear();
+        
+        listaFuncionarios.getSelectionModel()
+              .setSelectionMode(SelectionMode.MULTIPLE);
+        
+
         Resultado resultado = repositorio.listarFuncionarios();
 
         if(resultado.foiErro()){

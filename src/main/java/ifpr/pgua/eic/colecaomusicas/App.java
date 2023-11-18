@@ -7,6 +7,7 @@ import ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca;
 import ifpr.pgua.eic.colecaomusicas.controllers.CalendarioAgendamentos;
+import ifpr.pgua.eic.colecaomusicas.controllers.EditarFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarAgendamentos;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarFuncionarios;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarServicos;
@@ -121,5 +122,10 @@ public class App extends BaseAppNavigator {
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_funcionarios.fxml",
                                                 o -> new ListarFuncionarios(repositorioFuncionario)));
+
+                registraTela("EDITARFUNCIONARIO",
+                                new ScreenRegistryFXML(App.class,
+                                                "editar_funcionario.fxml",
+                                                o -> new EditarFuncionario(repositorioFuncionario)));
         }
 }
