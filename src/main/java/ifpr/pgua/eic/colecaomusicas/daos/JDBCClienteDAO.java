@@ -108,7 +108,7 @@ public class JDBCClienteDAO implements ClienteDAO {
 
             // Preparar o comando sql
             PreparedStatement pstm = con.prepareStatement(
-                    "UPDATE tb_ciente SET nome=?, sobrebome=?, cpfCnpj=?, inscricaoEstadual=?, endereco=?,telefone=?,email=? WHERE codigo=?");
+                    "UPDATE tb_cliente SET nome=?, sobrenome=?, cpf_cnpj=?, inscricao_estadual=?, endereco=?,telefone=?,email=? WHERE codigo=?");
             // Ajustar os parâmetros
             pstm.setString(1, novo.getNome());
             pstm.setString(2, novo.getSobrenome());
@@ -124,7 +124,7 @@ public class JDBCClienteDAO implements ClienteDAO {
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Serviço Atualizado!", novo);
+                return Resultado.sucesso("Cliente Atualizado!", novo);
             }
             return Resultado.erro("Erro não identificado!");
         } catch (SQLException e) {

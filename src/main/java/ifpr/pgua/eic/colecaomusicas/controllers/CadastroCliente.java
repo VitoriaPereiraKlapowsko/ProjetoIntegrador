@@ -7,17 +7,20 @@ import java.util.ResourceBundle;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class CadastroCliente  {
+public class CadastroCliente implements Initializable {
 
     @FXML
     private TextField cpfCnpjCliente;
@@ -44,14 +47,27 @@ public class CadastroCliente  {
     private TextField telefoneCliente;
 
     @FXML
+    private TextField tfCodigo;
+
+    @FXML
+    private Button btAcao;
+
+    private Cliente anterior;
+
+    @FXML
     void cancelar(ActionEvent event) {
         App.pushScreen("PRINCIPAL");
     }
 
     private RepositorioCliente repositorio;
 
-    public CadastroCliente(RepositorioCliente repositorio){
+    public CadastroCliente(RepositorioCliente repositorio) {
         this.repositorio = repositorio;
+    }
+
+    public CadastroCliente(RepositorioCliente repositorio, Cliente anterior) {
+        this.repositorio = repositorio;
+        this.anterior = anterior;
     }
 
     @FXML
@@ -63,6 +79,7 @@ public class CadastroCliente  {
         String email = emailCliente.getText();
         String endereco = enderecoCliente.getText();
         String stelefoneCliente = telefoneCliente.getText();
+        String codigo = tfCodigo.getText();
 
         String msg = "";
 
@@ -84,10 +101,19 @@ public class CadastroCliente  {
         try {
             telefone = Integer.valueOf(stelefoneCliente);
         } catch (NumberFormatException e) {
-             msg = "Telefone inválido!";
+            msg = "Telefone inválido!";
         }
 
-        Resultado resultado = repositorio.cadastrarCliente(nome, sobrenome, cpfCnpj, inscricaoEstadual, email, endereco, telefone);
+        Resultado resultado;
+
+        if (anterior == null) {
+            resultado = repositorio.cadastrarCliente(nome, sobrenome, cpfCnpj, inscricaoEstadual, endereco, telefone,
+                    email);
+        } else {
+            resultado = repositorio.alterarCliente(Integer.valueOf(codigo), nome, sobrenome, cpfCnpj, inscricaoEstadual,
+                    endereco, telefone, email);
+        }
+
         Alert alert;
 
         if (resultado.foiErro()) {
@@ -112,6 +138,20 @@ public class CadastroCliente  {
     void listarPet(ActionEvent event) {
         App.pushScreen("LISTARPET");
     }
-}
 
-    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        if (anterior != null) {
+            tfCodigo.setText(anterior.getCodigo() + "");
+            nomeCliente.setText(anterior.getNome());
+            sobrenomeCliente.setText(anterior.getSobrenome());
+            cpfCnpjCliente.setText(Integer.toString(anterior.getCpfCnpj()));
+            inscricaoEstadualCliente.setText(Integer.toString(anterior.getInscricaoEstadual()));
+            enderecoCliente.setText(anterior.getEndereco());
+            telefoneCliente.setText(Integer.toString(anterior.getTelefone()));
+            emailCliente.setText(anterior.getEmail());
+
+            btAcao.setText("Atualizar");
+        }
+    }
+}

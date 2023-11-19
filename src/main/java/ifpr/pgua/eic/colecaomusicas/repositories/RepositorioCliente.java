@@ -6,6 +6,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.daos.ClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
+import ifpr.pgua.eic.colecaomusicas.models.Raca;
 
 public class RepositorioCliente {
     private ArrayList<Cliente> clientes;
@@ -17,7 +18,7 @@ public class RepositorioCliente {
         this.dao = dao;
     }
 
-    public Resultado cadastrarCliente(String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String email, String endereco, int telefone){
+    public Resultado cadastrarCliente(String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual,String endereco, int telefone,String email){
         if(nome.isEmpty() || nome.isBlank()){
             return Resultado.erro("Nome inválido!");
         }
@@ -56,5 +57,11 @@ public class RepositorioCliente {
 
     public Resultado deletarCliente(int codigo) {
         return dao.deletar(codigo);
+    }
+
+    public Resultado alterarCliente(int codigo,String nome, String sobrenome, int cpfCnpj, int inscricaoEstadual, String endereco, int telefone, String email){
+        Cliente novo = new Cliente(codigo,nome, sobrenome, cpfCnpj, inscricaoEstadual, endereco, telefone, email);
+
+        return dao.editar(codigo, novo);
     }
 }

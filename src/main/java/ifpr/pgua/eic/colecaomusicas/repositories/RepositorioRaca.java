@@ -41,8 +41,6 @@ public class RepositorioRaca {
     }
 
     public Resultado alterarRaca(int codigo,String nome,String descricao){
-
-
         Raca novo = new Raca(codigo,nome,descricao);
 
         return dao.editar(codigo, novo);

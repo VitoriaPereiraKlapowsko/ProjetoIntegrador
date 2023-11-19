@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
@@ -14,22 +15,24 @@ public class Principal  {
     private RepositorioServico repositorioServico;
     private RepositorioFuncionario repositorioFuncionario;
     private RepositorioRaca repositorioRaca;
+    private RepositorioCliente repositorioCliente;
 
-    public Principal(RepositorioServico repositorioServico, RepositorioFuncionario repositorioFuncionario, RepositorioRaca repositorioRaca){
+    public Principal(RepositorioServico repositorioServico, RepositorioFuncionario repositorioFuncionario, RepositorioRaca repositorioRaca, RepositorioCliente repositorioCliente){
         this.repositorioServico = repositorioServico;
         this.repositorioFuncionario = repositorioFuncionario;
         this.repositorioRaca = repositorioRaca;
+        this.repositorioCliente = repositorioCliente;
     }
 
     @FXML
     private void cadastrarCliente() {
-        App.pushScreen("CADASTROCLIENTE");
+        App.pushScreen("CADASTROCLIENTE", o->new CadastroCliente(repositorioCliente));
     }
 
     @FXML
     void cadastrarServico(ActionEvent event) {
        // App.pushScreen("CADASTROSERVICO"); 
-        App.pushScreen("CADASTROSERVICO", o -> new CadastroServico(repositorioServico));  
+        App.pushScreen("CADASTROSERVICO", o->new CadastroServico(repositorioServico));  
     }
 
     @FXML
@@ -39,7 +42,7 @@ public class Principal  {
     
     @FXML
     void cadastrarRaca(ActionEvent event) {
-        App.pushScreen("CADASTRORACA", o -> new CadastroRaca(repositorioRaca));   
+        App.pushScreen("CADASTRORACA", o->new CadastroRaca(repositorioRaca));   
     }
 
     @FXML
@@ -55,7 +58,7 @@ public class Principal  {
     @FXML
     void cadastroFuncionario(ActionEvent event) {
         //App.pushScreen("CADASTROFUNCIONARIO"); 
-        App.pushScreen("CADASTROFUNCIONARIO", o -> new CadastroFuncionario(repositorioFuncionario)); 
+        App.pushScreen("CADASTROFUNCIONARIO", o->new CadastroFuncionario(repositorioFuncionario)); 
     }
      
     @FXML

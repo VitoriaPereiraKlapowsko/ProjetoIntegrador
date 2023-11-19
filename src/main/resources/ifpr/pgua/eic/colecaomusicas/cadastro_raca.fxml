@@ -22,6 +22,6 @@
       <TextField fx:id="descricaoRaca" layoutX="379.0" layoutY="296.0" prefHeight="26.0" prefWidth="271.0" />
       <Label layoutX="382.0" layoutY="277.0" text="Descrição:" />
       <TextField fx:id="tfCodigo" layoutX="378.0" layoutY="152.0" prefHeight="26.0" prefWidth="271.0" visible="false" />
-      <Button fx:id="aba" layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
+      <Button fx:id="aba" layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListarRaca" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
    </children>
 </AnchorPane>

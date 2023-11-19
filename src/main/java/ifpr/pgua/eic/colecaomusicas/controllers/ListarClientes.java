@@ -8,6 +8,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
+import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import javafx.event.ActionEvent;
@@ -23,6 +24,8 @@ public class ListarClientes implements Initializable{
     private ListView<Cliente> listaClientes;
 
     private RepositorioCliente repositorio;
+
+    private Cliente selecionado;
 
     public ListarClientes(RepositorioCliente repositorio) {
         this.repositorio = repositorio;
@@ -53,11 +56,18 @@ public class ListarClientes implements Initializable{
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void selecionar() {
+        selecionado = listaClientes.getSelectionModel().getSelectedItem();
+    }
     
 
     @FXML
     void editar(ActionEvent event) {
-
+        if (selecionado != null) {
+            App.pushScreen("CADASTROCLIENTE", o -> new CadastroCliente(repositorio, selecionado));
+        }
     }
 
     @Override

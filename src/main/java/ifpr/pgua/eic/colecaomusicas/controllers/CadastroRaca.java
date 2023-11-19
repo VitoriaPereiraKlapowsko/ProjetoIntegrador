@@ -39,10 +39,7 @@ public class CadastroRaca implements Initializable {
 
     private Raca anterior;
 
-    @FXML
-    void cancelar(ActionEvent event) {
-        App.popScreen();
-    }
+
 
     public CadastroRaca(RepositorioRaca repositorio) {
         this.repositorio = repositorio;
@@ -54,8 +51,13 @@ public class CadastroRaca implements Initializable {
     }
 
     @FXML
-    void abaListar(ActionEvent event) {
+    void abaListarRaca(ActionEvent event) {
         App.pushScreen("LISTARRACAS");
+    }
+
+    @FXML
+    void cancelar(ActionEvent event) {
+        App.popScreen();
     }
    
 
