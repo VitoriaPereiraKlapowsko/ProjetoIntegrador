@@ -14,7 +14,7 @@ public class RepositorioPet {
         this.dao = dao;
     }
 
-    public Resultado cadastrarPet(Cliente cliente,String nome, Raca raca, String sexo, String porte, String especie,
+    public Resultado cadastrarPet(Cliente cliente, Raca raca, String nome, String sexo, String porte, String especie,
                 LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         if (nome == null || nome.isBlank()) {
             return Resultado.erro("Nome inválido!");
@@ -66,5 +66,15 @@ public class RepositorioPet {
 
     public Resultado listarPet(){
         return dao.listar();
+    }
+
+    public Resultado alterarPet(int codigo, Cliente cliente,Raca raca,String nome, String sexo, String porte, String especie, LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas){
+        Pet novo = new Pet(codigo,cliente,raca,nome,sexo, porte, especie, dataDeNascimento, tratamentosEspeciais, condicoesFisicas);
+
+        return dao.editar(codigo, novo);
+    }
+
+    public Resultado deletarPet(int codigo) {
+        return dao.deletar(codigo);
     }
 }

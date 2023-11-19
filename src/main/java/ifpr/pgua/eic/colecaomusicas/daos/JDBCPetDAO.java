@@ -106,4 +106,53 @@ public class JDBCPetDAO implements PetDAO {
 
     }
 
+    @Override
+    public Resultado editar(int codigo, Pet novo) {
+        try (Connection con = fabrica.getConnection();) {
+
+            // Preparar o comando sql
+            PreparedStatement pstm = con.prepareStatement(
+                    "UPDATE tb_animal SET cliente_codigo=?, raca_codigo=?, nome=?, sexo=?, porte=?, especie=?, data_de_nascimento=?, tratamento_especiais=?, condicoes_fisicas=? WHERE codigo=?");
+            // Ajustar os parâmetros
+            pstm.setInt(1, novo.getCliente().getCodigo());
+            pstm.setInt(2, novo.getRaca().getCodigo());
+            pstm.setString(3, novo.getNome());
+            pstm.setString(4, novo.getSexo());
+            pstm.setString(5, novo.getPorte());
+            pstm.setString(6, novo.getEspecie());
+            pstm.setObject(7, novo.getDataDeNascimento());
+            pstm.setString(8, novo.getTratamentosEspeciais());
+            pstm.setString(9, novo.getCondicoesFisicas());
+
+            pstm.setInt(10, codigo);
+
+            // Executar o comando
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Pet Atualizado!", novo);
+            }
+            return Resultado.erro("Erro não identificado!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public Resultado deletar(int codigo) {
+        try (Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM tb_animal WHERE codigo = ?");
+            pstm.setInt(1, codigo);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Animal deletado com sucesso!", con);
+            }
+            return Resultado.erro("Animal não encontrado...");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
 }

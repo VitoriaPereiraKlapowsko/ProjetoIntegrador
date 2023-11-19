@@ -42,6 +42,6 @@ public class Raca {
 
     @Override
     public String toString() {
-        return "Raça: " + nome + "Descrição: " + descricao;
+        return "Raça: " + nome + " Descrição: " + descricao;
     }
 }

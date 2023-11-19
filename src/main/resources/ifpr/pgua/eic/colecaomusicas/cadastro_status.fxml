@@ -7,20 +7,20 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroStatus">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroStatus">
    <children>
       <Region prefHeight="78.0" prefWidth="1062.0" style="-fx-background-color: EFEFEF;" />
-      <Label layoutX="434.0" layoutY="27.0" text="CADASTRO DE STATUS">
+      <Label layoutX="402.0" layoutY="24.0" text="CADASTRO STATUS">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="520.0" layoutY="201.0" text="Descrição:" />
-      <TextField fx:id="descricaoStatus" layoutX="306.0" layoutY="227.0" prefHeight="26.0" prefWidth="472.0" />
-      <Button layoutX="419.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
-      <Button fx:id="btAcao" layoutX="562.0" layoutY="375.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
-      <Button layoutY="52.0" mnemonicParsing="false" onAction="#abaListarStatus" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: B1C4CF;" text="Lista" />
-      <TextField fx:id="tfCodigo" layoutX="396.0" layoutY="146.0" prefHeight="26.0" prefWidth="146.0" visible="false" />
-      <TextField fx:id="descricaoStatus" layoutX="307.0" layoutY="278.0" mouseTransparent="true" prefHeight="26.0" prefWidth="472.0" visible="false" />
+      <TextField fx:id="tfCodigo" layoutX="378.0" layoutY="206.0" prefHeight="26.0" prefWidth="271.0" visible="false" />
+      <Button layoutX="409.0" layoutY="380.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
+      <Button fx:id="btAcao" layoutX="535.0" layoutY="380.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <TextField fx:id="descricaoRaca" layoutX="378.0" layoutY="238.0" prefHeight="26.0" prefWidth="271.0" />
+      <Label layoutX="381.0" layoutY="219.0" text="Descrição:" />
+      <TextField fx:id="tfCodigo" layoutX="378.0" layoutY="152.0" prefHeight="26.0" prefWidth="271.0" visible="false" />
+      <Button layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListarRaca" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
    </children>
 </AnchorPane>

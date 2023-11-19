@@ -8,6 +8,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
+import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +25,8 @@ public class ListarPet implements Initializable{
 
     private RepositorioPet repositorio;
 
+    private Pet selecionado;
+
     public ListarPet(RepositorioPet repositorio) {
         this.repositorio = repositorio;
     }
@@ -35,17 +38,33 @@ public class ListarPet implements Initializable{
 
     @FXML
     void deletar(ActionEvent event) {
+        if (selecionado != null) {
+            Resultado resultado = repositorio.deletarPet(selecionado.getCodigo());
 
+            if (resultado.foiSucesso()) {
+                listaPets.getItems().remove(selecionado);
+                Alert alert = new Alert(AlertType.INFORMATION, "Raça deletada com sucesso!!!");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING, "Nenhuma raça selecionada...");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void editar(ActionEvent event) {
-
+    void alterar(ActionEvent event) {
+        if (selecionado != null) {
+            App.pushScreen("CADASTROPET",o-> new CadastroPet(repositorio, selecionado));
+        }
     }
     
     @FXML
     void selecionar(MouseEvent event) {
-
+        selecionado = listaPets.getSelectionModel().getSelectedItem();
     }
 
     @Override

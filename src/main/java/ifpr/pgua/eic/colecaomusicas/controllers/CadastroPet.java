@@ -4,6 +4,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
+import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -51,16 +53,30 @@ public class CadastroPet implements Initializable {
     private TextField sexoPet;
 
     @FXML
+    private Button btAcao;
+
+    @FXML
+    private TextField tfCodigo;
+
+    @FXML
     private TextArea tratamentosEObs;
 
     private RepositorioPet repositorioPet;
     private RepositorioCliente repositorioCliente;
     private RepositorioRaca repositorioRaca;
 
+    private RepositorioPet repositorio;
+    private Pet anterior;
+
     public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca, RepositorioCliente repositorioCliente) {
         this.repositorioPet = repositorioPet;
         this.repositorioRaca = repositorioRaca;
         this.repositorioCliente = repositorioCliente;
+    }
+
+    public CadastroPet(RepositorioPet repositorio, Pet anterior) {
+        this.repositorio = repositorio;
+        this.anterior = anterior;
     }
 
     @FXML
@@ -79,9 +95,17 @@ public class CadastroPet implements Initializable {
         LocalDate dataDeNascimento = dataNascimento.getValue();
         String tratamentosEspeciais = tratamentosEObs.getText();
         String condicoesFisicas = condicoesFisicasPet.getText();
+        String codigo = tfCodigo.getText();
 
-        Resultado resultado = repositorioPet.cadastrarPet(cliente,nome, raca, sexo, porte, especie, dataDeNascimento,
+        Resultado resultado;
+        if (anterior == null) {
+            resultado = repositorioPet.cadastrarPet(cliente, raca, nome, sexo, porte, especie, dataDeNascimento,
                 tratamentosEspeciais, condicoesFisicas);
+        } else {
+            resultado = repositorio.alterarPet(Integer.valueOf(codigo), cliente, raca,nome, sexo, porte, especie, dataDeNascimento,
+                tratamentosEspeciais, condicoesFisicas);
+        }
+
         Alert alert;
 
         if (resultado.foiErro()) {
@@ -117,7 +141,24 @@ public class CadastroPet implements Initializable {
             Alert alert = new Alert(AlertType.ERROR, resultadoClientes.getMsg());
             alert.showAndWait();
         }
+
+        if (anterior != null) {
+            tfCodigo.setText(anterior.getCodigo() + "");
+            comboTutor.getSelectionModel().select(anterior.getCliente());
+            nomePet.setText(anterior.getNome());
+            comboRaca.getSelectionModel().select(anterior.getRaca());
+            sexoPet.setText(anterior.getSexo());
+            portePet.setText(anterior.getPorte());
+            especiePet.setText(anterior.getEspecie());
+            dataNascimento.setValue(anterior.getDataDeNascimento());
+            tratamentosEObs.setText(anterior.getTratamentosEspeciais());
+            condicoesFisicasPet.setText(anterior.getCondicoesFisicas());
+
+            btAcao.setText("Atualizar");
+        }
     }
+
+    
     
 
 }

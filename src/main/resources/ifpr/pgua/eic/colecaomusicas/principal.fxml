@@ -1,55 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1080.0" style="-fx-background-color: #D9D9D9;" stylesheets="@../../../../../java/ifpr/pgua/eic/colecaomusicas/css/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1080.0" style="-fx-background-color: #D9D9D9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
    <children>
-      <Button layoutX="61.0" layoutY="51.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="144.0" prefWidth="299.0" style="-fx-background-color: #2E8EC5;" stylesheets="@../../../../../java/ifpr/pgua/eic/colecaomusicas/css/principal.css" text="CADASTRO DE CLIENTES" textFill="WHITE">
+      <Button layoutX="61.0" layoutY="51.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="144.0" prefWidth="299.0" style="-fx-background-color: #2E8EC5;" text="CADASTRO DE CLIENTES" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="130.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/Patinha.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       <Button layoutX="398.0" layoutY="50.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="144.0" prefWidth="393.0" style="-fx-background-color: #085480;" text="AGENDAMENTOS" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="28.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/agendamento.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       <Button layoutX="855.0" layoutY="52.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="141.0" prefWidth="164.0" style="-fx-background-color: #6EB8E1;" text="CADASTRAR SERVIÇOS" textFill="WHITE" wrapText="true">
          <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="58.0" fitWidth="60.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/servico.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="300.0" layoutY="228.0" mnemonicParsing="false" onAction="#calendarioAgendamentos" prefHeight="191.0" prefWidth="491.0" style="-fx-background-color: #0F6FA5;" text="CALENDÁRIO DE AGENDAMENTOS" textFill="WHITE">
+         <font>
             <Font name="System Bold" size="22.0" />
          </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="44.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/calendario.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
-      <Button layoutX="300.0" layoutY="245.0" mnemonicParsing="false" onAction="#calendarioAgendamentos" prefHeight="151.0" prefWidth="491.0" style="-fx-background-color: #0F6FA5;" text="CALENDÁRIO DE AGENDAMENTOS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="61.0" layoutY="245.0" mnemonicParsing="false" prefHeight="144.0" prefWidth="183.0" style="-fx-background-color: #79A5BE;" text="CONFIGURAÇÕES" textFill="WHITE">
+      <Button layoutX="61.0" layoutY="228.0" mnemonicParsing="false" prefHeight="191.0" prefWidth="183.0" style="-fx-background-color: #79A5BE;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="108.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/config.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+         </graphic>
       </Button>
-      <Button layoutX="856.0" layoutY="245.0" mnemonicParsing="false" onAction="#cadastrarRaca" prefHeight="151.0" prefWidth="162.0" style="-fx-background-color: #2E8EC5;" text="CADASTRARRAÇA" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button layoutX="856.0" layoutY="229.0" mnemonicParsing="false" onAction="#cadastrarRaca" prefHeight="191.0" prefWidth="173.0" style="-fx-background-color: #2E8EC5;" text="CADASTRAR RAÇA" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="77.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/raça.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button alignment="CENTER" layoutX="61.0" layoutY="445.0" mnemonicParsing="false" onAction="#cadastroFuncionario" prefHeight="139.0" prefWidth="330.0" style="-fx-background-color: #0F6FA5;" text="CADASTRO DE FUNCIONÁRIOS" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <graphic>
+            <ImageView fitHeight="81.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/funcionario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="444.0" layoutY="446.0" mnemonicParsing="false" onAction="#cadastrarStatus" prefHeight="137.0" prefWidth="348.0" style="-fx-background-color: #2E8EC5;" text="CADASTRAR STATUS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="96.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/status.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
-      <Button layoutX="61.0" layoutY="445.0" mnemonicParsing="false" onAction="#cadastroFuncionario" prefHeight="139.0" prefWidth="354.0" style="-fx-background-color: #0F6FA5;" text="CADASTRO DE FUNCIONÁRIOS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="444.0" layoutY="446.0" mnemonicParsing="false" onAction="#cadastroStatus" prefHeight="137.0" prefWidth="348.0" style="-fx-background-color: #2E8EC5;" text="CADASTRAR STATUS" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Button>
-      <Button layoutX="857.0" layoutY="448.0" mnemonicParsing="false" onAction="#sair" prefHeight="133.0" prefWidth="162.0" style="-fx-background-color: #6EB8E1;" text="SAIR" textFill="WHITE">
+      <Button layoutX="857.0" layoutY="448.0" mnemonicParsing="false" onAction="#sair" prefHeight="133.0" prefWidth="162.0" style="-fx-background-color: #6EB8E1;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="83.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/sair.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

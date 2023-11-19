@@ -32,13 +32,13 @@ public class Principal {
 
     @FXML
     private void cadastrarCliente() {
-        App.pushScreen("CADASTROCLIENTE", o -> new CadastroCliente(repositorioCliente));
+        App.pushScreen("CADASTROCLIENTE", o-> new CadastroCliente(repositorioCliente));
     }
 
     @FXML
     void cadastrarServico(ActionEvent event) {
         // App.pushScreen("CADASTROSERVICO");
-        App.pushScreen("CADASTROSERVICO", o -> new CadastroServico(repositorioServico));
+        App.pushScreen("CADASTROSERVICO", o-> new CadastroServico(repositorioServico));
     }
 
     @FXML
@@ -48,7 +48,7 @@ public class Principal {
 
     @FXML
     void cadastrarRaca(ActionEvent event) {
-        App.pushScreen("CADASTRORACA", o -> new CadastroRaca(repositorioRaca));
+        App.pushScreen("CADASTRORACA", o-> new CadastroRaca(repositorioRaca));
     }
 
     @FXML
@@ -64,7 +64,7 @@ public class Principal {
     @FXML
     void cadastroFuncionario(ActionEvent event) {
         // App.pushScreen("CADASTROFUNCIONARIO");
-        App.pushScreen("CADASTROFUNCIONARIO", o -> new CadastroFuncionario(repositorioFuncionario));
+        App.pushScreen("CADASTROFUNCIONARIO", o-> new CadastroFuncionario(repositorioFuncionario));
     }
 
     @FXML
@@ -73,9 +73,8 @@ public class Principal {
     }
 
     @FXML
-    void cadastroStatus(ActionEvent event) {
-        App.pushScreen("CADASTROSTATUS", o->new CadastroStatus(repositorioStatus));
-    }
+    void cadastrarStatus(ActionEvent event) {
+        App.pushScreen("CADASTROSTATUS");
 
     @FXML
     void sair(ActionEvent event) {

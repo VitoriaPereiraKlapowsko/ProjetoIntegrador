@@ -7,4 +7,6 @@ import ifpr.pgua.eic.colecaomusicas.models.Pet;
 public interface PetDAO {
     Resultado criar(Pet pet);
     Resultado listar();
+    Resultado editar(int codigo, Pet novo);
+    Resultado deletar(int codigoo);
 }
