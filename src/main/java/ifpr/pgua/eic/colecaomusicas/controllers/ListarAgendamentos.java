@@ -14,18 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 
 public class ListarAgendamentos implements Initializable{
-
-    @FXML
-    private Button buscar;
-
-    @FXML
-    private DatePicker dataReserva;
 
     @FXML
     private ListView<Agendamento> listaAgendamentos;
