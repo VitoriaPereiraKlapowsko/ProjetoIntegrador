@@ -135,7 +135,7 @@ public class CadastroCliente implements Initializable {
     }
 
     @FXML
-    void listarPet(ActionEvent event) {
+    void listarPets(ActionEvent event) {
         App.pushScreen("LISTARPET");
     }
 

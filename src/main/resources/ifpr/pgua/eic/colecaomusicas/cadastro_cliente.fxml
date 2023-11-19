@@ -34,7 +34,7 @@
       <Label layoutX="320.0" layoutY="338.0" text="Endereço: *" />
       <Label layoutX="320.0" layoutY="399.0" text="Telefone: *" />
       <Button layoutX="164.0" layoutY="39.0" mnemonicParsing="false" onAction="#listarClientes" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: B1C4CF;" text="Listar Cliente" textOverrun="CLIP" />
-      <Button layoutX="253.0" layoutY="39.0" mnemonicParsing="false" onAction="#listarPet" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: B1C4CF;" text="Listar Pet" textOverrun="CLIP" />
+      <Button layoutX="253.0" layoutY="39.0" mnemonicParsing="false" onAction="#listarPets" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: B1C4CF;" text="Listar Pet" textOverrun="CLIP" />
       <TextField fx:id="tfCodigo" layoutX="316.0" layoutY="140.0" prefHeight="26.0" prefWidth="186.0" visible="false" />
    </children>
 </AnchorPane>

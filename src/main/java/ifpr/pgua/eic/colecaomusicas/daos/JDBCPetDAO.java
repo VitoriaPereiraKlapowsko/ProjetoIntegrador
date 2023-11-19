@@ -60,9 +60,10 @@ public class JDBCPetDAO implements PetDAO {
     public Resultado listar() {
         try (Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.prepareStatement(
-                    "SELECT tb_animal.*, tb_raca.nome AS nome_raca " +
-                            "FROM tb_animal " +
-                            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " + 
+                    "SELECT tb_animal.*, tb_raca.nome AS nome_raca,  " +
+                            "SELECT tb_animal.*, tb_cliente.nome as nome_cliente" +
+                            "FROM tb_animal" +
+                            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " +
                             "INNER JOIN tb_cliente ON tb_animal.cliente_codigo = tb_cliente.codigo");
 
             ResultSet rs = pstm.executeQuery();
@@ -81,10 +82,16 @@ public class JDBCPetDAO implements PetDAO {
                 String condicoesFisicas = rs.getString("condicoes_fisicas");
                 String nomeRaca = rs.getString("nome_raca");
                 String nomeCliente = rs.getString("nome_cliente");
+                String sobrenomeCliente = rs.getString("sobrenome_cliente");
+                int cpfCliente = rs.getInt("cpf_cnpj");
+                int inscricaoCliente = rs.getInt("inscricao_estadual");
+                String enderecoCliente = rs.getString("endereco");
+                int telefoneCliente = rs.getInt("telefone");
+                String emailCliente = rs.getString("email");
 
-                Cliente cliente = new Cliente(cliente_codigo, nomeCliente,null,null,null,null,null,null);
+                Cliente cliente = new Cliente(cliente_codigo, nomeCliente, sobrenomeCliente, cpfCliente,
+                        inscricaoCliente, enderecoCliente, telefoneCliente, emailCliente);
                 Raca raca = new Raca(raca_codigo, nomeRaca, null);
-                
 
                 Pet pet = new Pet(codigo, cliente, raca, nome, sexo, porte, especie,
                         dataDeNascimento,
