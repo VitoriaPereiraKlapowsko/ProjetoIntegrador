@@ -7,10 +7,6 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.daos.AgendamentoDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Agendamento;
-import ifpr.pgua.eic.colecaomusicas.models.Cliente;
-import ifpr.pgua.eic.colecaomusicas.models.Pet;
-import ifpr.pgua.eic.colecaomusicas.models.Servico;
-import ifpr.pgua.eic.colecaomusicas.models.Status;
 
 public class RepositorioAgendamento {
     private ArrayList<Agendamento> agendamentos;
@@ -22,14 +18,14 @@ public class RepositorioAgendamento {
         this.dao = dao;
     }
 
-    public Resultado cadastrarAgendamento(Cliente cliente, Pet pet, LocalDate dataReserva, Servico servico,
-            Status status, String tosadorBanhista, String observacaoServico,
+    public Resultado cadastrarAgendamento(int cliente, int pet, LocalDate dataReserva, int servico,
+            int status, String tosadorBanhista, String observacaoServico,
             String observacoesGerais, float valorTotalReserva) {
-        if (cliente == null) {
+        if (cliente <= 0) {
             return Resultado.erro("Cliente não selecionado!");
         }
 
-        if (pet == null) {
+        if (pet <= 0) {
             return Resultado.erro("Pet não selecionado!");
         }
 
@@ -37,11 +33,11 @@ public class RepositorioAgendamento {
             return Resultado.erro("Data de reserva não selecionada!");
         }
 
-        if (servico == null) {
+        if (servico <= 0) {
             return Resultado.erro("Serviço não selecionado!");
         }
 
-        if (status == null) {
+        if (status <= 0) {
             return Resultado.erro("Status não selecionado!");
         }
 
@@ -61,8 +57,9 @@ public class RepositorioAgendamento {
             return Resultado.erro("Informe um valor válido para a reserva!");
         }
 
-        Agendamento novoAgendamento = new Agendamento(cliente, pet, dataReserva, servico, status,
-                tosadorBanhista, observacaoServico, observacoesGerais, valorTotalReserva);
+        Agendamento novoAgendamento = new Agendamento(cliente, pet, dataReserva,
+                servico, status, tosadorBanhista, observacaoServico, valorTotalReserva);
+
         return dao.criar(novoAgendamento);
     }
 

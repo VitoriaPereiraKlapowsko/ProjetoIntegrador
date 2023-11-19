@@ -64,6 +64,7 @@ public class CadastroAgendamento {
 
     public CadastroAgendamento(RepositorioAgendamento repositorioAgendamento, RepositorioCliente repositorioCliente, RepositorioPet repositorioPet,
             RepositorioServico repositorioServico, RepositorioStatus repositorioStatus) {
+        this.repositorioAgendamento = repositorioAgendamento;
         this.repositorioCliente = repositorioCliente;
         this.repositorioPet = repositorioPet;
         this.repositorioServico = repositorioServico;
@@ -87,7 +88,7 @@ public class CadastroAgendamento {
         String observacoesGerais = observacoes.getText();
         float valorTotalReserva = Float.parseFloat(valorTotal.getText());
 
-        Resultado resultado = repositorioAgendamento.cadastrarAgendamento(cliente, pet, dataReserva, servico, status, tosadorBanhista, observacaoServico, observacoesGerais, valorTotalReserva);Resultado resultado = repositorioAgendamento.cadastrarAgendamento(cliente, pet, dataReserva, servico, status, tosadorBanhista, observacaoServico, observacoesGerais, valorTotalReserva);
+        Resultado resultado = repositorioAgendamento.cadastrarAgendamento(cliente, pet, dataReserva, servico, status, tosadorBanhista, observacaoServico, observacoesGerais, valorTotalReserva);
         Alert alert;
 
         if (resultado.foiErro()) {

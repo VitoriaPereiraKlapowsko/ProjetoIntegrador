@@ -13,7 +13,11 @@ import java.sql.Time;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.models.Agendamento;
+import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
+import ifpr.pgua.eic.colecaomusicas.models.Pet;
+import ifpr.pgua.eic.colecaomusicas.models.Servico;
+import ifpr.pgua.eic.colecaomusicas.models.Status;
 
 public class JDBCAgendamentoDAO implements AgendamentoDAO {
 
@@ -30,11 +34,11 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
                     "INSERT INTO tb_agendamento(cliente_codigo, animal_codigo, tipo_servico, funcionario_login, codigo_status, data_reserva_de_servico, horario_do_servico, valor_total_da_reserva, tosador_ou_banhista, observacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setInt(1, agendamento.getClienteCodigo().getCodigo());
-            pstm.setInt(2, agendamento.getAnimalCodigo().getCodigo());
-            pstm.setInt(3, agendamento.getTipoServico().getCodigoServico());
-            pstm.setInt(4, agendamento.getFuncionarioCodigo().getCodigo());
-            pstm.setInt(5, agendamento.getCodigoStatus().getCodigo());
+            pstm.setInt(1, agendamento.getClienteCodigo());
+            pstm.setInt(2, agendamento.getAnimalCodigo());
+            pstm.setInt(3, agendamento.getTipoServico());
+            pstm.setInt(4, agendamento.getFuncionarioCodigo());
+            pstm.setInt(5, agendamento.getCodigoStatus());
             pstm.setDate(6, Date.valueOf(agendamento.getDataReserva()));
             pstm.setTime(7, Time.valueOf(agendamento.getHorarioServico()));
             pstm.setFloat(8, agendamento.getValorTotal());
@@ -81,6 +85,7 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
                 Agendamento agendamento = new Agendamento(codigo, clienteCodigo, animalCodigo, tipoServico,
                         funcionarioCodigo, codigoStatus, dataReservaDoServico, horarioDoServico, valorTotalDaReserva,
                         tosadorOuBanhista, observacao);
+
                 lista.add(agendamento);
             }
 
