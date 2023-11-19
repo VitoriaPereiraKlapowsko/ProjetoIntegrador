@@ -70,4 +70,9 @@ public class RepositorioAgendamento {
     public Resultado listarAgendamentos() {
         return dao.listar();
     }
+
+    public Resultado deletarAgendamento(int codigo) {
+        return dao.cancelar(codigo);
+    }
+
 }

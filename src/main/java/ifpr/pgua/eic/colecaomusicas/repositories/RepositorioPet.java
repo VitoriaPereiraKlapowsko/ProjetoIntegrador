@@ -15,7 +15,7 @@ public class RepositorioPet {
     }
 
     public Resultado cadastrarPet(Cliente cliente,String nome, Raca raca, String sexo, String porte, String especie,
-                                  LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
+                LocalDate dataDeNascimento, String tratamentosEspeciais, String condicoesFisicas) {
         if (nome == null || nome.isBlank()) {
             return Resultado.erro("Nome inválido!");
         }

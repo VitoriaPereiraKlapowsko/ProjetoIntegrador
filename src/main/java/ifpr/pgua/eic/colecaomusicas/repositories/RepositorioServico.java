@@ -1,12 +1,10 @@
 package ifpr.pgua.eic.colecaomusicas.repositories;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
-import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 
 public class RepositorioServico {
@@ -45,5 +43,4 @@ public class RepositorioServico {
 
         return dao.editar(codigo, novo);
     }
-    
 }

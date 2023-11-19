@@ -89,4 +89,21 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
             return Resultado.erro(e.getMessage());
         }
     }
+
+    @Override
+    public Resultado cancelar(int codigo) { //função do deletar
+        try (Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM tb_agendamento WHERE codigo = ?");
+            pstm.setInt(1, codigo);
+
+            int ret = pstm.executeUpdate();
+
+            if (ret == 1) {
+                return Resultado.sucesso("Agendamento deletado com sucesso!", con);
+            }
+            return Resultado.erro("Nenhum Agendamento foi encontrado...");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
 }

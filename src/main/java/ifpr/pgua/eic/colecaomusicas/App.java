@@ -131,7 +131,7 @@ public class App extends BaseAppNavigator {
                 registraTela("LISTARAGENDAMENTOS",
                                 new ScreenRegistryFXML(App.class,
                                                 "consulta_agendamento.fxml",
-                                                o -> new ListarAgendamentos()));
+                                                o -> new ListarAgendamentos(repositorioAgendamento)));
 
                 registraTela("LISTARFUNCIONARIOS",
                                 new ScreenRegistryFXML(App.class,
@@ -162,6 +162,5 @@ public class App extends BaseAppNavigator {
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_status.fxml",
                                                 o -> new ListarStatus(repositorioStatus)));
-
         }
 }
