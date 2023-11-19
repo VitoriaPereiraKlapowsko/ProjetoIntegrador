@@ -67,6 +67,11 @@ public class Principal  {
     }
 
     @FXML
+    void cadastroStatus(ActionEvent event) {
+        App.pushScreen("CADASTROSTATUS");
+    }
+
+    @FXML
     void sair(ActionEvent event) {
         Platform.exit();
     }

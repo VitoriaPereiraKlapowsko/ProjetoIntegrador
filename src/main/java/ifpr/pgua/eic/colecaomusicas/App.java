@@ -2,6 +2,7 @@ package ifpr.pgua.eic.colecaomusicas;
 
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroAgendamento;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroServico;
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastroStatus;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroCliente;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
@@ -23,14 +24,17 @@ import ifpr.pgua.eic.colecaomusicas.daos.JDBCFuncionarioDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCRacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCServicoDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCStatusDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.RacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.StatusDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
 import javafx.fxml.FXMLLoader;
@@ -55,6 +59,9 @@ public class App extends BaseAppNavigator {
         private FuncionarioDAO funcionarioDAO = new JDBCFuncionarioDAO(FabricaConexoes.getInstance());
         private RepositorioFuncionario repositorioFuncionario = new RepositorioFuncionario(funcionarioDAO);
 
+        private StatusDAO statusDAO = new JDBCStatusDAO(FabricaConexoes.getInstance());
+        private RepositorioStatus repositorioStatus = new RepositorioStatus(statusDAO);
+
         public static void main(String[] args) {
                 launch();
         }
@@ -72,7 +79,8 @@ public class App extends BaseAppNavigator {
         @Override
         public void registrarTelas() {
                 registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml",
-                                o -> new Principal(repositorioServico, repositorioFuncionario, repositorioRaca, repositorioCliente)));
+                                o -> new Principal(repositorioServico, repositorioFuncionario, repositorioRaca,
+                                                repositorioCliente)));
 
                 registraTela("LOGIN", new ScreenRegistryFXML(App.class, "login.fxml", o -> new TelaLogin()));
 
@@ -141,6 +149,11 @@ public class App extends BaseAppNavigator {
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_raca.fxml",
                                                 o -> new ListarRacas(repositorioRaca)));
+
+                registraTela("CADASTROSTATUS",
+                                new ScreenRegistryFXML(App.class,
+                                                "cadastro_status.fxml",
+                                                o -> new CadastroStatus(repositorioStatus)));
 
         }
 }

@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
@@ -22,20 +21,10 @@ import javafx.scene.input.MouseEvent;
 public class ListarRacas implements Initializable {
 
     @FXML
-    private Button btAlterar;
-
-    @FXML
-    private Button btConfirmar;
-
-    @FXML
-    private Button btDeletar;
-
-    private Raca selecionado;
-
-    @FXML
     private ListView<Raca> listaRacas;
 
-     private RepositorioRaca repositorio;
+    private RepositorioRaca repositorio;
+    private Raca selecionado;
 
     public ListarRacas(RepositorioRaca repositorio) {
         this.repositorio = repositorio;
@@ -49,29 +38,30 @@ public class ListarRacas implements Initializable {
     }
 
     @FXML
-    void confirmar(ActionEvent event) {
-        App.popScreen();
-    }
-
-    @FXML
     void deletar(ActionEvent event) {
-        selecionado = listaRacas.getSelectionModel().getSelectedItem();
+    Raca selecionada = listaRacas.getSelectionModel().getSelectedItem();
 
-        if (selecionado != null) {
-            Resultado resultado = repositorio.deletarRaca(selecionado.getCodigo());
+    if (selecionada != null) {
+        Resultado resultado = repositorio.deletarRaca(selecionada.getCodigo());
 
-            if (resultado.foiSucesso()) {
-                listaRacas.getItems().remove(selecionado);
-                Alert alert = new Alert(AlertType.INFORMATION, "Raça deletada com sucesso!!!");
-                alert.showAndWait();
-            } else {
-                Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
-                alert.showAndWait();
-            }
+        if (resultado.foiSucesso()) {
+            listaRacas.getItems().remove(selecionada);
+            Alert alert = new Alert(AlertType.INFORMATION, "Raça deletada com sucesso!!!");
+            alert.showAndWait();
         } else {
-            Alert alert = new Alert(AlertType.WARNING, "Nenhuma raça selecionada...");
+            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
             alert.showAndWait();
         }
+    } else {
+        Alert alert = new Alert(AlertType.WARNING, "Nenhuma raça selecionada...");
+        alert.showAndWait();
+    }
+}
+
+
+    @FXML
+    void mostrarSelecionados(ActionEvent event) {
+
     }
 
     @FXML
@@ -79,11 +69,16 @@ public class ListarRacas implements Initializable {
         selecionado = listaRacas.getSelectionModel().getSelectedItem();
     }
 
+    @FXML
+    void voltar(ActionEvent event) {
+        App.popScreen();
+    }
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaRacas.getItems().clear();
 
-        listaRacas.getSelectionModel() .setSelectionMode(SelectionMode.MULTIPLE);
+        listaRacas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         Resultado resultado = repositorio.listarRaca();
 
@@ -94,7 +89,5 @@ public class ListarRacas implements Initializable {
             List lista = (List) resultado.comoSucesso().getObj();
             listaRacas.getItems().addAll(lista);
         }
-
     }
-
 }

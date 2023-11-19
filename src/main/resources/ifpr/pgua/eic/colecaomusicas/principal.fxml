@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1080.0" style="-fx-background-color: #D9D9D9;" stylesheets="@../../../../../java/ifpr/pgua/eic/colecaomusicas/css/principal.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1080.0" style="-fx-background-color: #D9D9D9;" stylesheets="@../../../../../java/ifpr/pgua/eic/colecaomusicas/css/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.Principal">
    <children>
       <Button layoutX="61.0" layoutY="51.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="144.0" prefWidth="299.0" style="-fx-background-color: #2E8EC5;" stylesheets="@../../../../../java/ifpr/pgua/eic/colecaomusicas/css/principal.css" text="CADASTRO DE CLIENTES" textFill="WHITE">
          <font>
@@ -16,9 +16,9 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <Button layoutX="855.0" layoutY="52.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="141.0" prefWidth="164.0" style="-fx-background-color: #6EB8E1;" text="SERVIÇOS" textFill="WHITE">
+      <Button layoutX="855.0" layoutY="52.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="141.0" prefWidth="164.0" style="-fx-background-color: #6EB8E1;" text="CADASTRAR SERVIÇOS" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Button>
       <Button layoutX="300.0" layoutY="245.0" mnemonicParsing="false" onAction="#calendarioAgendamentos" prefHeight="151.0" prefWidth="491.0" style="-fx-background-color: #0F6FA5;" text="CALENDÁRIO DE AGENDAMENTOS" textFill="WHITE">
@@ -41,7 +41,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="444.0" layoutY="446.0" mnemonicParsing="false" prefHeight="137.0" prefWidth="348.0" style="-fx-background-color: #2E8EC5;" text="EMAIL" textFill="WHITE">
+      <Button layoutX="444.0" layoutY="446.0" mnemonicParsing="false" onAction="#cadastroStatus" prefHeight="137.0" prefWidth="348.0" style="-fx-background-color: #2E8EC5;" text="CADASTRAR STATUS" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
