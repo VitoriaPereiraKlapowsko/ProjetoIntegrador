@@ -48,7 +48,7 @@ public class CadastroAgendamento implements Initializable {
     private DatePicker dataDaReserva;
 
     @FXML
-    private TextArea obsServico;
+    private TextField horarioReserva;
 
     @FXML
     private TextArea observacoes;
@@ -84,16 +84,16 @@ public class CadastroAgendamento implements Initializable {
         Cliente cliente = comboCliente.getValue();
         Pet pet = comboPet.getValue();
         LocalDate dataReserva = dataDaReserva.getValue();
+        String horarioDaReserva = horarioReserva.getText();
         Servico servico = comboServicos.getValue();
         Status status = comboStatus.getValue();
         String tosadorBanhista = tosadorOuBanhista.getText();
-        String observacaoServico = obsServico.getText();
         String observacoesGerais = observacoes.getText();
         float valorTotalReserva = Float.parseFloat(valorTotal.getText());
 
-        Resultado resultado = repositorioAgendamento.cadastrarAgendamento(cliente, pet, dataReserva, servico,
-                status, tosadorBanhista, observacaoServico,
-                observacoesGerais, valorTotalReserva);
+        Resultado resultado = repositorioAgendamento.cadastrarAgendamento(cliente, pet, servico,
+                status, dataReserva,horarioDaReserva, valorTotalReserva,tosadorBanhista,
+                observacoesGerais);
         Alert alert;
 
         if (resultado.foiErro()) {

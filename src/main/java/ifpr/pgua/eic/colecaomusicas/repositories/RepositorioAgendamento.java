@@ -8,6 +8,7 @@ import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.daos.AgendamentoDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Agendamento;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
+import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.models.Status;
@@ -22,9 +23,10 @@ public class RepositorioAgendamento {
         this.dao = dao;
     }
 
-    public Resultado cadastrarAgendamento(Cliente cliente, Pet pet, LocalDate dataReserva, Servico servico,
-            Status status, String tosadorBanhista, String observacaoServico,
-            String observacoesGerais, float valorTotalReserva) {
+    public Resultado cadastrarAgendamento(Cliente cliente, Pet pet, Servico servico,
+            Status status,LocalDate dataReserva, String horarioReserva, float valorTotalReserva, String tosadorBanhista,
+            String observacoesGerais) {
+
         if (cliente == null) {
             return Resultado.erro("Cliente não selecionado!");
         }
@@ -49,10 +51,6 @@ public class RepositorioAgendamento {
             return Resultado.erro("Informe o tosador ou banhista!");
         }
 
-        if (observacaoServico == null || observacaoServico.isEmpty() || observacaoServico.isBlank()) {
-            return Resultado.erro("Informe as observações do serviço!");
-        }
-
         if (observacoesGerais == null || observacoesGerais.isEmpty() || observacoesGerais.isBlank()) {
             return Resultado.erro("Informe as observações gerais!");
         }
@@ -61,8 +59,8 @@ public class RepositorioAgendamento {
             return Resultado.erro("Informe um valor válido para a reserva!");
         }
 
-        Agendamento novoAgendamento = new Agendamento(cliente, pet, dataReserva, 
-        servico, status, tosadorBanhista, observacaoServico, valorTotalReserva);
+        Agendamento novoAgendamento = new Agendamento(cliente, pet, servico,
+         status, dataReserva,horarioReserva , valorTotalReserva, tosadorBanhista,observacoesGerais);
 
         return dao.criar(novoAgendamento);
     }

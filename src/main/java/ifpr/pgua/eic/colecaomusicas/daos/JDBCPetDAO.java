@@ -81,6 +81,7 @@ public class JDBCPetDAO implements PetDAO {
                 String tratamentosEspeciais = rs.getString("tratamento_especiais");
                 String condicoesFisicas = rs.getString("condicoes_fisicas");
                 String nomeRaca = rs.getString("nome_raca");
+                
                 String nomeCliente = rs.getString("nome_cliente");
                 String sobrenomeCliente = rs.getString("sobrenome_cliente");
                 int cpfCnpj = rs.getInt("cpf_cliente");

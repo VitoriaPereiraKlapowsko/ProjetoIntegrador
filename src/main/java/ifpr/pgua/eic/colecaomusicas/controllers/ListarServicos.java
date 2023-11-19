@@ -75,7 +75,7 @@ public class ListarServicos implements Initializable {
         selecionado = listaServicos.getSelectionModel().getSelectedItem();
 
         if (selecionado != null) {
-            Resultado resultado = repositorio.deletarServico(selecionado.getCodigoServico());
+            Resultado resultado = repositorio.deletarServico(selecionado.getCodigo());
 
             if (resultado.foiSucesso()) {
                 listaServicos.getItems().remove(selecionado);

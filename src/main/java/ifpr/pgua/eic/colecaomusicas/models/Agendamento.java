@@ -1,24 +1,21 @@
 package ifpr.pgua.eic.colecaomusicas.models;
 
-import java.sql.Time;
 import java.time.LocalDate;
 
 public class Agendamento {
     private int codigo;
-    private int clienteCodigo;
-    private int animalCodigo;
-    private int tipoServico;
-    private int funcionarioCodigo;
-    private int codigoStatus;
+    private Cliente clienteCodigo;
+    private Pet animalCodigo;
+    private Servico tipoServico;
+    private Status codigoStatus;
     private LocalDate dataReserva;
-    private Time horarioServico;
+    private String horarioReserva;
     private float valorTotal;
     private String tosadorOuBanhista;
     private String observacao;
 
-    public Agendamento(int clienteCodigo, int animalCodigo, LocalDate dataReserva,
-            int tipoServico, int codigoStatus, String tosadorOuBanhista,
-            String observacao, float valorTotal) {
+    public Agendamento(Cliente clienteCodigo, Pet animalCodigo, Servico tipoServico, Status codigoStatus, LocalDate dataReserva,String horarioReserva, float valorTotal,
+            String tosadorOuBanhista, String observacao) {
         this.clienteCodigo = clienteCodigo;
         this.animalCodigo = animalCodigo;
         this.tipoServico = tipoServico;
@@ -26,29 +23,24 @@ public class Agendamento {
         this.dataReserva = dataReserva;
         this.valorTotal = valorTotal;
         this.tosadorOuBanhista = tosadorOuBanhista;
-        this.observacao = observacao;
+        this.horarioReserva = horarioReserva;
+                this.observacao = observacao;
     }
 
-    public Agendamento(int codigo, int clienteCodigo, int animalCodigo, int tipoServico,
-            int funcionarioCodigo, int codigoStatus, LocalDate dataReserva,
-            Time horarioServico, float valorTotal, String tosadorOuBanhista,
-            String observacao) {
+    public Agendamento(int codigo, Cliente clienteCodigo, Pet animalCodigo, Servico tipoServico, Status codigoStatus, LocalDate dataReserva,String horarioReserva, float valorTotal,
+            String tosadorOuBanhista, String observacao) {
         this.codigo = codigo;
         this.clienteCodigo = clienteCodigo;
         this.animalCodigo = animalCodigo;
         this.tipoServico = tipoServico;
-        this.funcionarioCodigo = funcionarioCodigo;
         this.codigoStatus = codigoStatus;
         this.dataReserva = dataReserva;
-        this.horarioServico = horarioServico;
+        this.horarioReserva = horarioReserva;
         this.valorTotal = valorTotal;
         this.tosadorOuBanhista = tosadorOuBanhista;
         this.observacao = observacao;
     }
 
-    public Agendamento(Cliente cliente, Pet pet, LocalDate dataReserva, Servico servico, Status status,
-            String tosadorBanhista, String observacaoServico, float valorTotalReserva) {
-    }
 
     public int getCodigo() {
         return codigo;
@@ -58,43 +50,36 @@ public class Agendamento {
         this.codigo = codigo;
     }
 
-    public int getClienteCodigo() {
+    public Cliente getClienteCodigo() {
         return clienteCodigo;
     }
 
-    public void setClienteCodigo(int clienteCodigo) {
+    public void setClienteCodigo(Cliente clienteCodigo) {
         this.clienteCodigo = clienteCodigo;
     }
 
-    public int getAnimalCodigo() {
+    public Pet getAnimalCodigo() {
         return animalCodigo;
     }
 
-    public void setAnimalCodigo(int animalCodigo) {
+    public void setAnimalCodigo(Pet animalCodigo) {
         this.animalCodigo = animalCodigo;
     }
 
-    public int getTipoServico() {
+    public Servico getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(int tipoServico) {
+    public void setTipoServico(Servico tipoServico) {
         this.tipoServico = tipoServico;
     }
 
-    public int getFuncionarioCodigo() {
-        return funcionarioCodigo;
-    }
 
-    public void setFuncionarioCodigo(int funcionarioCodigo) {
-        this.funcionarioCodigo = funcionarioCodigo;
-    }
-
-    public int getCodigoStatus() {
+    public Status getCodigoStatus() {
         return codigoStatus;
     }
 
-    public void setCodigoStatus(int codigoStatus) {
+    public void setCodigoStatus(Status codigoStatus) {
         this.codigoStatus = codigoStatus;
     }
 
@@ -106,12 +91,12 @@ public class Agendamento {
         this.dataReserva = dataReserva;
     }
 
-    public Time getHorarioServico() {
-        return horarioServico;
+    public String getHorarioReserva() {
+        return horarioReserva;
     }
 
-    public void setHorarioServico(Time horarioServico) {
-        this.horarioServico = horarioServico;
+    public void setHorarioReserva(String horarioReserva) {
+        this.horarioReserva = horarioReserva;
     }
 
     public float getValorTotal() {
@@ -141,13 +126,8 @@ public class Agendamento {
     @Override
     public String toString() {
         return "Agendamento: " +
-                "Cliente: " + clienteCodigo + "\n" +
-                "Animal: " + animalCodigo + "\n" +
-                "Serviço: " + tipoServico + "\n" +
-                "Funcionario: " + funcionarioCodigo + "\n" +
-                "Status: " + codigoStatus + "\n" +
                 "Data da Reserva: " + dataReserva + "\n" +
-                "Horario: " + horarioServico + "\n" +
+                "Horario: " + horarioReserva + "\n" +
                 "Valor: " + valorTotal + "\n" +
                 "Tosador Ou Banhista: " + tosadorOuBanhista + "\n" +
                 "Observacões: " + observacao + "\n" +

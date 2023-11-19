@@ -88,7 +88,7 @@ public class CadastroServico implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         if (anterior != null) {
-            tfCodigo.setText(anterior.getCodigoServico() + "");
+            tfCodigo.setText(anterior.getCodigo() + "");
             valorServico.setText(Float.toString(anterior.getValor()));
             descricaoServico.setText(anterior.getDescricao());
 

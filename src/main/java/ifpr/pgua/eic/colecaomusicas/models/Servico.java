@@ -16,7 +16,7 @@ public class Servico {
         this.valor = valor;
     }
 
-    public int getCodigoServico() {
+    public int getCodigo() {
         return codigoServico;
     }
 
