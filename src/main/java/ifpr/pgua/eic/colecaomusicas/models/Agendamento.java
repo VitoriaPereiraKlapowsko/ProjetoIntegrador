@@ -46,6 +46,10 @@ public class Agendamento {
         this.observacao = observacao;
     }
 
+    public Agendamento(Cliente cliente, Pet pet, LocalDate dataReserva, Servico servico, Status status,
+            String tosadorBanhista, String observacaoServico, float valorTotalReserva) {
+    }
+
     public int getCodigo() {
         return codigo;
     }

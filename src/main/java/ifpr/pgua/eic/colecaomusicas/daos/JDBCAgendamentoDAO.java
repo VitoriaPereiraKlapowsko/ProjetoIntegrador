@@ -13,11 +13,6 @@ import java.sql.Time;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.models.Agendamento;
-import ifpr.pgua.eic.colecaomusicas.models.Cliente;
-import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
-import ifpr.pgua.eic.colecaomusicas.models.Pet;
-import ifpr.pgua.eic.colecaomusicas.models.Servico;
-import ifpr.pgua.eic.colecaomusicas.models.Status;
 
 public class JDBCAgendamentoDAO implements AgendamentoDAO {
 
@@ -40,7 +35,7 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
             pstm.setInt(4, agendamento.getFuncionarioCodigo());
             pstm.setInt(5, agendamento.getCodigoStatus());
             pstm.setDate(6, Date.valueOf(agendamento.getDataReserva()));
-            pstm.setTime(7, Time.valueOf(agendamento.getHorarioServico()));
+            pstm.setTime(7, Time.valueOf(agendamento.getHorarioServico().toLocalTime()));
             pstm.setFloat(8, agendamento.getValorTotal());
             pstm.setString(9, agendamento.getTosadorOuBanhista());
             pstm.setString(10, agendamento.getObservacao());
