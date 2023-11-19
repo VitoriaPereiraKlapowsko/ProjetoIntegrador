@@ -60,10 +60,11 @@ public class JDBCPetDAO implements PetDAO {
     public Resultado listar() {
         try (Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.prepareStatement(
-                "SELECT tb_animal.*, tb_raca.nome AS nome_raca, tb_cliente.nome as nome_cliente " +
-                "FROM tb_animal " +
-                "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " +
-                "INNER JOIN tb_cliente ON tb_animal.cliente_codigo = tb_cliente.codigo");
+                    "SELECT tb_animal.*, tb_raca.nome AS nome_raca, tb_cliente.nome as nome_cliente, tb_cliente.sobrenome as sobrenome_cliente, tb_cliente.cpf_cnpj as cpf_cliente, tb_cliente.inscricao_estadual as inscricao_cliente, tb_cliente.endereco as endereco, tb_cliente.telefone as telefone, tb_cliente.email as email "
+                            +
+                            "FROM tb_animal " +
+                            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " +
+                            "INNER JOIN tb_cliente ON tb_animal.cliente_codigo = tb_cliente.codigo");
 
             ResultSet rs = pstm.executeQuery();
             ArrayList<Pet> lista = new ArrayList<>();
@@ -82,14 +83,14 @@ public class JDBCPetDAO implements PetDAO {
                 String nomeRaca = rs.getString("nome_raca");
                 String nomeCliente = rs.getString("nome_cliente");
                 String sobrenomeCliente = rs.getString("sobrenome_cliente");
-                int cpfCliente = rs.getInt("cpf_cnpj");
-                int inscricaoCliente = rs.getInt("inscricao_estadual");
-                String enderecoCliente = rs.getString("endereco");
-                int telefoneCliente = rs.getInt("telefone");
-                String emailCliente = rs.getString("email");
+                int cpfCnpj = rs.getInt("cpf_cliente");
+                int inscricaoEstadual = rs.getInt("inscricao_cliente");
+                String endereco = rs.getString("endereco");
+                int telefone = rs.getInt("telefone");
+                String email = rs.getString("email");
 
-                Cliente cliente = new Cliente(cliente_codigo, nomeCliente, sobrenomeCliente, cpfCliente,
-                        inscricaoCliente, enderecoCliente, telefoneCliente, emailCliente);
+                Cliente cliente = new Cliente(cliente_codigo, nomeCliente, sobrenomeCliente, cpfCnpj, inscricaoEstadual,
+                        endereco, telefone, email);
                 Raca raca = new Raca(raca_codigo, nomeRaca, null);
 
                 Pet pet = new Pet(codigo, cliente, raca, nome, sexo, porte, especie,

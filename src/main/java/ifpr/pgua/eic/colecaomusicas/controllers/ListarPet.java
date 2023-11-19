@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.ListView;
 
 public class ListarPet implements Initializable{
@@ -39,6 +40,11 @@ public class ListarPet implements Initializable{
 
     @FXML
     void editar(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void selecionar(MouseEvent event) {
 
     }
 
