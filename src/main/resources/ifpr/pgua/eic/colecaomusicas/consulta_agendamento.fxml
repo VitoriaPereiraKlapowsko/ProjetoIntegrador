@@ -17,8 +17,8 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="431.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
-      <Button layoutX="557.0" layoutY="539.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <Button layoutX="400.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
+      <Button layoutX="526.0" layoutY="539.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <Label layoutX="134.0" layoutY="102.0" text="Data da Reserva:" />
       <DatePicker fx:id="dataReserva" layoutX="134.0" layoutY="120.0" prefHeight="26.0" prefWidth="172.0" />
       <Button fx:id="buscar" layoutX="353.0" layoutY="120.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: FFFFFF;" text="Buscar" />
@@ -34,5 +34,6 @@
       <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="321.0" layoutY="211.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
       <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="520.0" layoutY="210.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
       <Line endX="11.600006103515625" endY="-15.20001220703125" layoutX="717.0" layoutY="211.0" startX="11.600006103515625" startY="-40.0" stroke="#b1b1b1" />
+      <Button layoutX="648.0" layoutY="540.0" mnemonicParsing="false" onAction="#voltar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Voltar" />
    </children>
 </AnchorPane>

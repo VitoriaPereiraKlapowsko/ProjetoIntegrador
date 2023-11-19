@@ -60,11 +60,10 @@ public class JDBCPetDAO implements PetDAO {
     public Resultado listar() {
         try (Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.prepareStatement(
-                    "SELECT tb_animal.*, tb_raca.nome AS nome_raca,  " +
-                            "SELECT tb_animal.*, tb_cliente.nome as nome_cliente" +
-                            "FROM tb_animal" +
-                            "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " +
-                            "INNER JOIN tb_cliente ON tb_animal.cliente_codigo = tb_cliente.codigo");
+                "SELECT tb_animal.*, tb_raca.nome AS nome_raca, tb_cliente.nome as nome_cliente " +
+                "FROM tb_animal " +
+                "INNER JOIN tb_raca ON tb_animal.raca_codigo = tb_raca.codigo " +
+                "INNER JOIN tb_cliente ON tb_animal.cliente_codigo = tb_cliente.codigo");
 
             ResultSet rs = pstm.executeQuery();
             ArrayList<Pet> lista = new ArrayList<>();

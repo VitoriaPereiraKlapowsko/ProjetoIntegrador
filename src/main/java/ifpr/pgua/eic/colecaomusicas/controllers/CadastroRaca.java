@@ -7,9 +7,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
-import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
-import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,9 +26,6 @@ public class CadastroRaca implements Initializable {
 
     @FXML
     private TextField tfCodigo;
-
-     @FXML
-    private Button aba;
 
     @FXML
     private Button btAcao;

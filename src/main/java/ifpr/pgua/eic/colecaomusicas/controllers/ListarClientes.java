@@ -8,8 +8,6 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
-import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
-import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -6,7 +6,6 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.daos.ClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
-import ifpr.pgua.eic.colecaomusicas.models.Raca;
 
 public class RepositorioCliente {
     private ArrayList<Cliente> clientes;

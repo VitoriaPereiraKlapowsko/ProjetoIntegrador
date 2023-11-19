@@ -14,11 +14,14 @@ import ifpr.pgua.eic.colecaomusicas.controllers.ListarFuncionarios;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarPet;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarRacas;
 import ifpr.pgua.eic.colecaomusicas.controllers.ListarServicos;
+import ifpr.pgua.eic.colecaomusicas.controllers.ListarStatus;
 import ifpr.pgua.eic.colecaomusicas.controllers.Principal;
 import ifpr.pgua.eic.colecaomusicas.controllers.TelaLogin;
+import ifpr.pgua.eic.colecaomusicas.daos.AgendamentoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.ClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.FabricaConexoes;
 import ifpr.pgua.eic.colecaomusicas.daos.FuncionarioDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCAgendamentoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCFuncionarioDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPetDAO;
@@ -29,6 +32,7 @@ import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.RacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.StatusDAO;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioAgendamento;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
@@ -37,10 +41,6 @@ import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class App extends BaseAppNavigator {
 
@@ -61,6 +61,9 @@ public class App extends BaseAppNavigator {
 
         private StatusDAO statusDAO = new JDBCStatusDAO(FabricaConexoes.getInstance());
         private RepositorioStatus repositorioStatus = new RepositorioStatus(statusDAO);
+
+        private AgendamentoDAO agendamentoDAO = new JDBCAgendamentoDAO(FabricaConexoes.getInstance());
+        private RepositorioAgendamento repositorioAgendamento = new RepositorioAgendamento(agendamentoDAO);
 
         public static void main(String[] args) {
                 launch();
@@ -118,7 +121,7 @@ public class App extends BaseAppNavigator {
                 registraTela("CADASTRARGENDAMENTO",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_agendamento.fxml",
-                                                o -> new CadastroAgendamento()));
+                                                o -> new CadastroAgendamento(repositorioAgendamento, repositorioCliente, repositorioPet, repositorioServico, repositorioStatus)));
 
                 registraTela("CADASTROFUNCIONARIO",
                                 new ScreenRegistryFXML(App.class,
@@ -154,6 +157,11 @@ public class App extends BaseAppNavigator {
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_status.fxml",
                                                 o -> new CadastroStatus(repositorioStatus)));
+
+                registraTela("LISTARSTATUS",
+                                new ScreenRegistryFXML(App.class,
+                                                "lista_status.fxml",
+                                                o -> new ListarStatus(repositorioStatus)));
 
         }
 }

@@ -21,6 +21,6 @@
       <Button fx:id="btAcao" layoutX="562.0" layoutY="375.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <Button layoutY="52.0" mnemonicParsing="false" onAction="#abaListarStatus" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: B1C4CF;" text="Lista" />
       <TextField fx:id="tfCodigo" layoutX="396.0" layoutY="146.0" prefHeight="26.0" prefWidth="146.0" visible="false" />
-      <TextField fx:id="tfCodigo" layoutX="307.0" layoutY="278.0" mouseTransparent="true" prefHeight="26.0" prefWidth="472.0" visible="false" />
+      <TextField fx:id="descricaoStatus" layoutX="307.0" layoutY="278.0" mouseTransparent="true" prefHeight="26.0" prefWidth="472.0" visible="false" />
    </children>
 </AnchorPane>

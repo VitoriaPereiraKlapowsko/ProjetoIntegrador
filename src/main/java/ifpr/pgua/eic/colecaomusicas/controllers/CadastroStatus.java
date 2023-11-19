@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
-import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.models.Status;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
 import javafx.event.ActionEvent;
@@ -34,9 +33,9 @@ public class CadastroStatus implements Initializable{
 
     @FXML
     void abaListarStatus(ActionEvent event) {
-
+        App.pushScreen("LISTARSTATUS");
     }
-
+    
     @FXML
     void cancelar(ActionEvent event) {
         App.popScreen();
@@ -79,7 +78,6 @@ public class CadastroStatus implements Initializable{
         if (anterior != null) {
             tfCodigo.setText(anterior.getCodigo() + "");
             descricaoStatus.setText(anterior.getDescricao());
-
             btAcao.setText("Atualizar");
         }
     }

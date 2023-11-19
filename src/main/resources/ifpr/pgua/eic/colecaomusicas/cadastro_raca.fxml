@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.CadastroRaca">
    <children>
       <Region prefHeight="78.0" prefWidth="1062.0" style="-fx-background-color: EFEFEF;" />
       <Label layoutX="432.0" layoutY="24.0" text="CADASTRO RAÇA">
@@ -22,6 +22,6 @@
       <TextField fx:id="descricaoRaca" layoutX="379.0" layoutY="296.0" prefHeight="26.0" prefWidth="271.0" />
       <Label layoutX="382.0" layoutY="277.0" text="Descrição:" />
       <TextField fx:id="tfCodigo" layoutX="378.0" layoutY="152.0" prefHeight="26.0" prefWidth="271.0" visible="false" />
-      <Button fx:id="aba" layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListarRaca" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
+      <Button layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListarRaca" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
    </children>
 </AnchorPane>

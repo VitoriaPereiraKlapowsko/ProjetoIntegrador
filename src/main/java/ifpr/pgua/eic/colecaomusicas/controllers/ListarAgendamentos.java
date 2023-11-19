@@ -34,7 +34,12 @@ public class ListarAgendamentos {
 
     @FXML
     void confirmar(ActionEvent event) {
+        App.popScreen();
+    }
 
+    @FXML
+    void voltar(ActionEvent event) {
+        App.pushScreen("PRINCIPAL");
     }
 
 }

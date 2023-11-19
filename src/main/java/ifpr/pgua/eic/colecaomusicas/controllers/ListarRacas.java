@@ -39,24 +39,24 @@ public class ListarRacas implements Initializable {
 
     @FXML
     void deletar(ActionEvent event) {
-    Raca selecionada = listaRacas.getSelectionModel().getSelectedItem();
+        selecionado = listaRacas.getSelectionModel().getSelectedItem();
 
-    if (selecionada != null) {
-        Resultado resultado = repositorio.deletarRaca(selecionada.getCodigo());
+        if (selecionado != null) {
+            Resultado resultado = repositorio.deletarRaca(selecionado.getCodigo());
 
-        if (resultado.foiSucesso()) {
-            listaRacas.getItems().remove(selecionada);
-            Alert alert = new Alert(AlertType.INFORMATION, "Raça deletada com sucesso!!!");
-            alert.showAndWait();
+            if (resultado.foiSucesso()) {
+                listaRacas.getItems().remove(selecionado);
+                Alert alert = new Alert(AlertType.INFORMATION, "Raça deletada com sucesso!!!");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+                alert.showAndWait();
+            }
         } else {
-            Alert alert = new Alert(AlertType.ERROR, resultado.getMsg());
+            Alert alert = new Alert(AlertType.WARNING, "Nenhuma raça selecionada...");
             alert.showAndWait();
         }
-    } else {
-        Alert alert = new Alert(AlertType.WARNING, "Nenhuma raça selecionada...");
-        alert.showAndWait();
     }
-}
 
 
     @FXML

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import com.github.hugoperlin.results.Resultado;
 
-import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.models.Status;
 
 public class JDBCStatusDAO implements StatusDAO {

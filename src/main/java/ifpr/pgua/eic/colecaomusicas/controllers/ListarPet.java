@@ -8,7 +8,6 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
-import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +42,7 @@ public class ListarPet implements Initializable{
 
     }
 
-     @Override
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaPets.getItems().clear();
         Resultado resultado = repositorio.listarPet();
