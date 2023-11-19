@@ -31,6 +31,15 @@ public class CadastroStatus implements Initializable{
     @FXML
     private TextField tfCodigo;
 
+    public CadastroStatus(RepositorioStatus repositorio) {
+        this.repositorio = repositorio;
+    }
+
+    public CadastroStatus(RepositorioStatus repositorio, Status anterior) {
+        this.repositorio = repositorio;
+        this.anterior = anterior;
+    }
+
     @FXML
     void abaListarStatus(ActionEvent event) {
         App.pushScreen("LISTARSTATUS");
@@ -39,15 +48,6 @@ public class CadastroStatus implements Initializable{
     @FXML
     void cancelar(ActionEvent event) {
         App.popScreen();
-    }
-
-    public CadastroStatus(RepositorioStatus repositorio) {
-        this.repositorio = repositorio;
-    }
-
-    public CadastroStatus(RepositorioStatus repositorio, Status anterior) {
-        this.repositorio = repositorio;
-        this.anterior = anterior;
     }
 
     @FXML

@@ -74,7 +74,9 @@ public class Principal {
 
     @FXML
     void cadastrarStatus(ActionEvent event) {
-        App.pushScreen("CADASTROSTATUS");
+        App.pushScreen("CADASTROSTATUS", o-> new CadastroStatus(repositorioStatus));
+
+    }
 
     @FXML
     void sair(ActionEvent event) {

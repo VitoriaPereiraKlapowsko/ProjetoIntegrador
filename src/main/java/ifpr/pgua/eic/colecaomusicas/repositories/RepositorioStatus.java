@@ -23,8 +23,7 @@ public class RepositorioStatus {
 
             return Resultado.erro("Descrição inválida!");
         }
-
-       
+  
         Status status = new Status(descricao);
         return dao.criar(status);
     }

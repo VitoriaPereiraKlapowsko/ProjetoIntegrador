@@ -43,7 +43,7 @@ public class ListarStatus implements Initializable {
     @FXML
     void editar(ActionEvent event) {
         if (selecionado != null) {
-            App.pushScreen("CADASTROSTATUS", o -> new CadastroStatus(repositorio, selecionado));
+            App.pushScreen("CADASTROSTATUS", o-> new CadastroStatus(repositorio, selecionado));
         }
     }
 

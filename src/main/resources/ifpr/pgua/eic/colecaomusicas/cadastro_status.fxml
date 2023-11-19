@@ -16,11 +16,11 @@
          </font>
       </Label>
       <TextField fx:id="tfCodigo" layoutX="378.0" layoutY="206.0" prefHeight="26.0" prefWidth="271.0" visible="false" />
-      <Button layoutX="409.0" layoutY="380.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
-      <Button fx:id="btAcao" layoutX="535.0" layoutY="380.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
-      <TextField fx:id="descricaoRaca" layoutX="378.0" layoutY="238.0" prefHeight="26.0" prefWidth="271.0" />
+      <Button layoutX="531.0" layoutY="406.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Cancelar" />
+      <Button fx:id="btAcao" layoutX="408.0" layoutY="405.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
+      <TextField fx:id="descricaoStatus" layoutX="378.0" layoutY="238.0" prefHeight="26.0" prefWidth="271.0" />
       <Label layoutX="381.0" layoutY="219.0" text="Descrição:" />
       <TextField fx:id="tfCodigo" layoutX="378.0" layoutY="152.0" prefHeight="26.0" prefWidth="271.0" visible="false" />
-      <Button layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListarRaca" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
+      <Button layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#abaListarStatus" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
    </children>
 </AnchorPane>
