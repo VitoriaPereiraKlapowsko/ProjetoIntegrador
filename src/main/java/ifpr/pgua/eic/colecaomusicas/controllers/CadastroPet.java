@@ -68,7 +68,8 @@ public class CadastroPet implements Initializable {
     private RepositorioPet repositorio;
     private Pet anterior;
 
-    public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca, RepositorioCliente repositorioCliente) {
+    public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca,
+            RepositorioCliente repositorioCliente) {
         this.repositorioPet = repositorioPet;
         this.repositorioRaca = repositorioRaca;
         this.repositorioCliente = repositorioCliente;
@@ -100,10 +101,11 @@ public class CadastroPet implements Initializable {
         Resultado resultado;
         if (anterior == null) {
             resultado = repositorioPet.cadastrarPet(cliente, raca, nome, sexo, porte, especie, dataDeNascimento,
-                tratamentosEspeciais, condicoesFisicas);
+                    tratamentosEspeciais, condicoesFisicas);
         } else {
-            resultado = repositorio.alterarPet(Integer.valueOf(codigo), cliente, raca,nome, sexo, porte, especie, dataDeNascimento,
-                tratamentosEspeciais, condicoesFisicas);
+            resultado = repositorio.alterarPet(Integer.valueOf(codigo), cliente, raca, nome, sexo, porte, especie,
+                    dataDeNascimento,
+                    tratamentosEspeciais, condicoesFisicas);
         }
 
         Alert alert;
@@ -123,23 +125,20 @@ public class CadastroPet implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Resultado resultadoRaca = repositorioRaca.listarRaca();
-
-        if (resultadoRaca.foiSucesso()) {
-            List<Raca> raca = (List<Raca>) resultadoRaca.comoSucesso().getObj();
-            comboRaca.getItems().addAll(raca);
-        } else {
-            Alert alert = new Alert(AlertType.ERROR, resultadoRaca.getMsg());
-            alert.showAndWait();
+        if (repositorioRaca != null) {
+            Resultado resultadoRaca = repositorioRaca.listarRaca();
+            if (resultadoRaca != null && resultadoRaca.foiSucesso()) {
+                List<Raca> racas = (List<Raca>) resultadoRaca.comoSucesso().getObj();
+                comboRaca.getItems().addAll(racas);
+            }
         }
 
-        Resultado resultadoClientes = repositorioCliente.listarClientes();
-        if (resultadoClientes.foiSucesso()) {
-            List<Cliente> clientes = (List<Cliente>) resultadoClientes.comoSucesso().getObj();
-            comboTutor.getItems().addAll(clientes);
-        } else {
-            Alert alert = new Alert(AlertType.ERROR, resultadoClientes.getMsg());
-            alert.showAndWait();
+        if (repositorioCliente != null) {
+            Resultado resultadoClientes = repositorioCliente.listarClientes();
+            if (resultadoClientes != null && resultadoClientes.foiSucesso()) {
+                List<Cliente> clientes = (List<Cliente>) resultadoClientes.comoSucesso().getObj();
+                comboTutor.getItems().addAll(clientes);
+            }
         }
 
         if (anterior != null) {
@@ -157,8 +156,4 @@ public class CadastroPet implements Initializable {
             btAcao.setText("Atualizar");
         }
     }
-
-    
-    
-
 }
