@@ -43,20 +43,23 @@ public class ListarStatus implements Initializable {
     @FXML
     void editar(ActionEvent event) {
         if (selecionado != null) {
-            App.pushScreen("CADASTROSTATUS", o-> new CadastroStatus(repositorio, selecionado));
+            App.pushScreen("CADASTROSTATUS", o -> new CadastroStatus(repositorio, selecionado));
         }
     }
 
     @FXML
     private void selecionar() {
-        selecionado = listaStatus.getSelectionModel().getSelectedItem();
+        Status itemSelecionado = listaStatus.getSelectionModel().getSelectedItem();
+        if (itemSelecionado != null) {
+            selecionado = itemSelecionado;
+        }
     }
 
-     @Override
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaStatus.getItems().clear();
 
-        listaStatus.getSelectionModel() .setSelectionMode(SelectionMode.MULTIPLE);
+        listaStatus.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         Resultado resultado = repositorio.listarStatus();
 
@@ -90,5 +93,4 @@ public class ListarStatus implements Initializable {
             alert.showAndWait();
         }
     }
-
 }

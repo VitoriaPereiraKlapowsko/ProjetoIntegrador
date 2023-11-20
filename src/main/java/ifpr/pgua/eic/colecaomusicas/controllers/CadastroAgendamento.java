@@ -111,15 +111,6 @@ public class CadastroAgendamento implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Resultado resultadoAgendamento = repositorioAgendamento.listarAgendamentos();
-
-        if (resultadoAgendamento.foiSucesso()) {
-            List<Status> statusList = (List<Status>) resultadoAgendamento.comoSucesso().getObj();
-            comboStatus.getItems().addAll(statusList);
-        } else {
-            Alert alert = new Alert(AlertType.ERROR, resultadoAgendamento.getMsg());
-            alert.showAndWait();
-        }
 
         Resultado resultadoClientes = repositorioCliente.listarClientes();
         if (resultadoClientes.foiSucesso()) {
