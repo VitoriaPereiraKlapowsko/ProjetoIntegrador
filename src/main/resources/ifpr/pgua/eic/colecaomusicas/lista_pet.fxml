@@ -21,7 +21,7 @@
          </font>
       </Label>
       <Button layoutX="465.0" layoutY="565.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
-      <ListView fx:id="listaPets" layoutX="83.0" layoutY="147.0" onMouseClicked="#selecionar" prefHeight="357.0" prefWidth="894.0" />
+       <ListView fx:id="listaPets" layoutX="83.0" layoutY="147.0" onMouseClicked="#selecionar" prefHeight="357.0" prefWidth="894.0" />
       <Button layoutX="83.0" layoutY="512.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
       <Button layoutX="191.0" layoutY="512.0" mnemonicParsing="false" onAction="#alterar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Editar" />
    </children>
