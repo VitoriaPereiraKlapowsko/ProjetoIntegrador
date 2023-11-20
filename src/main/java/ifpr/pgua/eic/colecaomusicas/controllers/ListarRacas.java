@@ -58,7 +58,6 @@ public class ListarRacas implements Initializable {
         }
     }
 
-
     @FXML
     void mostrarSelecionados(ActionEvent event) {
 
@@ -88,6 +87,24 @@ public class ListarRacas implements Initializable {
         } else {
             List lista = (List) resultado.comoSucesso().getObj();
             listaRacas.getItems().addAll(lista);
+
         }
     }
+
+    @FXML
+    void atualizar(ActionEvent event) {
+         listaRacas.getItems().clear();
+
+        // Busque novamente os dados do repositório
+        Resultado resultadoLista = repositorio.listarRaca();
+
+        if (resultadoLista.foiSucesso()) {
+            List<Raca> listaAtualizada = (List<Raca>) resultadoLista.comoSucesso().getObj();
+            listaRacas.getItems().addAll(listaAtualizada);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoLista.getMsg());
+            alert.showAndWait();
+        }
+    }
+
 }

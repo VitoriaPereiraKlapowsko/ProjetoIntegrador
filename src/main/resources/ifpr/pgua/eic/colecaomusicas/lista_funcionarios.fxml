@@ -23,7 +23,8 @@
       <Button fx:id="btConfirmar" layoutX="465.0" layoutY="565.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Voltar" />
       <ListView fx:id="listaFuncionarios" layoutX="83.0" layoutY="147.0" onMouseClicked="#selecionar" prefHeight="357.0" prefWidth="894.0" />
       <Button fx:id="btDeletar" layoutX="83.0" layoutY="512.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
-      <Button fx:id="btAlterar" layoutX="191.0" layoutY="512.0" mnemonicParsing="false" onAction="#alterar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Alterar" />
+      <Button fx:id="btAlterar" layoutX="191.0" layoutY="512.0" mnemonicParsing="false" onAction="#alterar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Editar" />
       <Button layoutX="136.0" layoutY="553.0" mnemonicParsing="false" onAction="#mostrarSelecionados" text="Selecionados" visible="false" />
+      <Button layoutX="302.0" layoutY="512.0" mnemonicParsing="false" onAction="#atualizar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Atualizar" />
    </children>
 </AnchorPane>

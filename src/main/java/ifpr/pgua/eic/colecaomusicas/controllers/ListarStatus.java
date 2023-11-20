@@ -9,6 +9,7 @@ import com.github.hugoperlin.results.Resultado;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Status;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
 import javafx.event.ActionEvent;
@@ -87,6 +88,22 @@ public class ListarStatus implements Initializable {
             }
         } else {
             Alert alert = new Alert(AlertType.WARNING, "Nenhum Status selecionado...");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void atualizar(ActionEvent event) {
+         listaStatus.getItems().clear();
+
+        // Busque novamente os dados do repositório
+        Resultado resultadoLista = repositorio.listarStatus();
+
+        if (resultadoLista.foiSucesso()) {
+            List<Status> listaAtualizada = (List<Status>) resultadoLista.comoSucesso().getObj();
+            listaStatus.getItems().addAll(listaAtualizada);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoLista.getMsg());
             alert.showAndWait();
         }
     }

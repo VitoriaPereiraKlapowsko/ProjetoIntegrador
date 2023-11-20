@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
 import javafx.event.ActionEvent;
@@ -114,6 +115,22 @@ public class ListarFuncionarios implements Initializable {
             listaFuncionarios.getItems().addAll(lista);
         }
 
+    }
+
+    @FXML
+    void atualizar(ActionEvent event) {
+         listaFuncionarios.getItems().clear();
+
+        // Busque novamente os dados do repositório
+        Resultado resultadoLista = repositorio.listarFuncionarios();
+
+        if (resultadoLista.foiSucesso()) {
+            List<Funcionario> listaAtualizada = (List<Funcionario>) resultadoLista.comoSucesso().getObj();
+            listaFuncionarios.getItems().addAll(listaAtualizada);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoLista.getMsg());
+            alert.showAndWait();
+        }
     }
 
 }

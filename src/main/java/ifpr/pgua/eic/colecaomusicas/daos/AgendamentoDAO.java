@@ -8,4 +8,5 @@ public interface AgendamentoDAO {
     Resultado criar(Agendamento agendamento);
     Resultado listar();
     Resultado cancelar(int codigo); //função do deletar
+    Resultado atualizarStatus(int codigoAgendamento, int novoCodigo);
 }

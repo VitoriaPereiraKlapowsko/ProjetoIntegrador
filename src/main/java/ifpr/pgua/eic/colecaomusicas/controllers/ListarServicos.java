@@ -9,6 +9,7 @@ import com.github.hugoperlin.results.Resultado;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import javafx.event.ActionEvent;
@@ -87,6 +88,22 @@ public class ListarServicos implements Initializable {
             }
         } else {
             Alert alert = new Alert(AlertType.WARNING, "Nenhum serviço selecionado...");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void atualizar(ActionEvent event) {
+         listaServicos.getItems().clear();
+
+        // Busque novamente os dados do repositório
+        Resultado resultadoLista = repositorio.listarServicos();
+
+        if (resultadoLista.foiSucesso()) {
+            List<Servico> listaAtualizada = (List<Servico>) resultadoLista.comoSucesso().getObj();
+            listaServicos.getItems().addAll(listaAtualizada);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoLista.getMsg());
             alert.showAndWait();
         }
     }

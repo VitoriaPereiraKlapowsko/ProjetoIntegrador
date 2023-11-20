@@ -1,5 +1,8 @@
 package ifpr.pgua.eic.colecaomusicas.repositories;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -71,6 +74,10 @@ public class RepositorioAgendamento {
 
     public Resultado deletarAgendamento(int codigo) {
         return dao.cancelar(codigo);
+    }
+
+    public Resultado atualizarAgendamento(int codigoAgendamento, int novoCodigo) {
+        return dao.atualizarStatus(codigoAgendamento, novoCodigo);
     }
 
 }

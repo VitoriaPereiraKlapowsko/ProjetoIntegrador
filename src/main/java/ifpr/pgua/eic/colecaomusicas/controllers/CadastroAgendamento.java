@@ -153,7 +153,7 @@ public class CadastroAgendamento implements Initializable {
             List<Status> Status = (List<Status>) resultadoStatus.comoSucesso().getObj();
             comboStatus.getItems().addAll(Status);
         } else {
-            Alert alert = new Alert(AlertType.ERROR, resultadoServicos.getMsg());
+            Alert alert = new Alert(AlertType.ERROR, resultadoStatus.getMsg());
             alert.showAndWait();
         }
     }

@@ -8,6 +8,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
+import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,6 +80,22 @@ public class ListarClientes implements Initializable{
         }else{
             List lista = (List)resultado.comoSucesso().getObj();
             listaClientes.getItems().addAll(lista);
+        }
+    }
+
+    @FXML
+    void atualizar(ActionEvent event) {
+         listaClientes.getItems().clear();
+
+        // Busque novamente os dados do repositório
+        Resultado resultadoLista = repositorio.listarClientes();
+
+        if (resultadoLista.foiSucesso()) {
+            List<Cliente> listaAtualizada = (List<Cliente>) resultadoLista.comoSucesso().getObj();
+            listaClientes.getItems().addAll(listaAtualizada);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoLista.getMsg());
+            alert.showAndWait();
         }
     }
 }

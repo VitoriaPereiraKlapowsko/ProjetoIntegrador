@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.ListarRacas">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1062.0" style="-fx-background-color: AFD7ED;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.colecaomusicas.controllers.ListarRacas">
    <children>
       <Region prefHeight="78.0" prefWidth="1062.0" style="-fx-background-color: EFEFEF;" />
       <Label layoutX="390.0" layoutY="24.0" text="RAÇAS CADASTRADAS">
@@ -23,7 +23,8 @@
       <Button layoutX="465.0" layoutY="565.0" mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Voltar" />
       <ListView fx:id="listaRacas" layoutX="83.0" layoutY="147.0" onMouseClicked="#selecionar" prefHeight="357.0" prefWidth="894.0" />
       <Button layoutX="83.0" layoutY="512.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
-      <Button layoutX="191.0" layoutY="512.0" mnemonicParsing="false" onAction="#alterar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Alterar" />
+      <Button layoutX="191.0" layoutY="512.0" mnemonicParsing="false" onAction="#alterar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Editar" />
       <Button layoutX="136.0" layoutY="553.0" mnemonicParsing="false" onAction="#mostrarSelecionados" text="Selecionados" visible="false" />
+      <Button layoutX="295.0" layoutY="512.0" mnemonicParsing="false" onAction="#atualizar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Atualizar" />
    </children>
 </AnchorPane>

@@ -21,8 +21,9 @@
          </font></Label>
       <Button layoutX="542.0" layoutY="578.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Confirmar" />
       <ListView fx:id="listaServicos" layoutX="74.0" layoutY="154.0" onMouseClicked="#selecionar" prefHeight="362.0" prefWidth="916.0" />
-      <Button layoutX="192.0" layoutY="526.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
+      <Button layoutX="184.0" layoutY="526.0" mnemonicParsing="false" onAction="#deletar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Deletar" />
       <Button layoutX="74.0" layoutY="526.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Editar" />
       <Button fx:id="btVoltar" layoutX="423.0" layoutY="578.0" mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Voltar" />
+      <Button layoutX="293.0" layoutY="527.0" mnemonicParsing="false" onAction="#atualizar" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Atualizar" />
    </children>
 </AnchorPane>

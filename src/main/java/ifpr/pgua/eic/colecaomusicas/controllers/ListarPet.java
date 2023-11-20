@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
@@ -78,6 +79,22 @@ public class ListarPet implements Initializable{
         }else{
             List lista = (List)resultado.comoSucesso().getObj();
             listaPets.getItems().addAll(lista);
+        }
+    }
+
+    @FXML
+    void atualizar(ActionEvent event) {
+         listaPets.getItems().clear();
+
+        // Busque novamente os dados do repositório
+        Resultado resultadoLista = repositorio.listarPet();
+
+        if (resultadoLista.foiSucesso()) {
+            List<Pet> listaAtualizada = (List<Pet>) resultadoLista.comoSucesso().getObj();
+            listaPets.getItems().addAll(listaAtualizada);
+        } else {
+            Alert alert = new Alert(AlertType.ERROR, resultadoLista.getMsg());
+            alert.showAndWait();
         }
     }
 

@@ -33,7 +33,7 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
                     "INSERT INTO tb_agendamento(cliente_codigo, animal_codigo, tipo_servico, codigo_status, data_reserva_de_servico, horario_do_servico, valor_total_da_reserva, tosador_ou_banhista, observacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setInt(1, agendamento.getClienteCodigo().getCodigo()); 
+            pstm.setInt(1, agendamento.getClienteCodigo().getCodigo());
             pstm.setInt(2, agendamento.getAnimalCodigo().getCodigo());
             pstm.setInt(3, agendamento.getTipoServico().getCodigo());
             pstm.setInt(4, agendamento.getCodigoStatus().getCodigo());
@@ -63,7 +63,8 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
     public Resultado listar() {
         try (Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.prepareStatement(
-                    "SELECT tb_agendamento.*, tb_cliente.nome as nome_cliente, tb_cliente.sobrenome as sobrenome_cliente, tb_cliente.cpf_cnpj as cpf_cliente, tb_cliente.inscricao_estadual as inscricao_cliente, tb_cliente.endereco as endereco, tb_cliente.telefone as telefone, tb_cliente.email as email,tb_status.descricao as descricao_status, tb_servico.valor as valor_servico, tb_servico.descricao as descricao_servico,tb_animal.nome as nome_pet, tb_animal.sexo as sexo_pet, tb_animal.porte as porte_pet, tb_animal.especie as especie_pet, tb_animal.data_de_nascimento as data_de_nascimento_pet, tb_animal.tratamento_especiais as tratamento_especiais_pet, tb_animal.condicoes_fisicas as condicoes_fisicas_pet " +             
+                    "SELECT tb_agendamento.*, tb_cliente.nome as nome_cliente, tb_cliente.sobrenome as sobrenome_cliente, tb_cliente.cpf_cnpj as cpf_cliente, tb_cliente.inscricao_estadual as inscricao_cliente, tb_cliente.endereco as endereco, tb_cliente.telefone as telefone, tb_cliente.email as email,tb_status.descricao as descricao_status, tb_servico.valor as valor_servico, tb_servico.descricao as descricao_servico,tb_animal.nome as nome_pet, tb_animal.sexo as sexo_pet, tb_animal.porte as porte_pet, tb_animal.especie as especie_pet, tb_animal.data_de_nascimento as data_de_nascimento_pet, tb_animal.tratamento_especiais as tratamento_especiais_pet, tb_animal.condicoes_fisicas as condicoes_fisicas_pet "
+                            +
                             "FROM tb_agendamento " +
                             "INNER JOIN tb_cliente ON tb_agendamento.cliente_codigo = tb_cliente.codigo " +
                             "INNER JOIN tb_animal ON tb_agendamento.animal_codigo = tb_animal.codigo " +
@@ -93,7 +94,6 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
                 int telefone = rs.getInt("telefone");
                 String email = rs.getString("email");
 
-                
                 String nomePet = rs.getString("nome_pet");
                 String sexoPet = rs.getString("sexo_pet");
                 String portePet = rs.getString("porte_pet");
@@ -101,22 +101,24 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
                 LocalDate dataDeNascimentoPet = rs.getObject("data_de_nascimento_pet", LocalDate.class);
                 String tratamentoEspeciaisPet = rs.getString("tratamento_especiais_pet");
                 String condicoesFisicasPet = rs.getString("condicoes_fisicas_pet");
-                
+
                 float valorServico = rs.getFloat("valor_servico");
                 String descricaoServico = rs.getString("descricao_servico");
 
-                String descricaoStatus= rs.getString("descricao_status");
+                String descricaoStatus = rs.getString("descricao_status");
 
-                Cliente cliente = new Cliente(cliente_codigo, nomeCliente, sobrenomeCliente, cpfCnpj, inscricaoEstadual,endereco, telefone, email);
+                Cliente cliente = new Cliente(cliente_codigo, nomeCliente, sobrenomeCliente, cpfCnpj, inscricaoEstadual,
+                        endereco, telefone, email);
 
-                //Raca raca = new Raca(raca_codigo, nomeRaca, null);
+                // Raca raca = new Raca(raca_codigo, nomeRaca, null);
 
-                Pet pet = new Pet(animalCodigo, cliente, null, nomePet, sexoPet, portePet, especiePet,dataDeNascimentoPet,tratamentoEspeciaisPet, condicoesFisicasPet);
+                Pet pet = new Pet(animalCodigo, cliente, null, nomePet, sexoPet, portePet, especiePet,
+                        dataDeNascimentoPet, tratamentoEspeciaisPet, condicoesFisicasPet);
 
-                Servico servico = new Servico(tipoServico, valorServico,descricaoServico);
+                Servico servico = new Servico(tipoServico, valorServico, descricaoServico);
 
-                Status status = new Status(codigoStatus,descricaoStatus);
-                
+                Status status = new Status(codigoStatus, descricaoStatus);
+
                 Agendamento agendamento = new Agendamento(codigo_agendamento, cliente, pet, servico,
                         status, dataReservaDoServico, horarioDaReserva, valorTotalDaReserva,
                         tosadorOuBanhista, observacao);
@@ -146,4 +148,29 @@ public class JDBCAgendamentoDAO implements AgendamentoDAO {
             return Resultado.erro(e.getMessage());
         }
     }
+
+    @Override
+    public Resultado atualizarStatus(int codigoAgendamento, int novoCodigo) {
+
+        String sql = "UPDATE tb_agendamento SET codigo_status = ? WHERE codigo = ?";
+        try (Connection con = fabrica.getConnection();
+                PreparedStatement pstm = con.prepareStatement(sql)) {
+
+            pstm.setInt(1, novoCodigo);
+            pstm.setInt(2, codigoAgendamento);
+
+            int rowsUpdated = pstm.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                return Resultado.sucesso("Código do agendamento atualizado com sucesso!", con);
+            } else {
+                return Resultado.erro("Não foi possível atualizar o código do agendamento.");
+            }
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    
 }

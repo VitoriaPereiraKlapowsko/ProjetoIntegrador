@@ -13,6 +13,15 @@ public class Agendamento {
     private float valorTotal;
     private String tosadorOuBanhista;
     private String observacao;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Agendamento(Cliente clienteCodigo, Pet animalCodigo, Servico tipoServico, Status codigoStatus, LocalDate dataReserva,String horarioReserva, float valorTotal,
             String tosadorOuBanhista, String observacao) {
@@ -129,12 +138,12 @@ public class Agendamento {
                 clienteCodigo + "\n" +
                 animalCodigo + "\n" +
                 tipoServico + "\n" +
-                codigoStatus + "\n" +
                 "Data da Reserva: " + dataReserva + "\n" +
                 "Horario: " + horarioReserva + "\n" +
                 "Valor: " + valorTotal + "\n" +
                 "Tosador Ou Banhista: " + tosadorOuBanhista + "\n" +
                 "Observacões: " + observacao + "\n" +
+                "\n"+ codigoStatus + "\n" +
                 "";
     }
 }

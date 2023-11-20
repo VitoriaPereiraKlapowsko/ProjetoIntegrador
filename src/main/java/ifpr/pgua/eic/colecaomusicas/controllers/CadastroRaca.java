@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.github.hugoperlin.results.Resultado;
@@ -77,6 +78,7 @@ public class CadastroRaca implements Initializable {
             alert = new Alert(AlertType.ERROR, resultado.getMsg());
         } else {
             alert = new Alert(AlertType.INFORMATION, resultado.getMsg());
+            
         }
         alert.showAndWait();
     }
@@ -92,5 +94,7 @@ public class CadastroRaca implements Initializable {
         }
     }
 
-    
 }
+
+    
+

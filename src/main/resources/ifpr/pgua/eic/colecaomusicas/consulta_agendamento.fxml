@@ -21,5 +21,6 @@
       <Region layoutX="135.0" layoutY="149.0" prefHeight="26.0" prefWidth="792.0" style="-fx-background-color: AEC4D0;" />
       <Label layoutX="141.0" layoutY="154.0" text="Lista de Agendamentos" />
       <Button layoutX="524.0" layoutY="554.0" mnemonicParsing="false" onAction="#voltar" prefHeight="18.0" prefWidth="86.0" style="-fx-background-color: FFFFFF;" text="Voltar" />
+      <Button layoutX="238.0" layoutY="507.0" mnemonicParsing="false" onAction="#concluirAgendamento" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: FFFFFF;" text="Concluir Agendamento" />
    </children>
 </AnchorPane>
