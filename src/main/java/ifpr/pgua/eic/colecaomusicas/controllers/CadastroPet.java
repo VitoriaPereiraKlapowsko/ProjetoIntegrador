@@ -68,6 +68,8 @@ public class CadastroPet implements Initializable {
     private RepositorioPet repositorio;
     private Pet anterior;
 
+    private RepositorioPet repositorioPet2;
+
     public CadastroPet(RepositorioPet repositorioPet, RepositorioRaca repositorioRaca,
             RepositorioCliente repositorioCliente) {
         this.repositorioPet = repositorioPet;
@@ -78,6 +80,10 @@ public class CadastroPet implements Initializable {
     public CadastroPet(RepositorioPet repositorio, Pet anterior) {
         this.repositorio = repositorio;
         this.anterior = anterior;
+    }
+
+    public CadastroPet(RepositorioPet repositorioPet2) {
+        this.repositorioPet2 = repositorioPet2;
     }
 
     @FXML

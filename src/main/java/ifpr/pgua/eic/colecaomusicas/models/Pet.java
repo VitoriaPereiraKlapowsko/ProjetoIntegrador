@@ -121,6 +121,6 @@ public class Pet {
 
     @Override
     public String toString() {
-        return "Pet: " + nome + "" + cliente + " ";
+        return "Pet: " + nome + "" + " " + cliente + " ";
     }
 }

@@ -9,6 +9,7 @@ import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
 import ifpr.pgua.eic.colecaomusicas.models.Raca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,6 +60,8 @@ public class CadastroCliente implements Initializable {
 
     private RepositorioCliente repositorio;
 
+    private RepositorioPet repositorioPet;
+
     public CadastroCliente(RepositorioCliente repositorio) {
         this.repositorio = repositorio;
     }
@@ -66,6 +69,10 @@ public class CadastroCliente implements Initializable {
     public CadastroCliente(RepositorioCliente repositorio, Cliente anterior) {
         this.repositorio = repositorio;
         this.anterior = anterior;
+    }
+
+    public CadastroCliente(RepositorioPet repositorioPet){
+        this.repositorioPet = repositorioPet;
     }
 
     @FXML
@@ -124,7 +131,7 @@ public class CadastroCliente implements Initializable {
 
     @FXML
     void cadastrarPet() {
-        App.pushScreen("CADASTROPET");
+        App.pushScreen("CADASTROPET",o -> new CadastroPet(repositorioPet));
     }
 
     @FXML

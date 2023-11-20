@@ -10,6 +10,8 @@ import javafx.application.Platform;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Principal {
 
@@ -22,7 +24,7 @@ public class Principal {
     public Principal(RepositorioServico repositorioServico, RepositorioFuncionario repositorioFuncionario,
             RepositorioRaca repositorioRaca, RepositorioCliente repositorioCliente,
             RepositorioStatus repositorioStatus) {
-                
+
         this.repositorioServico = repositorioServico;
         this.repositorioFuncionario = repositorioFuncionario;
         this.repositorioRaca = repositorioRaca;
@@ -32,13 +34,13 @@ public class Principal {
 
     @FXML
     private void cadastrarCliente() {
-        App.pushScreen("CADASTROCLIENTE", o-> new CadastroCliente(repositorioCliente));
+        App.pushScreen("CADASTROCLIENTE", o -> new CadastroCliente(repositorioCliente));
     }
 
     @FXML
     void cadastrarServico(ActionEvent event) {
         // App.pushScreen("CADASTROSERVICO");
-        App.pushScreen("CADASTROSERVICO", o-> new CadastroServico(repositorioServico));
+        App.pushScreen("CADASTROSERVICO", o -> new CadastroServico(repositorioServico));
     }
 
     @FXML
@@ -48,7 +50,7 @@ public class Principal {
 
     @FXML
     void cadastrarRaca(ActionEvent event) {
-        App.pushScreen("CADASTRORACA", o-> new CadastroRaca(repositorioRaca));
+        App.pushScreen("CADASTRORACA", o -> new CadastroRaca(repositorioRaca));
     }
 
     @FXML
@@ -64,7 +66,7 @@ public class Principal {
     @FXML
     void cadastroFuncionario(ActionEvent event) {
         // App.pushScreen("CADASTROFUNCIONARIO");
-        App.pushScreen("CADASTROFUNCIONARIO", o-> new CadastroFuncionario(repositorioFuncionario));
+        App.pushScreen("CADASTROFUNCIONARIO", o -> new CadastroFuncionario(repositorioFuncionario));
     }
 
     @FXML
@@ -74,12 +76,25 @@ public class Principal {
 
     @FXML
     void cadastrarStatus(ActionEvent event) {
-        App.pushScreen("CADASTROSTATUS", o-> new CadastroStatus(repositorioStatus));
+        App.pushScreen("CADASTROSTATUS", o -> new CadastroStatus(repositorioStatus));
 
+    }
+
+    @FXML
+    void configuracao(ActionEvent event) {
+        exibirAlerta("ATENÇÃO", "Tela em construção...");
     }
 
     @FXML
     void sair(ActionEvent event) {
         Platform.exit();
+    }
+
+    private void exibirAlerta(String titulo, String mensagem) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 }
