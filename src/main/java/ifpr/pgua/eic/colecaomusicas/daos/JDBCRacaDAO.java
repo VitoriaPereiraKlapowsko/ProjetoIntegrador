@@ -88,7 +88,7 @@ public class JDBCRacaDAO implements RacaDAO {
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Raça Atualizado!", novo);
+                return Resultado.sucesso("Raça Atualizada!", novo);
             }
             return Resultado.erro("Erro não identificado!");
         } catch (SQLException e) {
@@ -106,9 +106,9 @@ public class JDBCRacaDAO implements RacaDAO {
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Raça deletado com sucesso!", con);
+                return Resultado.sucesso("Raça deletada com sucesso!", con);
             }
-            return Resultado.erro("Raça não encontrado...");
+            return Resultado.erro("Raça não encontrada...");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

@@ -148,9 +148,9 @@ public class JDBCPetDAO implements PetDAO {
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
-                return Resultado.sucesso("Animal deletado com sucesso!", con);
+                return Resultado.sucesso("Pet deletado com sucesso!", con);
             }
-            return Resultado.erro("Animal não encontrado...");
+            return Resultado.erro("Pet não encontrado...");
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

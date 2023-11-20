@@ -131,7 +131,7 @@ public class CadastroCliente implements Initializable {
 
     @FXML
     void cadastrarPet() {
-        App.pushScreen("CADASTROPET",o -> new CadastroPet(repositorioPet));
+        App.pushScreen("CADASTROPET");
     }
 
     @FXML
