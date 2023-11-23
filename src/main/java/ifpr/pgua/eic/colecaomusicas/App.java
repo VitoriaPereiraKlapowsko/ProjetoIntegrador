@@ -3,6 +3,7 @@ package ifpr.pgua.eic.colecaomusicas;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroAgendamento;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroServico;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroStatus;
+import ifpr.pgua.eic.colecaomusicas.controllers.CadastroUsuario;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroCliente;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroFuncionario;
 import ifpr.pgua.eic.colecaomusicas.controllers.CadastroPet;
@@ -24,6 +25,7 @@ import ifpr.pgua.eic.colecaomusicas.daos.FuncionarioDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCAgendamentoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCClienteDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCFuncionarioDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.JDBCUsuarioDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCPetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCRacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.JDBCServicoDAO;
@@ -32,6 +34,7 @@ import ifpr.pgua.eic.colecaomusicas.daos.PetDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.RacaDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.ServicoDAO;
 import ifpr.pgua.eic.colecaomusicas.daos.StatusDAO;
+import ifpr.pgua.eic.colecaomusicas.daos.UsuarioDAO;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioAgendamento;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioCliente;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioFuncionario;
@@ -39,6 +42,7 @@ import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioPet;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioUsuario;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
 
@@ -65,6 +69,9 @@ public class App extends BaseAppNavigator {
         private AgendamentoDAO agendamentoDAO = new JDBCAgendamentoDAO(FabricaConexoes.getInstance());
         private RepositorioAgendamento repositorioAgendamento = new RepositorioAgendamento(agendamentoDAO);
 
+        private UsuarioDAO usuarioDAO = new JDBCUsuarioDAO(FabricaConexoes.getInstance());
+        private RepositorioUsuario repositorioUsuario = new RepositorioUsuario(usuarioDAO);
+
         public static void main(String[] args) {
                 launch();
         }
@@ -82,85 +89,92 @@ public class App extends BaseAppNavigator {
         @Override
         public void registrarTelas() {
                 registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml",
-                                o-> new Principal(repositorioServico, repositorioFuncionario, repositorioRaca,
+                                o -> new Principal(repositorioServico, repositorioFuncionario, repositorioRaca,
                                                 repositorioCliente, repositorioStatus)));
 
-                registraTela("LOGIN", new ScreenRegistryFXML(App.class, "login.fxml", o-> new TelaLogin()));
+                registraTela("LOGIN", new ScreenRegistryFXML(App.class, "login.fxml", o -> new TelaLogin(repositorioUsuario)));
 
                 registraTela("CADASTROCLIENTE",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_cliente.fxml",
-                                                o-> new CadastroCliente(repositorioCliente)));
+                                                o -> new CadastroCliente(repositorioCliente)));
 
                 registraTela("CADASTROPET",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_pet.fxml",
-                                                o-> new CadastroPet(repositorioPet, repositorioRaca,
+                                                o -> new CadastroPet(repositorioPet, repositorioRaca,
                                                                 repositorioCliente)));
 
                 registraTela("CADASTROSERVICO",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_servico.fxml",
-                                                o-> new CadastroServico(repositorioServico)));
+                                                o -> new CadastroServico(repositorioServico)));
 
                 registraTela("LISTARSERVICO",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_servicos_cadastrados.fxml",
-                                                o-> new ListarServicos(repositorioServico)));
+                                                o -> new ListarServicos(repositorioServico)));
 
                 registraTela("CADASTRORACA",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_raca.fxml",
-                                                o-> new CadastroRaca(repositorioRaca)));
+                                                o -> new CadastroRaca(repositorioRaca)));
 
                 registraTela("CALENDARIOAGENDAMENTOS",
                                 new ScreenRegistryFXML(App.class,
                                                 "calendario_agendamentos.fxml",
-                                                o-> new CalendarioAgendamentos()));
+                                                o -> new CalendarioAgendamentos()));
 
                 registraTela("CADASTRARGENDAMENTO",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_agendamento.fxml",
-                                                o-> new CadastroAgendamento(repositorioAgendamento, repositorioCliente, repositorioPet, repositorioServico, repositorioStatus)));
+                                                o -> new CadastroAgendamento(repositorioAgendamento, repositorioCliente,
+                                                                repositorioPet, repositorioServico,
+                                                                repositorioStatus)));
 
                 registraTela("CADASTROFUNCIONARIO",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_funcionario.fxml",
-                                                o-> new CadastroFuncionario(repositorioFuncionario)));
+                                                o -> new CadastroFuncionario(repositorioFuncionario)));
 
                 registraTela("LISTARAGENDAMENTOS",
                                 new ScreenRegistryFXML(App.class,
                                                 "consulta_agendamento.fxml",
-                                                o-> new ListarAgendamentos(repositorioAgendamento)));
+                                                o -> new ListarAgendamentos(repositorioAgendamento)));
 
                 registraTela("LISTARFUNCIONARIOS",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_funcionarios.fxml",
-                                                o-> new ListarFuncionarios(repositorioFuncionario)));
+                                                o -> new ListarFuncionarios(repositorioFuncionario)));
 
                 registraTela("LISTARCLIENTES",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_clientes.fxml",
-                                                o-> new ListarClientes(repositorioCliente)));
+                                                o -> new ListarClientes(repositorioCliente)));
 
                 registraTela("LISTARPET",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_pet.fxml",
-                                                o-> new ListarPet(repositorioPet)));
+                                                o -> new ListarPet(repositorioPet)));
 
                 registraTela("LISTARRACAS",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_raca.fxml",
-                                                o-> new ListarRacas(repositorioRaca)));
+                                                o -> new ListarRacas(repositorioRaca)));
 
                 registraTela("CADASTROSTATUS",
                                 new ScreenRegistryFXML(App.class,
                                                 "cadastro_status.fxml",
-                                                o-> new CadastroStatus(repositorioStatus)));
+                                                o -> new CadastroStatus(repositorioStatus)));
 
                 registraTela("LISTARSTATUS",
                                 new ScreenRegistryFXML(App.class,
                                                 "lista_status.fxml",
-                                                o-> new ListarStatus(repositorioStatus)));
+                                                o -> new ListarStatus(repositorioStatus)));
+
+                registraTela("CADASTROUSUARIO",
+                                new ScreenRegistryFXML(App.class,
+                                                "cadastro_usuario.fxml",
+                                                o -> new CadastroUsuario(repositorioUsuario)));
         }
 }

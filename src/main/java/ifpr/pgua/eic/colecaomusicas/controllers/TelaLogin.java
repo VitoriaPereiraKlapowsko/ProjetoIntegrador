@@ -1,10 +1,15 @@
 package ifpr.pgua.eic.colecaomusicas.controllers;
 
+import com.github.hugoperlin.results.Resultado;
+
 import ifpr.pgua.eic.colecaomusicas.App;
+import ifpr.pgua.eic.colecaomusicas.models.Usuario;
+import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,26 +25,29 @@ public class TelaLogin {
     @FXML
     private PasswordField campoSenha;
 
+    private RepositorioUsuario repositorio;
+    
+
+    public TelaLogin(RepositorioUsuario repositorio) {
+        this.repositorio = repositorio;
+    }
+
     @FXML
     void entrar(ActionEvent event) {
         String usuario = campoUsuario.getText();
         String senha = campoSenha.getText() != null ? campoSenha.getText() : "";
 
-
-        if (usuario.isEmpty() || senha.isEmpty()) {
-            // Exibir mensagem se usuário ou senha estiverem em branco
-            exibirAlerta("ERRO","Por favor, preencha usuário e senha!");
-        } else if (autenticacaoBemSucedida(usuario, senha)) {
-            Principal(event);
+        if (usuario.isEmpty() || usuario.isBlank() && senha.isEmpty() || senha.isBlank()) {
+            exibirAlerta("ERRO", "Por favor, preencha usuário e senha!");
         } else {
-            exibirAlerta("ERRO","Usuário ou Senha estão incorretos!");
-        }
-    }
+            Resultado usuarioAutenticado = repositorio.buscarUsuario(usuario, senha);
 
-    // Função de exemplo para simular autenticação
-    private boolean autenticacaoBemSucedida(String usuario, String senha) {
-        // Substitua isso pela lógica real de autenticação
-        return "usuario".equals(usuario) && "senha".equals(senha);
+            if (usuarioAutenticado != null) {
+                Principal(event);
+            } else {
+                exibirAlerta("ERRO", "Usuário ou Senha estão incorretos!");
+            }
+        }
     }
 
     @FXML
@@ -48,12 +56,16 @@ public class TelaLogin {
     }
 
     private void exibirAlerta(String titulo, String mensagem) {
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle(titulo);
-    alert.setHeaderText(null);
-    alert.setContentText(mensagem);
-    alert.showAndWait();
-}
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
 
-    
+    @FXML
+    void cadastrar(ActionEvent event) {
+        App.pushScreen("CADASTROUSUARIO");
+    }
+
 }
