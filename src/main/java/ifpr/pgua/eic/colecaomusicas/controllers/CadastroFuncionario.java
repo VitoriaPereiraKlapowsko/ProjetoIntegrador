@@ -39,9 +39,6 @@ public class CadastroFuncionario implements Initializable {
     private TextField nomeFuncionario;
 
     @FXML
-    private TextField senhaFuncionario;
-
-    @FXML
     private TextField tfCodigo;
 
     @FXML
@@ -49,9 +46,6 @@ public class CadastroFuncionario implements Initializable {
 
     @FXML
     private TextField sobrenomeFuncionario;
-
-    @FXML
-    private TextField loginFuncionario;
 
     @FXML
     private Button btAcao;
@@ -82,8 +76,6 @@ public class CadastroFuncionario implements Initializable {
 
     @FXML
     void confirmar(ActionEvent event) {
-        String login = loginFuncionario.getText();
-        String senha = senhaFuncionario.getText();
         String nome = nomeFuncionario.getText();
         String sobrenome = sobrenomeFuncionario.getText();
         int telefone = Integer.parseInt(telefoneFuncionario.getText());
@@ -98,10 +90,10 @@ public class CadastroFuncionario implements Initializable {
         Resultado resultado;
 
         if (anterior == null) {
-            resultado = repositorio.cadastrarFuncionario(login, senha, nome, sobrenome, telefone, funcao, cpf,
+            resultado = repositorio.cadastrarFuncionario(nome, sobrenome, telefone, funcao, cpf,
                     sexo, endereco, dataNascimento, email);
         } else {
-            resultado = repositorio.alterarFuncionario(Integer.valueOf(codigo), login, senha, nome, sobrenome, telefone,
+            resultado = repositorio.alterarFuncionario(Integer.valueOf(codigo),nome, sobrenome, telefone,
                     funcao, cpf, sexo, endereco, dataNascimento, email);
         }
 
@@ -126,8 +118,6 @@ public class CadastroFuncionario implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         if (anterior != null) {
             tfCodigo.setText(anterior.getCodigo() + "");
-            loginFuncionario.setText(anterior.getLogin());
-            senhaFuncionario.setText(anterior.getSenha());
             nomeFuncionario.setText(anterior.getNome());
             sobrenomeFuncionario.setText(anterior.getSobrenome());
             telefoneFuncionario.setText(Integer.toString(anterior.getTelefone()));

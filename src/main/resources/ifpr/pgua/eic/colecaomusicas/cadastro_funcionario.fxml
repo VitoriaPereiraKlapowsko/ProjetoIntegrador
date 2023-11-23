@@ -35,10 +35,6 @@
       <Label layoutX="295.0" layoutY="388.0" text="Sexo:" />
       <TextField fx:id="funcaoFuncionario" layoutX="619.0" layoutY="403.0" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="620.0" layoutY="388.0" text="Função:" />
-      <TextField fx:id="senhaFuncionario" layoutX="444.0" layoutY="457.0" />
-      <Label layoutX="446.0" layoutY="441.0" text="Senha:" />
-      <TextField fx:id="loginFuncionario" layoutX="294.0" layoutY="457.0" prefHeight="25.0" prefWidth="131.0" />
-      <Label layoutX="296.0" layoutY="441.0" text="Login:" />
       <TextField fx:id="sexoFuncionario" layoutX="294.0" layoutY="404.0" prefHeight="25.0" prefWidth="131.0" />
       <Button fx:id="aba" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#abaListar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: B1C4CF;" text="Listar" />
       <TextField fx:id="tfCodigo" layoutX="292.0" layoutY="118.0" prefHeight="26.0" prefWidth="186.0" visible="false" />

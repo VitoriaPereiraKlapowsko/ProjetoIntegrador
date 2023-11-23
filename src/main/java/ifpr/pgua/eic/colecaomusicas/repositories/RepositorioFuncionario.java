@@ -18,16 +18,9 @@ public class RepositorioFuncionario {
         this.dao = dao;
     }
 
-    public Resultado cadastrarFuncionario(String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    public Resultado cadastrarFuncionario(String nome, String sobrenome, int telefone, String funcao, String cpf,
             String sexo, String endereco, LocalDate dataNascimento, String email){
 
-        if(login.isEmpty() || login.isBlank()){
-            return Resultado.erro("Login inválido!");
-        }
-
-        if(senha.isEmpty() || senha.isBlank()){
-            return Resultado.erro("Senha inválida!");
-        }
 
         if(nome.isEmpty() || nome.isBlank()){
             return Resultado.erro("Nome inválido!");
@@ -66,7 +59,7 @@ public class RepositorioFuncionario {
         }
       
        
-        Funcionario funcionario = new Funcionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
+        Funcionario funcionario = new Funcionario(nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
         return dao.criar(funcionario);
     }
 
@@ -74,11 +67,11 @@ public class RepositorioFuncionario {
         return dao.listar();
     }
 
-    public Resultado alterarFuncionario(int codigo,String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    public Resultado alterarFuncionario(int codigo,String nome, String sobrenome, int telefone, String funcao, String cpf,
     String sexo, String endereco, LocalDate dataNascimento, String email){
 
 
-        Funcionario novo = new Funcionario(codigo,login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
+        Funcionario novo = new Funcionario(codigo,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,dataNascimento,email);
 
         return dao.editar(codigo, novo);
     }

@@ -25,20 +25,18 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
         try (Connection con = fabrica.getConnection()) {
 
             PreparedStatement pstm = con.prepareStatement(
-                    "INSERT INTO tb_funcionario(login,senha,nome,sobrenome,telefone,funcao,cpf,sexo,endereco,data_de_nascimento,email) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                    "INSERT INTO tb_funcionario(nome,sobrenome,telefone,funcao,cpf,sexo,endereco,data_de_nascimento,email) VALUES (?,?,?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            pstm.setString(1, funcionario.getLogin());
-            pstm.setString(2, funcionario.getSenha());
-            pstm.setString(3, funcionario.getNome());
-            pstm.setString(4, funcionario.getSobrenome());
-            pstm.setInt(5, funcionario.getTelefone());
-            pstm.setString(6, funcionario.getFuncao());
-            pstm.setString(7, funcionario.getCpf());
-            pstm.setString(8, funcionario.getSexo());
-            pstm.setString(9, funcionario.getEndereco());
-            pstm.setObject(10, funcionario.getDataNasc());
-            pstm.setString(11, funcionario.getEmail());
+            pstm.setString(1, funcionario.getNome());
+            pstm.setString(2, funcionario.getSobrenome());
+            pstm.setInt(3, funcionario.getTelefone());
+            pstm.setString(4, funcionario.getFuncao());
+            pstm.setString(5, funcionario.getCpf());
+            pstm.setString(6, funcionario.getSexo());
+            pstm.setString(7, funcionario.getEndereco());
+            pstm.setObject(8, funcionario.getDataNasc());
+            pstm.setString(9, funcionario.getEmail());
             int ret = pstm.executeUpdate();
 
             if (ret == 1) {
@@ -67,8 +65,6 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
 
             while (rs.next()) {
                 int codigo = rs.getInt("codigo");
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
                 String nome = rs.getString("nome");
                 String sobrenome = rs.getString("sobrenome");
                 int telefone = rs.getInt("telefone");
@@ -79,7 +75,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
                 LocalDate dataNascimento = rs.getObject("data_de_nascimento", LocalDate.class);
                 String email = rs.getString("email");
 
-                Funcionario funcionario = new Funcionario(codigo, login, senha, nome, sobrenome, telefone, funcao, cpf,
+                Funcionario funcionario = new Funcionario(codigo,nome, sobrenome, telefone, funcao, cpf,
                         sexo, endereco, dataNascimento, email);
                 lista.add(funcionario);
             }
@@ -97,21 +93,19 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
 
             // Preparar o comando sql
             PreparedStatement pstm = con.prepareStatement(
-                    "UPDATE tb_funcionario SET login=?,senha=?,nome=?, sobrenome=?, telefone=?,funcao=?,cpf=?,sexo=?,endereco=?,data_de_nascimento=?,email=? WHERE codigo=?");
+                    "UPDATE tb_funcionario SET nome=?, sobrenome=?, telefone=?,funcao=?,cpf=?,sexo=?,endereco=?,data_de_nascimento=?,email=? WHERE codigo=?");
             // Ajustar os parâmetros
-            pstm.setString(1, novo.getLogin());
-            pstm.setString(2, novo.getSenha());
-            pstm.setString(3, novo.getNome());
-            pstm.setString(4, novo.getSobrenome());
-            pstm.setInt(5, novo.getTelefone());
-            pstm.setString(6, novo.getFuncao());
-            pstm.setString(7, novo.getCpf());
-            pstm.setString(8, novo.getSexo());
-            pstm.setString(9, novo.getEndereco());
-            pstm.setObject(10, novo.getDataNasc());
-            pstm.setString(11, novo.getEmail());
+            pstm.setString(1, novo.getNome());
+            pstm.setString(2, novo.getSobrenome());
+            pstm.setInt(3, novo.getTelefone());
+            pstm.setString(4, novo.getFuncao());
+            pstm.setString(5, novo.getCpf());
+            pstm.setString(6, novo.getSexo());
+            pstm.setString(7, novo.getEndereco());
+            pstm.setObject(8, novo.getDataNasc());
+            pstm.setString(9, novo.getEmail());
 
-            pstm.setInt(12, codigo);
+            pstm.setInt(10, codigo);
 
             // Executar o comando
             int ret = pstm.executeUpdate();

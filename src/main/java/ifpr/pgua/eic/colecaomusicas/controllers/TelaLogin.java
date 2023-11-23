@@ -40,12 +40,13 @@ public class TelaLogin {
         if (usuario.isEmpty() || usuario.isBlank() && senha.isEmpty() || senha.isBlank()) {
             exibirAlerta("ERRO", "Por favor, preencha usuário e senha!");
         } else {
-            Resultado usuarioAutenticado = repositorio.buscarUsuario(usuario, senha);
+            Resultado resultadoBusca = repositorio.buscarUsuario(usuario, senha);
 
-            if (usuarioAutenticado != null) {
+            if (resultadoBusca != null) {
+                Usuario usuarioAutenticado = (Usuario) resultadoBusca.comoSucesso().getObj();
                 Principal(event);
             } else {
-                exibirAlerta("ERRO", "Usuário ou Senha estão incorretos!");
+                exibirAlerta("ERRO", resultadoBusca.getMsg());
             }
         }
     }

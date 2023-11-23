@@ -3,8 +3,6 @@ package ifpr.pgua.eic.colecaomusicas.models;
 import java.time.LocalDate;
 
 public class Funcionario {
-    private String login;
-    private String senha;
     private String nome;
     private String sobrenome;
     private String cpf;
@@ -17,9 +15,8 @@ public class Funcionario {
     private int codigo;
 
 
-    public Funcionario(String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    public Funcionario(String nome, String sobrenome, int telefone, String funcao, String cpf,
             String sexo, String endereco, LocalDate dataNascimento, String email) {
-        this.login = login;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -29,14 +26,11 @@ public class Funcionario {
         this.sexo = sexo;
         this.telefone = telefone;
         this.funcao = funcao;
-        this.senha = senha;
     }
 
-    public Funcionario(int codigo,String login,String senha, String nome, String sobrenome, int telefone, String funcao, String cpf,
+    public Funcionario(int codigo,String nome, String sobrenome, int telefone, String funcao, String cpf,
             String sexo, String endereco, LocalDate dataNascimento, String email) {
         this.codigo = codigo;
-        this.login = login;
-        this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -55,14 +49,6 @@ public class Funcionario {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getNome() {
@@ -127,14 +113,6 @@ public class Funcionario {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public LocalDate getDataNasc() {

@@ -60,9 +60,9 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 
                 Usuario usuarios = new Usuario(usuarioA, senhaA);
 
-                return Resultado.sucesso("Artista encontrado", usuarios);
+                return Resultado.sucesso("Usuário encontrado", usuarios);
             }else{
-                return Resultado.erro("Artista não encontrado!");
+                return Resultado.erro("Usuário não encontrado!");
             }
 
 
