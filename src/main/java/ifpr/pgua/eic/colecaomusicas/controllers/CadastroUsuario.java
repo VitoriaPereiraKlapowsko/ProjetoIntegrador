@@ -3,7 +3,6 @@ package ifpr.pgua.eic.colecaomusicas.controllers;
 import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
-import ifpr.pgua.eic.colecaomusicas.models.Usuario;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,20 +34,23 @@ public class CadastroUsuario {
         String usuario = campoUsuario.getText();
         String senha = campoSenha.getText();
 
-        String msg;
+        Resultado resultadoCadastro = repositorio.cadastrarUsuario(usuario, senha);
 
-        Resultado rs = repositorio.cadastrarUsuario(usuario, senha);
-
-        App.popScreen();
         Alert alert;
-        msg = rs.getMsg();
-        if (rs.foiErro()) {
-            alert = new Alert(AlertType.ERROR, msg);
-        } else {
-            alert = new Alert(AlertType.INFORMATION, msg);
+        if (resultadoCadastro != null && resultadoCadastro.foiSucesso()) {
+            Resultado resultadoAutenticacao = repositorio.buscarUsuario(usuario, senha);
 
+            if (resultadoAutenticacao != null && resultadoAutenticacao.foiSucesso()) {
+                alert = new Alert(AlertType.INFORMATION, "Usuário cadastrado com sucesso!");
+            } else {
+                alert = new Alert(AlertType.ERROR, "Erro após o cadastro!");
+            }
+        } else {
+            String mensagemErro = resultadoCadastro != null ? resultadoCadastro.getMsg() : "Erro ao cadastrar usuário!";
+            alert = new Alert(AlertType.ERROR, mensagemErro);
         }
 
+        App.popScreen();
         alert.showAndWait();
     }
 

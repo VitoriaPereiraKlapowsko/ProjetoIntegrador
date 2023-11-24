@@ -1,8 +1,5 @@
 package ifpr.pgua.eic.colecaomusicas.repositories;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -11,7 +8,6 @@ import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.daos.AgendamentoDAO;
 import ifpr.pgua.eic.colecaomusicas.models.Agendamento;
 import ifpr.pgua.eic.colecaomusicas.models.Cliente;
-import ifpr.pgua.eic.colecaomusicas.models.Funcionario;
 import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Servico;
 import ifpr.pgua.eic.colecaomusicas.models.Status;

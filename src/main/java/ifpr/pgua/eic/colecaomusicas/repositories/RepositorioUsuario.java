@@ -11,23 +11,25 @@ public class RepositorioUsuario {
     private UsuarioDAO dao;
     private ArrayList<Usuario> usuarios;
 
-    public RepositorioUsuario(UsuarioDAO dao){
+    public RepositorioUsuario(UsuarioDAO dao) {
         usuarios = new ArrayList<>();
         this.dao = dao;
     }
 
-    public Resultado cadastrarUsuario(String usuario, String senha){
-
-        if(usuario.isEmpty() || usuario.isBlank()){
-
-            return Resultado.erro("Descrição inválida!");
+    public Resultado cadastrarUsuario(String nomeUsuario, String senha) {
+        if (nomeUsuario.isEmpty() || nomeUsuario.isBlank()) {
+            return Resultado.erro("Nome de usuário inválido!");
         }
-  
-        Usuario usuarios = new Usuario(usuario,senha);
-        return dao.criar(usuarios);
+
+        if (senha.isEmpty() || senha.isBlank()) {
+            return Resultado.erro("Senha inválida!");
+        }
+
+        Usuario novoUsuario = new Usuario(nomeUsuario, senha);
+        return dao.criar(novoUsuario);
     }
 
     public Resultado buscarUsuario(String usuario, String senha) {
-        return dao.buscar(usuario,senha);
+        return dao.buscar(usuario, senha);
     }
 }

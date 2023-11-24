@@ -7,7 +7,6 @@ import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioRaca;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioServico;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
 import javafx.application.Platform;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

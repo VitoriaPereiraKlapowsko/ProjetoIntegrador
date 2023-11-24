@@ -9,7 +9,6 @@ import com.github.hugoperlin.results.Resultado;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ifpr.pgua.eic.colecaomusicas.App;
-import ifpr.pgua.eic.colecaomusicas.models.Pet;
 import ifpr.pgua.eic.colecaomusicas.models.Status;
 import ifpr.pgua.eic.colecaomusicas.repositories.RepositorioStatus;
 import javafx.event.ActionEvent;

@@ -1,3 +1,10 @@
+CREATE TABLE IF NOT EXISTS tb_usuarios (
+codigo int primary key AUTO_INCREMENT,
+usuario varchar(80) not null,
+senha varchar(80) not null
+);
+
+
 
 CREATE TABLE IF NOT EXISTS tb_funcionario (
 login varchar(150) primary key,
@@ -82,3 +89,4 @@ FOREIGN KEY(animal_codigo) REFERENCES tb_animal(codigo),
 FOREIGN KEY(funcionario_login) REFERENCES tb_funcionario(login),
 FOREIGN KEY(tipo_servico) REFERENCES tb_servico(codigo_do_servico)
 );
+

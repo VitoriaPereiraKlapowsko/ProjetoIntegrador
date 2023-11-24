@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS tb_usuarios (
+codigo int primary key AUTO_INCREMENT,
+usuario varchar(80) not null,
+senha varchar(80) not null
+);
 
 CREATE TABLE IF NOT EXISTS tb_funcionario (
 login varchar(150) primary key,
